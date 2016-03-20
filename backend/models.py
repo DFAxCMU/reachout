@@ -51,7 +51,7 @@ class Interaction(models.Model):
     route = models.ForeignKey(Route, related_name="interaction_route")
 
 class Warehouse(models.Model): 
-    org = models.OneToOneField(Organization, related_name="user")
+    org = models.OneToOneField(Organization, related_name="warehouse")
 
 class Item(models.Model): 
     name = models.CharField(max_length=50, default="")
