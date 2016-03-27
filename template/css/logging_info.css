@@ -1,3 +1,7 @@
+.background_color{
+
+}
+
 .light-blue{
     color: #9FDAE0;
 }
@@ -6,7 +10,53 @@
     color:#EF6E47;
 }
 
+.turquise{
+    color: #7BB6BC;
+}
+
 .title-bar{
     text-align: center;
     font-weight: 100;
+}
+
+.profile-title{
+    height: 10%;
+}
+
+.header{
+
+}
+
+.sub-header{
+    background-color: #EAF4F5;
+    position: relative;
+    width: 200%;
+    height: 50px;
+    color: #7BB6BC;
+    padding: 10px;
+}
+
+.clear{
+    clear:both;
+}
+.font{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+#profile-header{
+    overflow: auto;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px;
+    height: 15%;
+    overflow:hidden;
+}
+
+#profile-pic{
+    float: left;
+    height: 100%;
+}
+
+#timeline{
+    background-color: #FEB596;
 }

@@ -13,6 +13,7 @@
 
     <!-- Include the compiled Ratchet CSS -->
     <link href="../ratchet/dist/css/ratchet.css" rel="stylesheet">
+    <link href="css/logging_info.css" rel="stylesheet">
 
     <!-- Include the compiled Ratchet JS -->
     <script src="../ratchet/dist/js/ratchet.js"></script>
@@ -20,25 +21,53 @@
   <body>
 
     <!-- Make sure all your bars are the first things in your <body> -->
-    <header class="bar bar-nav">
-      <h3 class="title">Profile</h3>
+    <header class="bar bar-nav ">
+      <button class="btn btn-link btn-nav pull-left">
+      <span class="icon icon-left-nav turquise"></span>
+      </button>
+      <h3 class="title salmon-orange header font">profile</h3>
     </header>
 
     <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-    <div class="content ">
-      <div id = "profile-header" class="content-padded"> 
-        <img id = "profile-pic" src="http://placehold.it/42x42">
-        <h3> Profile Name </h3>
+    <!-- TODO: fix font -->
+    <div class="content background_color font">
+      <div class="salmon-orange font" id = "profile-header"> 
+        <img id = "profile-pic" src="http://cdn.photoaffections.com/images/icon-profile.png">
+        <div class="table-view-cell">
+        <h3 class="title-bar salmon-orange"> Name</h3>
+        <h5 class="title-bar salmon-orange"> Info 1</h5>
+        <h5 class="title-bar salmon-orange"> Info 2</h5>
+        </div>
       </div>
+
       <ul class="table-view">
+        <li class="table-view-cell media">
+          <a class="navigate-right">
+            <div class="media-body turquise">
+            <div class="sub-header">
+              <span class="icon icon-compose"></span>
+              Case Manager Requests
+            </div>
+              <div class="card clear">
+                <ul class="table-view">
+                  <li class="table-view-cell">Item 1</li>
+                  <li class="table-view-cell">Item 2</li>
+                  <li class="table-view-cell">Item 3</li>
+                  <li class="table-view-cell">Item 4</li>
+                </ul>
+              </div>
+            </div>
+          </a>
+        </li>
         <!-- Decide whether to convert the cards into view media cell-->
         <li class="table-view-cell media">
           <a class="navigate-right">
-            <img class="media-object pull-left" src="http://placehold.it/42x42">
-            <div class="media-body">
+            <div class="media-body turquise">
+            <div class="sub-header">
+              <span class="icon icon-compose"></span>
               Case Manager Requests
-              <p>(Only case manager can edit)</p>
-              <div class="card">
+            </div>
+              <div class="card clear">
                 <ul class="table-view">
                   <li class="table-view-cell">Item 1</li>
                   <li class="table-view-cell">Item 2</li>
@@ -51,10 +80,13 @@
         </li>
         <li class="table-view-cell media">
           <a class="navigate-right">
-            <img class="media-object pull-left" src="http://placehold.it/42x42">
-            <div class="media-body">
-              Incomplete Requests
-              <div class="card">
+            <div class="media-body turquise">
+              <div class="sub-header">
+              <span class="icon icon-compose"></span>
+                Incomplete Requests
+              </div>
+
+              <div class="card clear">
                 <ul class="table-view">
                   <li class="table-view-cell">Item 1</li>
                   <li class="table-view-cell">Item 2</li>
@@ -62,15 +94,18 @@
                   <li class="table-view-cell">Item 4</li>
                 </ul>
               </div>
+
             </div>
           </a>
         </li>
         <li class="table-view-cell media">
           <a>
-            <img class="media-object pull-left" src="http://placehold.it/42x42">
-            <div class="media-body">
+            <div class="media-body turquise">
+              <div class="sub-header">
+              <span class="icon icon-info"></span>
               Quick Info
-              <div class="card">
+              </div>
+              <div class="card clear">
                 <ul class="table-view">
                   <li class="table-view-cell">Item 1</li>
                   <li class="table-view-cell">Item 2</li>
@@ -83,15 +118,22 @@
         </li>
         <li class="table-view-cell media">
           <a>
-            <img class="media-object pull-left" src="http://placehold.it/42x42">
-            <div class="media-body">
+            <div class="media-body turquise">
+            <div class = "sub-header">
+              <span class="icon icon-edit"></span>
               Story
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
             </div>
+
+            <div class="clear">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
+              </div>
+        
           </a>
         </li>
       </ul>
-      <button class="btn btn-positive btn-block btn-outlined">Timeline</button>
+      <div id="timeline"
+        <button class="btn btn-negative btn-block">timeline</button>
+      </div>
     </div>
   </body>
 </html>
