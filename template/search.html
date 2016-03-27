@@ -12,56 +12,76 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <!-- Include the compiled Ratchet CSS -->
-    <link href="ratchet.css" rel="stylesheet">
+    <link href="../ratchet/dist/css/ratchet.css" rel="stylesheet">
 
     <!-- Include the compiled Ratchet JS -->
-    <script src="ratchet.js"></script>
+    <script src="../ratchet/dist/js/ratchet.js"></script>
   </head>
-  
   <body>
+
+    <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav">
-      <h1 class="title">reach out</h1>
+      <h3 class="title">Search</h3>
     </header>
-    
-    <div class="content-padded">
-      <h3>search</h3>
 
-
-    <form>
-      <input type="text" placeholder="enter tags">
-      <button class="btn btn-positive btn-block">Search</button>
-    </form>
-
-
-    <ul class="table-view">
-      <li class="table-view-cell media">
-        <a class="navigate-right">
-          <img class="media-object pull-left" src="http://placehold.it/42x42">
-          <div class="media-body">
-            User 1
-            <p>Short description of user 1.</p>
-          </div>
-        </a>
-      </li>
-      <li class="table-view-cell media">
-        <a class="navigate-right">
-          <img class="media-object pull-left" src="http://placehold.it/42x42">
-          <div class="media-body">
-            User 2
-            <p>Short description of user 2.</p>
-          </div>
-        </a>
-      </li>
-      <li class="table-view-cell media">
-        <a class="navigate-right">
-          <img class="media-object pull-left" src="http://placehold.it/42x42">
-          <div class="media-body">
-            User 3
-            <p>Short description of user 3.</p>
-          </div>
-        </a>
-      </li>
-    </ul>
-
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div class="content ">
+      <div id = "profile-header" class="content-padded"> 
+         <form>
+          <input type="text" placeholder="enter tags">
+          <button class="btn btn-positive btn-block">Search</button>
+        </form>
+      </div>
+      <ul class="table-view">
+        <!-- Decide whether to convert the cards into view media cell-->
+        <li class="table-view-cell media">
+          <a class="navigate-right">
+            <img class="media-object pull-left" src="http://placehold.it/42x42">
+            <div class="media-body">
+              Name
+              <div class="card">
+                <ul class="table-view">
+                  <li class="table-view-cell">Age</li>
+                  <li class="table-view-cell">Location</li>
+                  <li class="table-view-cell">Brief Description</li>
+                </ul>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="table-view-cell media">
+          <a class="navigate-right">
+            <img class="media-object pull-left" src="http://placehold.it/42x42">
+            <div class="media-body">
+              Name
+              <div class="card">
+                <ul class="table-view">
+                  <li class="table-view-cell">Age</li>
+                  <li class="table-view-cell">Location</li>
+                  <li class="table-view-cell">Brief Description</li>
+                </ul>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="table-view-cell media">
+          <a>
+            <img class="media-object pull-left" src="http://placehold.it/42x42">
+              <div class="media-body">
+              Name
+              <div class="card">
+                <ul class="table-view">
+                  <li class="table-view-cell">Age</li>
+                  <li class="table-view-cell">Location</li>
+                  <li class="table-view-cell">Brief Description</li>
+                </ul>
+              </div>
+            </div>
+          </a>
+        </li>
+       
+      </ul>
+      <button class="btn btn-positive btn-block btn-outlined">Timeline</button>
+    </div>
   </body>
 </html>
