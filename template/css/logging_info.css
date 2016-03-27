@@ -60,3 +60,39 @@
 #timeline{
     background-color: #FEB596;
 }
+
+.search-result{
+    border: 20px solid white;    
+    font-weight: 100;
+    background-color: #EAF4F5;
+    position: relative;
+
+    left: 5%;
+    width: 90%;
+    color: #7BB6BC;
+    padding: 10px;
+}
+
+
+.search-result-name{
+    font-weight: 100;
+    font-size: 24px;
+    background-color: #EF6E47;
+    position: relative;
+    width: 200%;
+    height: 50px;
+    color: black;
+    padding: 10px;
+}
+
+.section{
+    font-size: 22px;
+    font-weight: 100;
+    position: relative;
+    left: 10%;
+    width: 80%;
+    color: #7BB6BC;
+    padding: 10px;
+}
+
+
