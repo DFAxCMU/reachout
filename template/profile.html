@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,8 +14,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <!-- Include the compiled Ratchet CSS -->
-    <link href="../ratchet/dist/css/ratchet.css" rel="stylesheet">
-    <link href="css/logging_info.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/logging_info.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}" >
 
     <!-- Include the compiled Ratchet JS -->
     <script src="../ratchet/dist/js/ratchet.js"></script>
