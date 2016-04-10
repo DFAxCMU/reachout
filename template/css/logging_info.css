@@ -62,37 +62,59 @@
 }
 
 .search-result{
-    border: 20px solid white;    
+    margin-bottom: 15px;
     font-weight: 100;
     background-color: #EAF4F5;
+    border: 1px solid #7BB6BC;
     position: relative;
-
-    left: 5%;
-    width: 90%;
-    color: #7BB6BC;
-    padding: 10px;
+    left: 3%;
+    width: 94%;
+    padding: 5px;
 }
 
-
-.search-result-name{
-    font-weight: 100;
-    font-size: 24px;
-    background-color: #EF6E47;
-    position: relative;
-    width: 200%;
-    height: 50px;
+#searchinfo{
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid #EF6E47;
+    margin-bottom: 5px;
+    height: 20px;
     color: black;
-    padding: 10px;
+    padding: 2px;
 }
 
-.section{
+#searchname{
+    font-size: 14px;
+    background-color: #EF6E47;
+    height: 26px;
+    color: black;
+    padding: 5px;
+    margin: 2px;
+}
+
+.table-view-cell {
+    padding: 8px;
+}
+
+.section {
+    color: #7BB6BC;
     font-size: 22px;
     font-weight: 100;
     position: relative;
     left: 10%;
-    width: 80%;
-    color: #7BB6BC;
-    padding: 10px;
+    padding: 2px;
 }
 
-
+input[type=input] {
+    position: relative;
+    left: 10%;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    
+    text-align: center;
+    font-size: 22px;
+    font-weight: 100;
+    border: 1px solid #7BB6BC;
+    color: #7BB6BC;
+    background-color: #EAF4F5;
+}
