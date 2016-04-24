@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>reachout</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS-->
+
+    <link href="{% static 'css/log_info.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/ratchet.css' %}" rel="stylesheet">
+
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="{% static 'js/logging-info-2.js' %}"></script>
+    
+  </head>
+  <body class="blue-background">  
+
+    <div class="title-bar blue-background">
+      <a href="./logging_info_1.html"class="icon icon-left-nav pull-left teal"></a>
+      <a class="icon icon-right-nav light-blue bigger pull-right" id="log-qinfo"></a>
+      <h1 class="title-text salmon-orange">requests</h1>
+    </div>
+
+    <span class="row light-blue">
+      <span id="name-title">Task</span>
+      <span id="date-created">created</span>
+      <span id="divider">|</span>
+      <span id="completed">completed</span>
+    </span>
+
+    <div class="white-div"></div>
+    <div class="row">
+      <span class="light-blue task">Deliver Medication</span>
+      <span "dates">
+        <span class="light-blue created-date">02/15</span>
+        <span class="light-blue completed-date">02/25</span>
+      </span>
+    </div>
+
+
+    <div class="inter-title" style="display:none;" data-title="{{ title }}"></div>
+    <div class="inter-description" style="display:none;" data-description="{{ description }}"></div>
+    <div class="q1" style="display:none;" data-title="{{ q1 }}"></div>
+    <div class="q2" style="display:none;" data-title="{{ q2 }}"></div>
+    <div class="q3" style="display:none;" data-title="{{ q3 }}"></div>
+    <div class="q4" style="display:none;" data-title="{{ q4 }}"></div>
+    <div class="q5" style="display:none;" data-title="{{ q5 }}"></div>
+    <div class="q6" style="display:none;" data-title="{{ q6 }}"></div>
+
+
+
+  </body>
+</html>
