@@ -20,13 +20,13 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" >
 
     <!-- Include the compiled Ratchet JS -->
-    <script type="text/javascript" src= "{% static 'dist/js/ratchet.js' %}" ></script> 
+    <!-- Fix the script -->
+    <!--script type="text/javascript" src= "{% static 'dist/js/ratchet.js' %}" ></script-->
 
     <!-- TODO: fix log in button! cut off in mobile views -->
   </head>
   <body class="background">
     <div class="header"> <h1> reach out </h1> </div>
-    
     <form action='' method="POST">
     {% csrf_token %}
     <ul class="form-style-1 font">
@@ -39,7 +39,8 @@
             <input type="password" name="password" class="field-long" required/>
         </li>
     </ul>
-    </form> 
     <button type="submit" id="signup_but"> log in </button>
+    </form> 
+    <a href= "/"> Back </a>
   </body>
 </html>
