@@ -1,7 +1,9 @@
 from django.conf.urls import url
 
-from . import views
+from profiles.views import *
 
 urlpatterns = [
-    url(r'^$', views.index, name='profiles'),
+    url(r'^client/(?P<client_id>[a-zA-Z0-9_.-]+)$', ClientProfile.as_view()),
+    url(r'^timeline/(?P<client_id>[a-zA-Z0-9_.-]+)$', Timeline.as_view()),
+    #url(r'^$', views.index, name='profiles'),
 ]

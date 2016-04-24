@@ -2,17 +2,22 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils import timezone
-
+from django.contrib.auth.models import User
+from django.conf import settings
+ 
 # Create your models here
-
 class Organization(models.Model): 
     name = models.CharField(max_length=50, default="")
     location = models.CharField(max_length=50, default="")
 
-class User(models.Model):
-    name = models.CharField(max_length=50, default="")
-    role = models.CharField(max_length=50, default="")
-    org = models.ForeignKey(Organization, related_name="user")
+class CustomUser(models.Model):
+    name = models.CharField(max_length=100, default="")
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, default=0, related_name="customuser")
+    email = models.CharField(max_length=100, default="", blank=True, null=True)
+    #org = models.ForeignKey(Organization, related_name="user")
+    def __str__(self):
+        return self.name
+
 
 class Client(models.Model): 
     first_name = models.CharField(max_length=50, default="")
@@ -20,9 +25,9 @@ class Client(models.Model):
     nick_name = models.CharField(max_length=50, default="")
     location = models.CharField(max_length=50, default="")
     visual_description = models.CharField(max_length=200, default="")
-    org = models.ForeignKey(Organization, related_name="client_org")
-    case_manager = models.ForeignKey(User, related_name="client_cm")
-    followers = models.ManyToManyField(User, related_name="client_followers")
+    #org = models.ForeignKey(Organization, related_name="client_org")
+    #case_manager = models.ForeignKey(User, related_name="client_cm")
+    #followers = models.ManyToManyField(User, related_name="client_followers")
     is_military = models.BooleanField(default=False)
     # age_group (int or ranges?)
     duration_of_homelessness = models.IntegerField(default=0) # months?
@@ -31,6 +36,9 @@ class Client(models.Model):
     has_doctor = models.BooleanField(default=False)
     has_insurance = models.BooleanField(default=False)
     # profile picture
+
+    def __str__(self):
+        return self.first_name + " " + self.last_name
 
 class Route(models.Model):
     user = models.ForeignKey(User, related_name="user_route")
@@ -42,25 +50,28 @@ class Route(models.Model):
     # end_timestamp = ?  
 
 class Interaction(models.Model): 
-    user = models.ForeignKey(User, related_name="interaction_user")
+    user = models.ForeignKey(CustomUser, related_name="interaction_user")
     client = models.ForeignKey(Client, related_name="interaction_client")
     location = models.CharField(max_length=50, default="")
     timestamp = models.DateTimeField(default=timezone.now)
     description = models.CharField(max_length=200, default="")
     # audio recording
-    route = models.ForeignKey(Route, related_name="interaction_route")
+    #route = models.ForeignKey(Route, related_name="interaction_route")
 
 class Warehouse(models.Model): 
     org = models.OneToOneField(Organization, related_name="warehouse")
 
 class Item(models.Model): 
     name = models.CharField(max_length=50, default="")
-    warehouse = models.ForeignKey(Warehouse, related_name="warehouse_item")
+    #warehouse = models.ForeignKey(Warehouse, related_name="warehouse_item")
     amount = models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.name
+
 class Requests(models.Model): 
-    src_interaction = models.ForeignKey(Interaction, related_name="request_src")
-    comp_interaction = models.ForeignKey(Interaction, related_name="request_comp")
+    #src_interaction = models.ForeignKey(Interaction, related_name="request_src")
+    #comp_interaction = models.ForeignKey(Interaction, related_name="request_comp")
     asked_timestamp = models.DateTimeField(default=timezone.now)
     # completed_timestamp = ?
     item = models.ForeignKey(Item, related_name="request")
