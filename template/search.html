@@ -16,7 +16,7 @@
     <!-- Include the compiled Ratchet CSS -->
     
     <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}" >
-    <link rel="stylesheet" type="text/css" href="{% static 'css/logging_info.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}" >
    
     <!-- Include the compiled Ratchet JS -->
   </head>
@@ -26,103 +26,65 @@
 
     <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
 
-
-
-
     <!-- HEADER -->
-
+    
     <div class="content ">
-    <div class="table-view-cell" separatorStyle=none>
-        <h1 class="title-bar salmon-orange" position="fixed">reach out</h1>
-    </div>
 
+    <div style="position:fixed; width:100%; background-color: white; z-index: 1">
 
+        <div class="search-header"> client list 
+            <!--<span class="icon icon-close"></span>-->
+        </div>
+        
+        <!-- SEARCH BAR -->
 
-    <!-- SEARCH BAR -->
+        <div class="section">
+          search
+        </div>
+       
 
-    <div class="section">
-      search
-    </div>
-          <input type="input" placeholder="enter tags" align="center">
+        <script type="text/javascript">
+        function getSearchinput() {
+            {{search_text_input}} = document.getElementById("search_input").value;
+        }
+        </script>
+
+        <div class="section">
+            <form action='' method=post>
+            {% csrf_token %}
+                <input id="search_input" type="input" placeholder="enter tags" name="search_input">
+            </form>
+        </div>
+
+</div>
+
+    <div class="search-header"> 
+
 
 
     <!-- SEARCH RESULTS LIST -->
-      
-    <!-- {% if latest_user_list %}
-      <ul>
-      {% for user in latest_user_list %}
-        <li><a href="/search/{{user.id}}/">{{user.name}}</a></li>
-        {% endfor %}
-        </ul>
-      {% else %}
-        <p> No users are available.</p>
-      {% endif %}
-    -->
-      <ul class="table-view">
 
-        <!-- SEARCH RESULT -->
-        <div class="search-result">
-        <li class="table-view-cell media">
-            <img class="media-object pull-left" src="http://placehold.it/100x100">
-            <div class="media-body turquise">
-            <div class="table-view-cell", id="searchname"> First and Last Name </div>
-            <div class="table-view-cell", id="searchinfo"> Age </div>
-            <div class="table-view-cell", id="searchinfo"> Location </div>
-            <div class="table-view-cell", id="searchinfo"> Brief Description </div>
-        </li>
+
+    <div style="margin-top: 140px;">
+    {% if client_list %}
+        {% for client in client_list %} 
+                <div class="search-result">
+                  <a href="{% url 'profiles' %}">
+                    <img class="media-object pull-left" src="http://placehold.it/90x90"> 
+                    <div class="table-view-cell", id="searchname">&nbsp;&nbsp;{{client.first_name}} {{client.last_name}} / {{client.nick_name}}</div>
+                    <div class="table-view-cell", id="searchinfo">
+                    &nbsp;{{client.tags_list}}
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}        
+    {% else %}
+        <div class="section" style="color:#BBC3CA; left: 5%">
+            No clients found.
         </div>
-
-           <!-- SEARCH RESULT -->
-        <div class="search-result">
-        <li class="table-view-cell media">
-            <img class="media-object pull-left" src="http://placehold.it/100x100">
-            <div class="media-body turquise">
-            <div class="table-view-cell", id="searchname"> First and Last Name </div>
-            <div class="table-view-cell", id="searchinfo"> Age </div>
-            <div class="table-view-cell", id="searchinfo"> Location </div>
-            <div class="table-view-cell", id="searchinfo"> Brief Description </div>
-        </li>
-        </div>
-        
-        <!-- SEARCH RESULT -->
-        <div class="search-result">
-        <li class="table-view-cell media">
-            <img class="media-object pull-left" src="http://placehold.it/100x100">
-            <div class="media-body turquise">
-            <div class="table-view-cell", id="searchname"> First and Last Name </div>
-            <div class="table-view-cell", id="searchinfo"> Age </div>
-            <div class="table-view-cell", id="searchinfo"> Location </div>
-            <div class="table-view-cell", id="searchinfo"> Brief Description </div>
-        </li>
-        </div>
-
-        <!-- SEARCH RESULT -->
-        <div class="search-result">
-        <li class="table-view-cell media">
-            <img class="media-object pull-left" src="http://placehold.it/100x100">
-            <div class="media-body turquise">
-            <div class="table-view-cell", id="searchname"> First and Last Name </div>
-            <div class="table-view-cell", id="searchinfo"> Age </div>
-            <div class="table-view-cell", id="searchinfo"> Location </div>
-            <div class="table-view-cell", id="searchinfo"> Brief Description </div>
-        </li>
-        </div>
-
-       
-        <!-- SEARCH RESULT -->
-        <div class="search-result">
-        <li class="table-view-cell media">
-            <img class="media-object pull-left" src="http://placehold.it/100x100">
-            <div class="media-body turquise">
-            <div class="table-view-cell", id="searchname"> First and Last Name </div>
-            <div class="table-view-cell", id="searchinfo"> Age </div>
-            <div class="table-view-cell", id="searchinfo"> Location </div>
-            <div class="table-view-cell", id="searchinfo"> Brief Description </div>
-        </li>
-        </div>
-
-
-      </ul>
+    {% endif %}
+    
+    </div>
     </div>
   </body>
 </html>

@@ -30,6 +30,18 @@ class Client(models.Model):
     dna_assistance = models.BooleanField(default=False)
     has_doctor = models.BooleanField(default=False)
     has_insurance = models.BooleanField(default=False)
+    def __str__(self): 
+        return self.first_name
+    def get_tags(self): 
+        full_tags_list   = Tag.objects.all()
+        tags_list   = []
+        for tag in full_tags_list: 
+            if (self in tag.client.all()):
+                if (tag.name.lower() not in tags_list): 
+                    tags_list.append(tag.name.lower())
+        return tags_list
+    def tags_list(self): 
+        return ", ".join([t for t in self.get_tags()])
     # profile picture
 
 class Route(models.Model):
@@ -69,10 +81,12 @@ class Requests(models.Model):
     description = models.CharField(max_length=200, default="")
 
 
-class Tags(models.Model): 
-    client = models.ForeignKey(Client, related_name="client_tags")
+class Tag(models.Model): 
+    client = models.ManyToManyField(Client, related_name="client_tag")
     name = models.CharField(max_length=50, default="")
     tag_type = models.CharField(max_length=50, default="")
+    def __str__(self): 
+        return self.name
     # image
 
 class Interaction_Photos(models.Model): 
