@@ -5,11 +5,29 @@
     height: 100%;
 }
 
+body{
+    height: 100%;
+}
 h1{
     font-size: 60px;
     font-weight: 100; 
 }
 
+label{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+a{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;    
+    font-weight: 100;
+    color: white;  
+
+}
+#back{
+    margin-left: 5%;
+    top: 90%;
+
+}
 #signup_but{
     font-size: 45px;
     font-weight: 100; 
