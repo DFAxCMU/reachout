@@ -22,7 +22,7 @@
     <script src="../ratchet/dist/js/ratchet.js"></script>
   </head>
   <body class="background">
-    <div class="header"> <h1> reach out </h1> </div>
+    <div class="header"> <h1> new profile </h1> </div>
     <!--TODO: check password == repassword -->
     <!-- required attribute is NOT supported on safari -->
     <!-- TODO: bug CSRF verification failed -->
@@ -32,10 +32,25 @@
     <ul class="form-style-1 font">
         <li><label>full name </label><input type="text" name="first_name" class="field-divided" placeholder="first" />&nbsp;<input type="text" name="last_name" class="field-divided" placeholder="last"/></li>
         <li>
-            <label>nick name</label>
+            <label>nickname</label>
             <input type="text" name="nick_name" class="field-long" required/>
         </li>
-    </ul>
+        <li>
+            <label>tags</label>
+            <input type="text" placeholder="separate tags by commas" name="tags" class="field-long" required/>
+        </li>
+        <li>
+            <label>location</label>
+            <input type="text" name="location" class="field-long" required/>
+        </li>    
+        <li>
+            <label>story</label>
+            <textarea placeholder="please enter the general biography of the client. this may include personality traits, people the client is generally seen with, or general information. 
+
+            please do not include any medical information." rows="5" name="story"></textarea>
+
+        </li>        
+        </ul>
     <button type="submit" id="signup_but"> Create New Client </button>
     </form>
     <a href= "/"> Back </a>

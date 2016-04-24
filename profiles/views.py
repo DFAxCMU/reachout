@@ -7,6 +7,7 @@ from django.views.generic.base import View
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse, HttpResponse
 from .models import Client
+from .models import Tag
 #from backend import Client
 
 class NewClientProfile(View):
@@ -16,9 +17,17 @@ class NewClientProfile(View):
     def post(self,request):
         new_client = Client(first_name = request.POST.get("first_name"),
             last_name = request.POST.get("last_name"),
-            nick_name = request.POST.get("nick_name"))
+            nick_name = request.POST.get("nick_name"), 
+            location  = request.POST.get("location"), 
+            story     = request.POST.get("story"))
         new_client.save()
         new_client_id = new_client.id
+        for tag in (request.POST.get("tags")).split(","): 
+            tag = tag.strip()
+            if (tag != ""):
+                new_tag = Tag(name=tag.strip())
+                new_tag.save()
+                new_tag.client.add(new_client)
         return HttpResponseRedirect("/client/" + str(new_client_id))
 
 class ClientProfile(View):
