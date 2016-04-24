@@ -27,20 +27,15 @@
 
     <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav top-bar">
-      <button class="btn btn-link btn-nav pull-left">
-      <span class="icon icon-left-nav turquise"></span>
-      </button>
+      <a class="icon icon-left-nav pull-left turqoise" href="/search/"></a>
       <h1 class="title-bar salmon-orange">profile</h1>
     </header>
 
     {% if client %}
     <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
 
-    <!-- ADD LOG INTERACTION BUTTON -->
     <div class="content font">
       <div class="salmon-orange" id = "profile-header"> 
-        <!-- TODO: should i remove the profile picture? -->
-        <img id = "profile-pic" src="http://cdn.photoaffections.com/images/icon-profile.png">
         <div class="table-view-cell">
         <h3 class="title-bar salmon-orange"> {{ client.first_name }} {{ client.last_name}} </h3>
         <h5 class="title-bar salmon-orange"> {{client.nick_name }}</h5>
@@ -124,7 +119,6 @@
             <div class="media-body turquise">
               <div class="sub-header">
               <span class="icon icon-compose"></span>
-                <!-- TODO: change to url to log interaction url -->
                 <a href= "/timeline/{{client.id }}">
                 Timeline
                 </a>
@@ -132,12 +126,6 @@
             </div>
         </li>
       </ul>
-      <!--TODO: hide scroll-->
-      <!--div id="timeline-button">
-        <a href= "/timeline/{{client.id }}">
-          timeline
-        </a>
-      </div-->
     </div>
     <!-- TODO: Fix Client Does Not Exist Page-->
     {% else %}
