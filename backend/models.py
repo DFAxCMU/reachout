@@ -61,11 +61,13 @@ class Route(models.Model):
     # start_timestamp = ?
     # end_timestamp = ?  
 
+
 class Interaction(models.Model): 
     user = models.ForeignKey(CustomUser, related_name="interaction_user")
     client = models.ForeignKey(Client, related_name="interaction_client")
     location = models.CharField(max_length=50, default="")
     timestamp = models.DateTimeField(default=timezone.now)
+    title = models.CharField(max_length=200, default="")
     description = models.CharField(max_length=200, default="")
     # audio recording
     #route = models.ForeignKey(Route, related_name="interaction_route")
