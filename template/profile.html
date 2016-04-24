@@ -17,88 +17,66 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/logging_info.css' %}" >
     <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}" >
 
+    <link href="../ratchet/dist/css/ratchet.css" rel="stylesheet">
+    <link href="css/logging_info.css" rel="stylesheet">
+
     <!-- Include the compiled Ratchet JS -->
     <script src="../ratchet/dist/js/ratchet.js"></script>
   </head>
   <body>
 
     <!-- Make sure all your bars are the first things in your <body> -->
-    <header class="bar bar-nav ">
+    <header class="bar bar-nav top-bar">
       <button class="btn btn-link btn-nav pull-left">
       <span class="icon icon-left-nav turquise"></span>
       </button>
-      <h3 class="title salmon-orange header font">profile</h3>
+      <h1 class="title-bar salmon-orange">profile</h1>
     </header>
 
+    {% if client %}
     <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-    <!-- TODO: fix font -->
-    <div class="content background_color font">
-      <div class="salmon-orange font" id = "profile-header"> 
+
+    <!-- ADD LOG INTERACTION BUTTON -->
+    <div class="content font">
+      <div class="salmon-orange" id = "profile-header"> 
+        <!-- TODO: should i remove the profile picture? -->
         <img id = "profile-pic" src="http://cdn.photoaffections.com/images/icon-profile.png">
         <div class="table-view-cell">
-        <h3 class="title-bar salmon-orange"> Name</h3>
-        <h5 class="title-bar salmon-orange"> Info 1</h5>
-        <h5 class="title-bar salmon-orange"> Info 2</h5>
+        <h3 class="title-bar salmon-orange"> {{ client.first_name }} {{ client.last_name}} </h3>
+        <h5 class="title-bar salmon-orange"> {{client.nick_name }}</h5>
         </div>
       </div>
 
       <ul class="table-view">
         <li class="table-view-cell media">
-          <a class="navigate-right">
             <div class="media-body turquise">
-            <div class="sub-header">
+              <div class="sub-header">
               <span class="icon icon-compose"></span>
-              Case Manager Requests
-            </div>
-              <div class="card clear">
-                <ul class="table-view">
-                  <li class="table-view-cell">Item 1</li>
-                  <li class="table-view-cell">Item 2</li>
-                  <li class="table-view-cell">Item 3</li>
-                  <li class="table-view-cell">Item 4</li>
-                </ul>
+                <!-- TODO: change to url to log interaction url -->
+                <a href= "">
+                Log Interaction
+                </a>
               </div>
             </div>
-          </a>
-        </li>
-        <!-- Decide whether to convert the cards into view media cell-->
-        <li class="table-view-cell media">
-          <a class="navigate-right">
-            <div class="media-body turquise">
-            <div class="sub-header">
-              <span class="icon icon-compose"></span>
-              Case Manager Requests
-            </div>
-              <div class="card clear">
-                <ul class="table-view">
-                  <li class="table-view-cell">Item 1</li>
-                  <li class="table-view-cell">Item 2</li>
-                  <li class="table-view-cell">Item 3</li>
-                  <li class="table-view-cell">Item 4</li>
-                </ul>
-              </div>
-            </div>
-          </a>
         </li>
         <li class="table-view-cell media">
-          <a class="navigate-right">
             <div class="media-body turquise">
               <div class="sub-header">
               <span class="icon icon-compose"></span>
                 Incomplete Requests
               </div>
-
-              <div class="card clear">
-                <ul class="table-view">
-                  <li class="table-view-cell">Item 1</li>
-                  <li class="table-view-cell">Item 2</li>
-                  <li class="table-view-cell">Item 3</li>
-                  <li class="table-view-cell">Item 4</li>
-                </ul>
-              </div>
-
+              {% if requests %}
+                <div class="card clear">
+                  <ul class="table-view">
+                  {% for request in requests %}
+                      <li class="table-view-cell">{{ request.item.name }}</li>
+                  {% endfor %}
+                  </ul>
+                </div>
+              {% else %}
+                  <p>No requests</p>
+              {% endif %}
             </div>
-          </a>
         </li>
         <li class="table-view-cell media">
           <a>
@@ -109,10 +87,22 @@
               </div>
               <div class="card clear">
                 <ul class="table-view">
-                  <li class="table-view-cell">Item 1</li>
-                  <li class="table-view-cell">Item 2</li>
-                  <li class="table-view-cell">Item 3</li>
-                  <li class="table-view-cell">Item 4</li>
+                {% if client.is_military%}
+                  <li class="table-view-cell">Served In The Military</li>
+                {% endif %}
+                {% if client.health_concerns%}
+                  <li class="table-view-cell">Has Health Concerns</li>
+                {% endif %}
+                {% if client.dna_assistance%}
+                  <li class="table-view-cell">Needs DNA Assistance</li>
+                {% endif %}
+                {% if client.has_doctor%}
+                  <li class="table-view-cell">Has A Doctor</li>
+                {% endif %} 
+                {% if client.has_insurance%}
+                  <li class="table-view-cell">Has Insurance</li>
+                {% endif %} 
+                  <li class="table-view-cell">Duration of Homelessness: {{ client.duration_of_homelessness }}</li>      
                 </ul>
               </div>
             </div>
@@ -125,17 +115,33 @@
               <span class="icon icon-edit"></span>
               Story
             </div>
-
             <div class="clear">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
-              </div>
-        
+              <p>{{ client.visual_description }}</p>
+            </div>
           </a>
         </li>
+        <li class="table-view-cell media">
+            <div class="media-body turquise">
+              <div class="sub-header">
+              <span class="icon icon-compose"></span>
+                <!-- TODO: change to url to log interaction url -->
+                <a href= "/timeline/{{client.id }}">
+                Timeline
+                </a>
+              </div>
+            </div>
+        </li>
       </ul>
-      <div id="timeline"
-        <button class="btn btn-negative btn-block">timeline</button>
-      </div>
+      <!--TODO: hide scroll-->
+      <!--div id="timeline-button">
+        <a href= "/timeline/{{client.id }}">
+          timeline
+        </a>
+      </div-->
     </div>
+    <!-- TODO: Fix Client Does Not Exist Page-->
+    {% else %}
+      <p> Client Does Not Exist </p>
+    {% endif %}
   </body>
 </html>

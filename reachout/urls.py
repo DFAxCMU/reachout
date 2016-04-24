@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^profiles/', include('profiles.urls')),
     url(r'^search/', include('search.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('profiles.urls')),
+    url(r'^', include('user_accounts.urls')),
 ]
