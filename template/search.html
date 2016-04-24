@@ -68,16 +68,16 @@
     <div style="margin-top: 140px;">
     {% if client_list %}
         {% for client in client_list %} 
-                <div class="search-result">
-                  <a href="{% url 'profiles' %}">
-                    <img class="media-object pull-left" src="http://placehold.it/90x90"> 
-                    <div class="table-view-cell", id="searchname">&nbsp;&nbsp;{{client.first_name}} {{client.last_name}} / {{client.nick_name}}</div>
-                    <div class="table-view-cell", id="searchinfo">
-                    &nbsp;{{client.tags_list}}
-                    </div>
-                  </a>
+            <div class="search-result">
+              <a href="{% url 'client/{{client.id}}' %}">
+                <img class="media-object pull-left" src="http://placehold.it/90x90"> 
+                <div class="table-view-cell", id="searchname">&nbsp;&nbsp;{{client.first_name}} {{client.last_name}} / {{client.nick_name}}</div>
+                <div class="table-view-cell", id="searchinfo">
+                &nbsp;{{client.tags_list}}
                 </div>
-              {% endfor %}        
+              </a>
+            </div>
+        {% endfor %}        
     {% else %}
         <div class="section" style="color:#BBC3CA; left: 5%">
             No clients found.

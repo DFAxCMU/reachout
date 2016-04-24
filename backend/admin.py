@@ -19,7 +19,7 @@ class InteractionAdmin(admin.ModelAdmin):
     list_display = ('user', 'client', 'location', 'timestamp', 'description')
 
 admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register(Client, ClientAdmin)
+#admin.site.register(Client, ClientAdmin)
 admin.site.register(Requests, RequestsAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Interaction, InteractionAdmin)
