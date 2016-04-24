@@ -46,20 +46,24 @@ class Search(View):
             client_list = full_client_list
 
         for client in full_client_list: 
+            print(client)
             if (client.first_name.lower() in search_input or
                 client.last_name.lower() in search_input or
                 client.nick_name.lower() in search_input or
                 client.location.lower() in search_input):
                 if (client not in client_list): 
+                    print("adding by ??")
                     client_list.append(client)
             for word in client.visual_description.split(" "):
                 word = ''.join(c for c in word if c.isalpha())
                 word = word.lower()
                 if word in search_input: 
                     if (client not in client_list): 
+                        print("adding by vis description")
                         client_list.append(client)
             for tag in client.get_tags(): 
                 if (tag in search_input and client not in client_list):
+                    print("adding by tag")
                     client_list.append(client)
 
         context = {"client_list": client_list, 

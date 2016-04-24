@@ -24,6 +24,7 @@ class Client(models.Model):
     last_name = models.CharField(max_length=50, default="")
     nick_name = models.CharField(max_length=50, default="")
     location = models.CharField(max_length=50, default="")
+    story = models.CharField(max_length=300, default="")
     visual_description = models.CharField(max_length=200, default="")
     #org = models.ForeignKey(Organization, related_name="client_org")
     #case_manager = models.ForeignKey(User, related_name="client_cm")
