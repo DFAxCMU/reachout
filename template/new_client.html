@@ -17,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/logging_info.css' %}" >
     <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" >
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" >
 
     <!-- Include the compiled Ratchet JS -->
     <script src="../ratchet/dist/js/ratchet.js"></script>
@@ -31,29 +30,13 @@
     <form action='' method="POST">
     {% csrf_token %}
     <ul class="form-style-1 font">
-        <li><label>full name </label><input type="text" name="first_name" class="field-divided" placeholder="first" required/>&nbsp;<input type="text" name="last_name" class="field-divided" placeholder="last" required/></li>
+        <li><label>full name </label><input type="text" name="first_name" class="field-divided" placeholder="first" />&nbsp;<input type="text" name="last_name" class="field-divided" placeholder="last"/></li>
         <li>
-            <label>email</label>
-            <input type="email" name="email" class="field-long" required/>
-        </li>
-        <li>
-            <label>username</label>
-            <input type="text" name="username" class="field-long" required/>
-        </li>
-        <li>
-            <label>password </label>
-            <input type="password" name="password" class="field-long" required/>
-        </li>
-        <!--li>
-            <label>re-enter password </label>
-            <input type="password" name="repassword" class="field-long" required/>
-        </li-->
-        <li>
-            <label>organization code </label>
-            <input type="password" name="organization_code" class="field-long" required/>
+            <label>nick name</label>
+            <input type="text" name="nick_name" class="field-long" required/>
         </li>
     </ul>
-    <button type="submit" id="signup_but"> sign up </button>
+    <button type="submit" id="signup_but"> Create New Client </button>
     </form>
     <a href= "/"> Back </a>
   </body>
