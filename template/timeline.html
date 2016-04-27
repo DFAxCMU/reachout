@@ -32,8 +32,7 @@
     <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav top-bar timeline-bar">
       <a class="icon icon-left-nav pull-left turqoise" href="/client/{{client.id }}"></a>
-      <a class="icon pull-right" href="/logout"> logout </a>
-      <h1 class="title-bar">timeline</h1>
+      <h1 class="title-bar salmon-orange">timeline</h1>
     </header>
 
     <div class="container timeline-background content font">
@@ -41,7 +40,7 @@
           <ul class="timeline">
             {% for interaction in interactions %}
               <li>
-              <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+              <div class="timeline-badge.primary"><i class="glyphicon glyphicon-check"></i></div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
                   <h4 class="timeline-title"> {{interaction.timestamp}}</h4>

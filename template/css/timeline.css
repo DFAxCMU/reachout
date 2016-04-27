@@ -2,6 +2,9 @@
     background-color:#FCDCD7;
 }
 
+small{
+    color: #A0220E;    
+}
 .timeline {
     list-style: none;
     padding: 20px 0 20px;
@@ -138,12 +141,15 @@
 
 .timeline-title {
     margin-top: 0;
-    color: inherit;
+    color: #A0220E;
+    font-weight: lighter;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 }
 
 .timeline-body > p,
 .timeline-body > ul {
     margin-bottom: 0;
+    color: #A0220E;
 }
 
     .timeline-body > p + p {

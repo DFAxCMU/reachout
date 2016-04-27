@@ -128,4 +128,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [ 
                 os.path.join(BASE_DIR, 'ratchet'),
                 os.path.join(BASE_DIR, 'template'),
+                os.path.join(BASE_DIR, 'static'),
                 ]
