@@ -18,7 +18,6 @@ class NewClientProfile(View):
         new_client = Client(first_name = request.POST.get("first_name"),
             last_name = request.POST.get("last_name"),
             nick_name = request.POST.get("nick_name"), 
-            location  = request.POST.get("location"), 
             story     = request.POST.get("story"))
         new_client.save()
         new_client_id = new_client.id
