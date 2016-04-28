@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^', include('search.urls')),
     url(r'^', include('profiles.urls')),
     url(r'^', include('user_accounts.urls')),
-    url(r'^logging/', include('loggingInfo.urls')),
+    url(r'^', include('loggingInfo.urls')),
 ]

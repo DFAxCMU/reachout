@@ -21,14 +21,14 @@
 
     <!-- Include the compiled Ratchet JS -->
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="{% static 'js/logging-info-2.js' %}"></script>
+    <script src="{% static 'js/logging-info-3.js' %}"></script>
     
   </head>
   <body class="blue-background">  
 
     <div class="title-bar blue-background">
       <a href="./logging_info_1.html"class="icon icon-left-nav pull-left teal"></a>
-      <a class="icon icon-right-nav light-blue bigger pull-right" id="log-qinfo"></a>
+      <a href="/log_all_info/{{ cid }}" class="icon icon-right-nav light-blue bigger pull-right" id="log-qinfo"></a>
       <h1 class="title-text salmon-orange">requests</h1>
     </div>
 
@@ -38,27 +38,39 @@
       <span id="divider">|</span>
       <span id="completed">completed</span>
     </span>
+    <!-- {% for request in requests %}
+      <div class="white-div"></div>
+      <div class="row">
+        <span class="light-blue task">{{ request.item.name }}</span>
+        <span "dates">
+          <span class="light-blue created-date">{{ request.asked_timestamp }}</span>
+          <span class="light-blue completed-date"></span>
+        </span>
+      </div>
+    {% endfor %} -->
 
     <div class="white-div"></div>
-    <div class="row">
-      <span class="light-blue task">Deliver Medication</span>
-      <span "dates">
-        <span class="light-blue created-date">02/15</span>
-        <span class="light-blue completed-date">02/25</span>
-      </span>
+    <div class = "row">
+      <div class="light-blue">
+        <input class="item-box" type="text" placeholder="item">
+      </div>
+      <div class="light-blue amount-label">amount</span>
+      <div class="amount-picker">
+        <select id="amount">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+      </div>
     </div>
 
-
-    <div class="inter-title" style="display:none;" data-title="{{ title }}"></div>
-    <div class="inter-description" style="display:none;" data-description="{{ description }}"></div>
-    <div class="q1" style="display:none;" data-title="{{ q1 }}"></div>
-    <div class="q2" style="display:none;" data-title="{{ q2 }}"></div>
-    <div class="q3" style="display:none;" data-title="{{ q3 }}"></div>
-    <div class="q4" style="display:none;" data-title="{{ q4 }}"></div>
-    <div class="q5" style="display:none;" data-title="{{ q5 }}"></div>
-    <div class="q6" style="display:none;" data-title="{{ q6 }}"></div>
-
-
-
+  <div class="client-id" style="display:none;" data-cid="{{ cid }}"></div>
   </body>
 </html>
