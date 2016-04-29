@@ -42,7 +42,7 @@ class Register(View):
             user = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect("/")
+                return HttpResponseRedirect("/search")
             else:
                 #raise forms.ValidationError("Password or username is incorrect")
                 return HttpResponseRedirect("/register")
@@ -61,7 +61,7 @@ class Login(View):
         if user is not None:
             print("login")
             login(request, user)
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/search")
         else:
             print("can't login")
             #return HttpResponse("Your password is incorrect") 

@@ -1,34 +1,8 @@
-.light-blue{
-    color: #9FDAE0;
-}
-
-.salmon-orange{
-    color:#EF6E47;
-}
-
-.turquise{
-    color: #7BB6BC;
-}
 
 .title-bar{
     text-align: center;
     font-weight: 100;
     margin: 5px;
-}
-
-.entry-stamp{
-    color: #EAF4F5;
-}
-
-.entry-header{
-    
-}
-.profile-title{
-    height: 13%;
-}
-
-.top-bar{
-    font-size: 60px;
 }
 
 .sub-header{
@@ -38,15 +12,6 @@
     height: 50px;
     color: #7BB6BC;
     padding: 10px;
-}
-
-.clear{
-    clear:both;
-}
-
-
-.font{
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 }
 
 #profile-header{
@@ -83,4 +48,3 @@
 .title{
     color: white;
 }
-
