@@ -10,6 +10,7 @@ from backend.models import Tag
 
 class Search(View):
     def get(self, request):
+        print("get SEARCH view")
         full_client_list = Client.objects.all()
         full_tags_list   = Tag.objects.all()
         client_list = []
@@ -29,7 +30,8 @@ class Search(View):
                    "search_input": search_input}
         return render(request, template, context)
 
-    def post(self,request):
+    def post(self, request):
+        print("post SEARCH view")
         full_client_list = Client.objects.all()
         full_tags_list   = Tag.objects.all()
         client_list = []

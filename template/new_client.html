@@ -21,6 +21,7 @@
     <!-- Include the compiled Ratchet JS -->
     <script src="../ratchet/dist/js/ratchet.js"></script>
   </head>
+        <a class="icon icon-close pull-left" style="margin-top:10px; margin-left:10px" href="/"></a>
   <body class="background">
     <h1 style=""> new profile </h1>
 
@@ -31,13 +32,12 @@
     <!-- TODO: bug CSRF verification failed -->
 
     <form action='' method="POST">
-        <a class="icon icon-close pull-left" style="margin-top:10px; margin-left:10px" href="/"></a>
         {% csrf_token %}
         <ul class="form-style-1 font">
                 <h2 style="">name</h2>
-                <li>
-                    <input type="input" name="first_name" class="field-divided" placeholder="first">&nbsp;<input type="input" name="last_name" class="field-divided" placeholder="last">
-                </li>
+
+
+                    <input type="small_input" name="first_name" class="field-divided" placeholder="first">&nbsp;<input type="small_input" name="last_name" class="field-divided" placeholder="last">
                 <input type="input" name="nick_name" class="field-long" placeholder="nickname (optional)"optional>
             <div style="margin-top: 20px;">
                 <h2>tags</h2>
