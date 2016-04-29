@@ -18,17 +18,19 @@ function getCookie(name) {
 $(document).ready(function() {
     csrftoken = getCookie('csrftoken');
     $("#log-inter").click(function(){
-        var title = $(".inter-title").val();
+        var title = $(".inter-title").val();        
         var description = $(".inter-description").val();
+        console.log("title"+title)
+        console.log("description"+description)
         var data = {
             "title": title,
             "description": description
         };
+        var clientID = $(".client-id").attr("data-cid");
 
-        console.log(data)
         $.ajax({
         type: "POST",
-        url: "/logging/title_description/" + clientID,
+        url: "/title_description/" + clientID,
         data: data,
         beforeSend: function (xhr) {
           xhr.withCredentials = true;

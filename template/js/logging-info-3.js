@@ -1,28 +1,35 @@
-$(document).ready(function() {
-    $("#log-qinfo").click(function(){
-        var intertitle = $(".inter-title").attr("data-title")
-        var interdescription = $(".inter-description").attr("data-description")
-        var q1 = $(".q1").attr("data-q1")
-        var q2 = $(".q2").attr("data-q2")
-        var q3 = $(".q3").attr("data-q3")
-        var q4 = $(".q4").attr("data-q4")
-        var q5 = $(".q5").attr("data-q5")
-        var q5 = $(".q6").attr("data-q6")
-        var data = {
-            "ititle": intertitle,
-            "idescription": interdescription,
-            "q1":q1,
-            "q2":q2,
-            "q3":q3,
-            "q4":q4,
-            "q5":q5,
-            "q6":q6
+// using jQuery Django
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
+$(document).ready(function() {
+    csrftoken = getCookie('csrftoken');
+    $("#log-qinfo").click(function(){
+        var item_name = $(".item-box").val();        
+        var e = document.getElementById("amount");
+        var amount = e.options[e.selectedIndex].text;
+        var data = {
+            "amount":amount,
+            "item_name":item_name,
         };
+        var clientID = $(".client-id").attr("data-cid");
         
         $.ajax({
         type: "POST",
-        url: "/log_all_info",
+        url: "/log_all_info/"+clientID,
         data: data,
         beforeSend: function (xhr) {
           xhr.withCredentials = true;
@@ -34,4 +41,4 @@ $(document).ready(function() {
         async: true
         });
     });
-}
+});

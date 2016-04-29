@@ -1,4 +1,23 @@
+// using jQuery Django
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
 $(document).ready(function() {
+    csrftoken = getCookie('csrftoken');
     $("#log-qinfo").click(function(){
         var intertitle = $(".inter-title").attr("data-title")
         var interdescription = $(".inter-description").attr("data-description")
@@ -46,10 +65,11 @@ $(document).ready(function() {
             "q6":q6
 
         };
+        var clientID = $(".client-id").attr("data-cid");
         console.log(data)
         $.ajax({
         type: "POST",
-        url: "/title_description",
+        url: "/short_questions/"+clientID,
         data: data,
         beforeSend: function (xhr) {
           xhr.withCredentials = true;

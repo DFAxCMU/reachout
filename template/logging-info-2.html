@@ -26,8 +26,8 @@
   <body>  
 
     <div class="title-bar">
-      <a href="./logging_info_1.html"class="icon icon-left-nav pull-left light-blue"></a>
-      <a class="icon icon-right-nav light-blue bigger pull-right" id="log-qinfo"></a>
+      <a href="./logging_info_1.html" class="icon icon-left-nav pull-left light-blue"></a>
+      <a href="/short_questions/{{ cid }}"class="icon icon-right-nav light-blue bigger pull-right" id="log-qinfo"></a>
       <h1 class="title-text salmon-orange">quick info</h1>
     </div>
 
@@ -125,9 +125,9 @@
     </div>
 
 
-
-    <div class="inter-title" style="display:none;" data-title="{{ title }}"></div>
-    <div class="inter-description" style="display:none;" data-description="{{ description }}"></div>
+    <div class="client-id" style="display:none;" data-title="{{ cid }}"></div>
+    <!-- <div class="inter-title" style="display:none;" data-title="{{ title }}"></div>
+    <div class="inter-description" style="display:none;" data-description="{{ description }}"></div> -->
 
   </body>
 </html>

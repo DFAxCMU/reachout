@@ -179,3 +179,9 @@ textarea:focus{
     width:30%;
     float:right;
 }
+
+
+.item-box{
+    width:50%;
+    float:left;
+}
