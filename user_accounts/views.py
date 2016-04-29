@@ -9,12 +9,11 @@ from backend.models import *
 
 class HomePage(View):
     def get(self, request):
-        print("Get HOME")
         context = {}
         if request.user.is_anonymous():
             return render(request, 'start.html', context)
         else:
-            return render(request, 'search.html', context)
+            return HttpResponseRedirect("/search")
 
 class Register(View):
     def get(self, request):
