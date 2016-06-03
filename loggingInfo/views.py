@@ -7,7 +7,8 @@ from django.http import HttpResponse
 from django.views.generic.base import View
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse, HttpResponse
-from backend.models import Client
+from backend.models import *
+
 #from .models import Tag
 
 
@@ -16,18 +17,28 @@ def LoggingInfoOne(request, client_id):
     context["cid"] = client_id
     return render(request, 'logging-info-1.html', context)
 
-def TitleAndDescription(request, client_id):
-    print("Inside of TitleAndDescription")
-    title =  request.POST.get("title")
-    description =  request.POST.get("description")
-    print("TITLE=--------", title)
-    print("description=--------------", description)
-    client = Client.objects.get(pk = client_id)
-    i = Interaction(description=description, title=title, client = client)
-    i.save()
+def LoggingInfoTwo(request, client_id):
     context = {}
     context["cid"] = client_id
     return render(request, 'logging-info-2.html', context)
+
+def LoggingInfoThree(request, client_id):
+    context = {}
+    context["cid"] = client_id
+    return render(request, 'logging-info-3.html', context)
+
+def TitleAndDescription(request, client_id):
+    title =  request.POST.get("title")
+    description =  request.POST.get("description")
+
+    print("title " + title)
+    print("description " + description)
+    client = Client.objects.get(pk = client_id)
+    i = Interaction(description=description, title=title, client = client, user = request.user.customuser)
+    i.save()
+    context = {}
+    context["cid"] = client_id
+    return JsonResponse({"worked": True})
 
 def ShortQuestions(request, client_id):
     q1 =  request.POST.get("q1")
@@ -51,11 +62,12 @@ def ShortQuestions(request, client_id):
 def LogAllInfo(request, client_id):
     item_name =  request.POST.get("item_name")
     item_amount =  request.POST.get("amount")
+    print("--------------------")
     print(item_name)
     print(item_amount)
     i = Item(name = item_name, amount = item_amount)
-    i.save()
+    i.save()  
     client = Client.objects.get(pk = client_id)
-    request = Request(item = i, client_profile = client)
+    request = Requests(item = i, client_profile = client)
     request.save()
-    return render(request, 'NEXT')    
+    return JsonResponse({"worked": True})   

@@ -21,9 +21,11 @@ $(document).ready(function() {
         var item_name = $(".item-box").val();        
         var e = document.getElementById("amount");
         var amount = e.options[e.selectedIndex].text;
+        console.log("ayy"+item_name)
+        console.log("Ayy"+amount)
         var data = {
-            "amount":amount,
-            "item_name":item_name,
+            amount:amount,  
+            item_name:item_name,
         };
         var clientID = $(".client-id").attr("data-cid");
         
@@ -36,7 +38,7 @@ $(document).ready(function() {
           xhr.setRequestHeader("X-CSRFToken", csrftoken);
         },
         success: function(data) {
-            return
+            window.location.href = "/search"
         },
         async: true
         });

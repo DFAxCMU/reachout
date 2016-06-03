@@ -18,7 +18,6 @@ class CustomUser(models.Model):
     def __str__(self):
         return self.name
 
-
 class Client(models.Model): 
     first_name = models.CharField(max_length=50, default="")
     last_name = models.CharField(max_length=50, default="")

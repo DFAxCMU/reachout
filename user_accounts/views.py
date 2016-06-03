@@ -48,7 +48,6 @@ class Register(View):
         return HttpResponseRedirect("/register")
         #raise forms.ValidationError(u'This username already exists.')
 
-
 class Login(View):
     def get(self, request):
         context = {}

@@ -37,7 +37,8 @@ $(document).ready(function() {
           xhr.setRequestHeader("X-CSRFToken", csrftoken);
         },
         success: function(data) {
-            return
+            console.log(clientID)
+            window.location.href = "/logging_info_2/" + clientID
         },
         async: true
       });
