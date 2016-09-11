@@ -1,0 +1,76 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>reachout</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS-->
+
+    <link href="{% static 'css/log_info.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/ratchet.css' %}" rel="stylesheet">
+
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="{% static 'js/logging-info-3.js' %}"></script>
+    
+  </head>
+  <body class="blue-background">  
+
+    <div class="title-bar blue-background">
+      <a href="./logging_info_1.html"class="icon icon-left-nav pull-left teal"></a>
+      <a class="icon icon-right-nav light-blue bigger pull-right" id="log-qinfo"></a>
+      <h1 class="title-text salmon-orange">requests</h1>
+    </div>
+
+    <span class="row light-blue">
+      <span id="name-title">Task</span>
+      <span id="date-created">created</span>
+      <span id="divider">|</span>
+      <span id="completed">completed</span>
+    </span>
+    <!-- {% for request in requests %}
+      <div class="white-div"></div>
+      <div class="row">
+        <span class="light-blue task">{{ request.item.name }}</span>
+        <span "dates">
+          <span class="light-blue created-date">{{ request.asked_timestamp }}</span>
+          <span class="light-blue completed-date"></span>
+        </span>
+      </div>
+    {% endfor %} -->
+
+    <div class="white-div"></div>
+    <div class = "row">
+      <div class="light-blue">
+        <input class="item-box" type="text" placeholder="item">
+      </div>
+      <div class="light-blue amount-label">amount</span>
+      <div class="amount-picker">
+        <select id="amount">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+      </div>
+    </div>
+
+  <div class="client-id" style="display:none;" data-cid="{{ cid }}"></div>
+  </body>
+</html>

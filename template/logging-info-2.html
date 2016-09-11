@@ -1,0 +1,133 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>reachout</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS-->
+
+    <link href="{% static 'css/log_info.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/ratchet.css' %}" rel="stylesheet">
+
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="{% static 'js/logging-info-2.js' %}"></script>
+  </head>
+  <body>  
+
+    <div class="title-bar">
+      <a href="./logging_info_1.html" class="icon icon-left-nav pull-left light-blue"></a>
+      <a href="/short_questions/{{ cid }}"class="icon icon-right-nav light-blue bigger pull-right" id="log-qinfo"></a>
+      <h1 class="title-text salmon-orange">quick info</h1>
+    </div>
+
+    <div class="row">
+      <div class="yes-no salmon-orange">
+        <span id="yes">Y</span>
+        <span id="no">N</span>
+      </div>
+    </div> 
+
+    <div class="row">
+      <span class="light-blue q-text">military?</span>
+      <span class="radio-toggles">
+        <span clas="radio-toggle">
+          <input type="radio" id="radio1" name="radios1" value="yes">
+            <label for="radio1"> </label>
+        </span>
+        <span class="radio-toggle">
+          <input type="radio" id="radio2" name="radios1"value="no">
+            <label for="radio2"> </label>
+        </span>
+      </span>
+    </div>
+    <div class="row">
+      <span class="light-blue q-text">health concerns?</span>
+      <span class="radio-toggles">
+        <span clas="radio-toggle">
+          <input type="radio" id="radio3" name="radios2" value="yes">
+            <label for="radio3"> </label>
+        </span>
+        <span class="radio-toggle">
+          <input type="radio" id="radio4" name="radios2"value="no">
+            <label for="radio4"> </label>
+        </span>
+      </span>
+    </div>
+
+    <div class="row">
+      <span class="light-blue q-text">dna assistance?</span>
+      <span class="radio-toggles">
+        <span clas="radio-toggle">
+          <input type="radio" id="radio5" name="radios3" value="yes">
+            <label for="radio5"> </label>
+        </span>
+        <span class="radio-toggle">
+          <input type="radio" id="radio6" name="radios3"value="no">
+            <label for="radio6"> </label>
+        </span>
+      </span>
+    </div>
+    <div class="row">
+      <span class="light-blue q-text">seeing doctor?</span>
+      <span class="radio-toggles">
+        <span clas="radio-toggle">
+          <input type="radio" id="radio7" name="radios4" value="yes">
+            <label for="radio7"> </label>
+        </span>
+        <span class="radio-toggle">
+          <input type="radio" id="radio8" name="radios4"value="no">
+            <label for="radio8"> </label>
+        </span>
+      </span>
+    </div>
+
+    <div class="row">
+      <span class="light-blue q-text">has insurance?</span>
+      <span class="radio-toggles">
+        <span clas="radio-toggle">
+          <input type="radio" id="radio9" name="radios5" value="yes">
+            <label for="radio9"> </label>
+        </span>
+        <span class="radio-toggle">
+          <input type="radio" id="radio10" name="radios5"value="no">
+            <label for="radio10"> </label>
+        </span>
+      </span>
+    </div>
+
+    <div class="row">
+      <span class="light-blue q-text">duration?</span>
+      <span class="duration-select">
+        <select id="duration">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10+</option>
+        </select>
+      </span>
+    </div>
+
+
+    <div class="client-id" style="display:none;" data-title="{{ cid }}"></div>
+    <!-- <div class="inter-title" style="display:none;" data-title="{{ title }}"></div>
+    <div class="inter-description" style="display:none;" data-description="{{ description }}"></div> -->
+
+  </body>
+</html>

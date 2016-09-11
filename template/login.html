@@ -1,0 +1,48 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile Page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+
+    <!-- Include the compiled Ratchet JS -->
+    <!-- Fix the script -->
+    <!--script type="text/javascript" src= "{% static 'dist/js/ratchet.js' %}" ></script-->
+
+    <!-- TODO: fix log in button! cut off in mobile views -->
+    <!-- TODO: fix font -->
+  </head>
+  <body class="background">
+    <!--img src = "{% static "Background.png" %}"/-->
+        <div class="header"> <h1> reach out </h1> </div>
+        <form action='' method="POST">
+        {% csrf_token %}
+        <ul class="form-style-1 font">
+            <li>
+                <label>username</label>
+                <input type="text" name="username" class="field-long" required/>
+            </li>
+            <li>
+                <label>password </label>
+                <input type="password" name="password" class="field-long" required/>
+            </li>
+        </ul>
+        <button id="signup_but" type="submit" value="Submit"> log in </button>
+        </form> 
+        <a class="icon icon-left-nav pull-left turqoise" href="/" id="back"></a>
+  </body>
+</html>

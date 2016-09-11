@@ -1,0 +1,132 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile Page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" >
+
+    <!-- Include the compiled Ratchet JS -->
+    <!--script src="../ratchet/dist/js/ratchet.js"></script-->
+  </head>
+  <body>
+
+    <!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav top-bar">
+      <a class="icon icon-left-nav pull-left turqoise" href="/search"></a>
+      <h1 class="title-bar">profile</h1>
+    </header>
+
+    {% if client %}
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+
+    <div class="content">
+      <div class="salmon-orange" id = "profile-header"> 
+        <!--div class="table-view-cell"-->
+        <h3 class="title-bar salmon-orange"> Name: {{ client.first_name }} {{ client.last_name}} </h3>
+        <h5 class="title-bar salmon-orange"> Nickname: {{client.nick_name }}</h5>
+        <!--/div-->
+      </div>
+
+      <ul class="table-view">
+        <li class="table-view-cell media">
+            <div class="media-body turquise">
+              <div class="sub-header">
+              <span class="icon icon-compose"></span>
+                <!-- TODO: change to url to log interaction url -->
+                <a href= "/logging_info_1/{{client.id}}">
+                Log Interaction
+                </a>
+              </div>
+            </div>
+        </li>
+        <li class="table-view-cell media">
+            <div class="media-body turquise">
+              <div class="sub-header">
+              <span class="icon icon-compose"></span>
+                Incomplete Requests
+              </div>
+              {% if requests %}
+                <div class="card clear">
+                  <ul class="table-view">
+                  {% for request in requests %}
+                      <li class="table-view-cell">{{ request.item.name }}</li>
+                  {% endfor %}
+                  </ul>
+                </div>
+              {% else %}
+                  <p>No requests</p>
+              {% endif %}
+            </div>
+        </li>
+        <li class="table-view-cell media">
+          <a>
+            <div class="media-body turquise">
+              <div class="sub-header">
+              <span class="icon icon-info"></span>
+              Quick Info
+              </div>
+              <div class="card clear">
+                <ul class="table-view">
+                {% if client.is_military%}
+                  <li class="table-view-cell">Served In The Military</li>
+                {% endif %}
+                {% if client.health_concerns%}
+                  <li class="table-view-cell">Has Health Concerns</li>
+                {% endif %}
+                {% if client.dna_assistance%}
+                  <li class="table-view-cell">Needs DNA Assistance</li>
+                {% endif %}
+                {% if client.has_doctor%}
+                  <li class="table-view-cell">Has A Doctor</li>
+                {% endif %} 
+                {% if client.has_insurance%}
+                  <li class="table-view-cell">Has Insurance</li>
+                {% endif %} 
+                  <li class="table-view-cell">Duration of Homelessness: {{ client.duration_of_homelessness }} Yr</li>      
+                </ul>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="table-view-cell media">
+          <a>
+            <div class="media-body turquise">
+            <div class = "sub-header">
+              <span class="icon icon-edit"></span>
+              Story
+              </div>
+              <p>{{ client.story }}</p>
+            </div>
+          </a>
+        </li>
+        <li class="table-view-cell media">
+            <div class="media-body turquise">
+              <div class="sub-header">
+              <span class="icon icon-compose"></span>
+                <a href= "/timeline/{{client.id }}">
+                Timeline
+                </a>
+              </div>
+            </div>
+        </li>
+      </ul>
+    </div>
+    <!-- TODO: Make Client Does Not Exist Page Pretty-->
+    {% else %}
+      <p> Client Does Not Exist </p>
+    {% endif %}
+  </body>
+</html>

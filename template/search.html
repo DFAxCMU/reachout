@@ -1,0 +1,81 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Search</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}" >
+   
+    <!-- Include the compiled Ratchet JS -->
+  </head>
+  <body>
+
+    <!-- Make sure all your bars are the first things in your <body> -->
+
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+
+    <!-- HEADER -->
+    
+
+    <div class="content ">
+
+    <div style="position:fixed; width:100%; background-color: white; z-index: 1">
+
+    <div class="search-header" style="margin-top: -10px">
+      <a class="icon icon-close pull-left turqoise" href="/logout"></a>
+      <a class="icon icon-compose pull-right turqoise" href="/new_client"></a>
+
+    </div>
+
+        <div class="search-header"> client list 
+        </div>
+        
+        <!-- SEARCH BAR -->
+        <div class="section">
+          search
+        </div>
+       
+        <div class="section">
+            <form action='' method="POST">
+            {% csrf_token %}
+                <input id="search_input" type="input" placeholder="enter tags" name="search_input">
+            </form>
+        </div>
+    </div>
+
+    <div class="search-header"> 
+    <!-- SEARCH RESULTS LIST -->
+        <div style="margin-top: 170px;">
+        {% if client_list %}
+            {% for client in client_list %} 
+                <div class="search-result">
+                  <a href="client/{{client.id}}">
+                    <div class="table-view-cell", id="searchname">&nbsp;&nbsp;{{client.first_name}} {{client.last_name}} / {{client.nick_name}}</div>
+                    <div class="table-view-cell", id="searchinfo">
+                    &nbsp;{{client.tags_list}}
+                    </div>
+                  </a>
+                </div>
+            {% endfor %}        
+        {% else %}
+            <div class="section" style="color:#BBC3CA; left: 1%">
+                No clients found.
+            </div>
+        {% endif %}
+        
+        </div>
+    </div>
+  </body>
+</html>

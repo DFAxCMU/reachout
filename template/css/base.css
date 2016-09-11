@@ -1,0 +1,33 @@
+html {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: lighter;
+}
+
+/*
+body, html{
+    height: 100%;
+    width:100%;
+}*/
+
+.header{
+    font-size: 60px;
+    text-align: center;
+}
+
+.light-blue{
+    color: #9FDAE0;
+}
+
+.salmon-orange{
+    color:#EF6E47;
+}
+
+.turquise{
+    color: #7BB6BC;
+}
+
+.grey{
+    color: #BBC3CA;
+}
+
+
