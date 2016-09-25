@@ -130,3 +130,4 @@ STATICFILES_DIRS = [
                 os.path.join(BASE_DIR, 'ratchet'),
                 os.path.join(BASE_DIR, 'template'),
                 ]
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
