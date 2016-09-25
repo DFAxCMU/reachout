@@ -3,7 +3,7 @@ html {
 }
 
 .background{
-    background-image: url("/static/Background.png");
+    /*background-image: url("/static/Background.png");*/
     background-repeat: no-repeat;
     background-size: 100%;
 }

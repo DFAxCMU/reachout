@@ -1,0 +1,61 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile Page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <!--link rel="stylesheet" type="text/css" href="{% static 'css/logging_info.css' %}" -->
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+
+    <!-- Include the compiled Ratchet JS -->
+    <!--script src="../ratchet/dist/js/ratchet.js"></script-->
+  </head>
+  <body class="background">
+    <div class="header"> <h1> reach out </h1> </div>
+    <!--TODO: check password == repassword -->
+    <!-- required attribute is NOT supported on safari -->
+    <!-- TODO: bug CSRF verification failed -->
+
+    <form action='' method="POST">
+    {% csrf_token %}
+    <ul class="form-style-1 font">
+        <li><label>full name </label><input type="text" name="first_name" class="field-divided" placeholder="first" required/>&nbsp;<input type="text" name="last_name" class="field-divided" placeholder="last" required/></li>
+        <li>
+            <label>e-mail</label>
+            <input type="email" name="email" class="field-long" required/>
+        </li>
+        <li>
+            <label>username</label>
+            <input type="text" name="username" class="field-long" required/>
+        </li>
+        <li>
+            <label>password </label>
+            <input type="password" name="password" class="field-long" required/>
+        </li>
+        <!--li>
+            <label>re-enter password </label>
+            <input type="password" name="repassword" class="field-long" required/>
+        </li-->
+        <li>
+            <label>organization code </label>
+            <input type="password" name="organization_code" class="field-divided" required/>
+        </li>
+    </ul>
+    <button type="submit" id="signup_but"> sign up </button>
+    </form>
+    <a class="icon icon-left-nav pull-left turqoise" href="/" id="back"></a>
+  </body>
+</html>

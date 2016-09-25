@@ -1,0 +1,50 @@
+#wrap{  
+}
+
+html {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+/* TODO: fix font weight*/
+#login{
+    text-align: center;
+    color: #BBC3CA;
+    border: none;
+    background: none;
+    color: white;  
+    font-size: 40px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+}
+
+#back{
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+}
+h1{
+    font-size: 60px;
+    font-weight: 100; 
+}
+
+a{
+    font-size: 25px;
+    padding: 0px 50px;
+    word-wrap: normal;
+    display: inline-block;
+    text-decoration: none;
+    color: white;  
+}
+
+.background{
+    background-color: #FEB596;
+    color: white; 
+    /*background-image: url("/static/Background.70261402012d.png");*/
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+}
+
