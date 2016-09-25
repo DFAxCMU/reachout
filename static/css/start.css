@@ -1,0 +1,66 @@
+html {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+.background{
+    background-image: url("/static/Background.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.light-blue{
+    color: #9FDAE0;
+}
+
+.salmon-orange{
+    color:#EF6E47;
+}
+
+.turquise{
+    color: #7BB6BC;
+}
+
+.grey{
+    color: #BBC3CA;
+}
+.outer{
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle{
+    display: table-cell;
+    vertical-align: middle; 
+    width: 50%; 
+}
+
+.font{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: lighter;
+}
+/* TODO: fix font weight*/
+#login{
+    text-align: center;
+    color: #BBC3CA;
+}
+
+#login_but{
+    left:;
+}
+
+h1{
+    font-size: 60px;
+    font-weight: lighter;
+}
+
+a{
+    color: #BBC3CA;  
+    font-size: 25px;
+    padding: 0px 50px;
+    word-wrap: normal;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: lighter;
+}

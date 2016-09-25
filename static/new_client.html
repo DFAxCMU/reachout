@@ -1,0 +1,57 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile Page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/new_client.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" >
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="../ratchet/dist/js/ratchet.js"></script>
+  </head>
+        <a class="icon icon-close pull-left" style="margin-top:10px; margin-left:10px" href="/"></a>
+  <body class="background">
+    <h1 style=""> new profile </h1>
+
+
+    
+    <!--TODO: check password == repassword -->
+    <!-- required attribute is NOT supported on safari -->
+    <!-- TODO: bug CSRF verification failed -->
+
+    <form action='' method="POST">
+        {% csrf_token %}
+        <ul class="form-style-1 font">
+                <h2 style="">name</h2>
+
+
+                    <input type="small_input" name="first_name" class="field-divided" placeholder="first">&nbsp;<input type="small_input" name="last_name" class="field-divided" placeholder="last">
+                <input type="input" name="nick_name" class="field-long" placeholder="nickname (optional)"optional>
+            <div style="margin-top: 20px;">
+                <h2>tags</h2>
+                <textarea placeholder="please enter any tag, or descriptor, associated with the client. possible tags could include approximate age, hair color, race, approximate height, key clothing items, distinctive features, pets, gender, or any other visual descriptor." rows="5" type="large_input" name="tags"></textarea>
+            </div>
+            <div style="margin-top: 20px;">
+                <h2>story</h2>
+                    <textarea placeholder="please enter the general biography of the client. this may include personality traits, people the client is generally seen with, or general information. please do not include any medical information." rows="5" name="story" type="large_input"></textarea>
+            </div>
+        </ul>
+
+            <h1> &nbsp; </h1> 
+            <button type="submit" > complete </button>
+    </form>
+
+  </body>
+</html>

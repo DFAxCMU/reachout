@@ -1,0 +1,49 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile Page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <!--link rel="stylesheet" type="text/css" href="{% static 'css/logging_info.css' %}"-->
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/start.css' %}" >
+
+    <!-- Include the compiled Ratchet JS -->
+
+    <!-- TODO: add js file with static -->
+    <!--script src="../ratchet/dist/js/ratchet.js"></script-->
+  </head>
+
+
+  <body class="background">
+
+    <!-- TODO: make dynamic triangle image-->
+
+    <div class="outer" >
+      <div class="middle" id ="login">
+        <h1> reach out </h1>
+        <div id="buttons">
+          <a class="tab-item active" id="login_but" href="/login">
+          log in
+          </a>
+          <a class="tab-item active" id="register_but" href="/register">
+          sign up
+          </a>  
+        </div>     
+      </div>
+    </div>
+
+    </div>
+  </body>
+</html>

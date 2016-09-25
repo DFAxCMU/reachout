@@ -1,0 +1,53 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>reachout</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/logging_info.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}">
+    
+
+    <link href="{% static 'css/log_info.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/ratchet.css' %}" rel="stylesheet">
+
+
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="{% static 'js/logging-info-1.js' %}"></script>
+
+  </head>
+  <body>  
+    <div class="title-bar">
+        <a class="icon icon-left-nav light-blue bigger pull-left"></a>
+        <a class="icon icon-right-nav light-blue bigger pull-right" id="log-inter"></a>
+      <h1 class="title-text">Interaction</h1>
+    </div>
+
+  <div class="row">
+    <input class="inter-title" type="text" placeholder="Title">
+  </div>
+
+  <div class="row">
+      <textarea class="inter-description"rows="7" placeholder="Write about your interaction"></textarea>
+  </div>
+
+
+  <div class="client-id" style="display:none;" data-cid="{{ cid }}"></div>
+  
+
+  </body>
+</html>

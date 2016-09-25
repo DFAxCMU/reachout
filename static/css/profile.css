@@ -1,0 +1,50 @@
+
+.title-bar{
+    text-align: center;
+    font-weight: 100;
+    margin: 5px;
+}
+
+.sub-header{
+    background-color: #EAF4F5;
+    position: relative;
+    width: 200%;
+    height: 50px;
+    color: #7BB6BC;
+    padding: 10px;
+}
+
+#profile-header{
+    text-align: center;
+    height: 10%;
+}
+
+#profile-pic{
+    float: left;
+    height: 100%;
+    margin-left: 30px;
+}
+.hide-scroll {
+    overflow: hidden;
+}
+
+#profile-content{
+
+}
+
+#timeline-button{
+    background-color: #FEB596;
+    font-size: 30px;
+    font-weight: 100;
+    border-color: #EF6E47;
+    border-style: dashed hidden hidden hidden;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.title{
+    color: white;
+}

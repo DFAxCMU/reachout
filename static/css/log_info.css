@@ -1,0 +1,187 @@
+.light-blue{
+    color: #9FDAE0;
+    font-weight: lighter;
+}
+
+.salmon-orange{
+    color:#EF6E47;
+}
+
+.title-text{
+    margin-top:-10px;
+    text-align: center;
+    font-weight: lighter;
+}
+
+.title-bar{
+    min-height:25px;
+    margin: 10px;
+    padding:12px;
+}
+
+.row{
+    min-height:25px;
+    margin-bottom: 20px;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+input[type=radio] {
+    display:none; 
+    margin:10px;
+}
+
+input[type=radio] + label {
+    display:inline-block;
+    height: 27px;
+    width: 27px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #EF6E47;
+}
+
+input[type=radio]:checked + label { 
+    background-image: none;
+    height: 27px;
+    width: 27px;
+    background-color: #EF6E47;
+    border-color: #EF6E47;
+}
+
+.q-text{
+    font-size: 15px;
+    min-width:22%;
+    max-width: 23%;
+}
+
+.radio-toggles{
+    float: right;
+    min-width:25%;
+}
+
+.radio-toggle{
+    margin-left:10px;
+}
+
+.yes-no{
+    float: right;
+    min-width: 25%;
+    font-size: 27px;
+    font-weight: lighter;
+}
+
+#yes{
+    text-align: center;
+}
+
+#no{
+    text-align: center;
+    margin-left: 10px;
+}
+
+.lefter{
+    margin-left: -22px;
+}
+
+.smaller{
+    font-size: 20px;
+}
+
+.bigger{
+    background-size:100;
+}
+
+input[type=text] {
+    border: none;
+    border-bottom: 2px solid #9FDAE0;
+    padding-left: -2px;
+    padding-right: -2px;
+    width:100%;
+}
+
+input[type=text]:focus {
+    border: none;
+    border-bottom: 4px solid #9FDAE0;
+    padding-left: -2px;
+    padding-right: -2px;
+}
+
+
+textarea{
+    border: none;
+    padding-top: -20px;
+    font-size:10px;
+    border-bottom: 2px solid #9FDAE0;
+    padding-left: -2px;
+    padding-right: -2px;
+    width:100%;
+}
+textarea:focus{
+    border: none;
+    border-bottom: 4px solid #9FDAE0;
+    padding-left: -2px;
+    padding-right: -2px;
+}
+
+.blue-background{
+    background-color: #EAF4F5;
+}
+
+.teal{
+    color: #7BB6BC;
+    font-weight: lighter;
+}
+
+
+#name-title{
+    margin-left: 5%;
+    font-size:20px;
+    margin-right:30%;
+}
+
+#date-created{
+    font-size:10px;
+}
+#divider{
+    font-size:10px;
+}
+
+#completed{
+    font-size:10px;
+}
+
+.white-div{
+    border-bottom:solid;
+    width:100%;
+    border-bottom-width: 1px;
+    border-bottom-color: white;
+}
+
+.task{
+    padding-left: 7%;
+    font-size:12px;
+    width:30%;
+}
+
+.dates{
+    font-size:12px;
+    margin-right:10%;
+    float:right;
+
+}
+
+.completed-date{
+    margin-left:10px;
+}
+
+
+#duration{
+    width:30%;
+    float:right;
+}
+
+
+.item-box{
+    width:50%;
+    float:left;
+}
