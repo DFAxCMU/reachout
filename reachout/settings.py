@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'reachout.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django_postgrespool',
+        'ENGINE': 'django_postgrespool',
         'NAME': 'd5a9o029jo82ov',
         'USER': 'siqmbtijpaktxq',
         'PASSWORD': 'cRIRhvAd5-grbXPSL0zK7L6XQG',
