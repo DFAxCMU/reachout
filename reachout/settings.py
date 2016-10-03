@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -80,17 +81,18 @@ WSGI_APPLICATION = 'reachout.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+DATABASES['default'] =  dj_database_url.config()
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django_postgrespool',
-        'NAME': 'd5a9o029jo82ov',
-        'USER': 'siqmbtijpaktxq',
-        'PASSWORD': 'cRIRhvAd5-grbXPSL0zK7L6XQG',
-        'HOST': 'ec2-54-243-200-37.compute-1.amazonaws.com',
-        'PORT': '5432'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django_postgrespool',
+#         'NAME': 'd5a9o029jo82ov',
+#         'USER': 'siqmbtijpaktxq',
+#         'PASSWORD': 'cRIRhvAd5-grbXPSL0zK7L6XQG',
+#         'HOST': 'ec2-54-243-200-37.compute-1.amazonaws.com',
+#         'PORT': '5432'
+#     }
+# }
 
 
 # Password validation
