@@ -81,16 +81,16 @@ WSGI_APPLICATION = 'reachout.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django_postgrespool',
-#         'NAME': 'd5a9o029jo82ov',
-#         'USER': 'siqmbtijpaktxq',
-#         'PASSWORD': 'cRIRhvAd5-grbXPSL0zK7L6XQG',
-#         'HOST': 'ec2-54-243-200-37.compute-1.amazonaws.com',
-#         'PORT': '5432'
-#     }
-# }
+DATABASES = {
+    'default': {
+        #'ENGINE': 'django_postgrespool',
+        'NAME': 'd5a9o029jo82ov',
+        'USER': 'siqmbtijpaktxq',
+        'PASSWORD': 'cRIRhvAd5-grbXPSL0zK7L6XQG',
+        'HOST': 'ec2-54-243-200-37.compute-1.amazonaws.com',
+        'PORT': '5432'
+    }
+}
 
 
 # Password validation
