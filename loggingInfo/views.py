@@ -35,6 +35,7 @@ def TitleAndDescription(request, client_id):
     print("description " + description)
     client = Client.objects.get(pk = client_id)
     i = Interaction(description=description, title=title, client = client, user = request.user.customuser)
+    print("Interaction", i)
     i.save()
     context = {}
     context["cid"] = client_id
@@ -51,7 +52,7 @@ def ShortQuestions(request, client_id):
     client.health_concerns = True if q2 == "yes" else False
     client.dna_assistance = True if q3 == "yes" else False
     client.has_doctor = True if q4 == "yes" else False
-    client.duration_of_homelessness = True if q5 == "yes" else False
+    client.has_insurance = True if q5 == "yes" else False
     client.save()
 
     context = {}

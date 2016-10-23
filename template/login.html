@@ -23,12 +23,11 @@
     <!-- Fix the script -->
     <!--script type="text/javascript" src= "{% static 'dist/js/ratchet.js' %}" ></script-->
 
-    <!-- TODO: fix log in button! cut off in mobile views -->
-    <!-- TODO: fix font -->
   </head>
   <body class="background">
-    <!--img src = "{% static "Background.png" %}"/-->
         <div class="header"> <h1> reach out </h1> </div>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        
         <form action='' method="POST">
         {% csrf_token %}
         <ul class="form-style-1 font">
