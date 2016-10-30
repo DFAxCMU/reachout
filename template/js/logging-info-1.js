@@ -18,7 +18,7 @@ function getCookie(name) {
 $(document).ready(function() {
     csrftoken = getCookie('csrftoken');
     $("#log-inter").click(function(){
-        var title = $(".inter-title").val();        
+        var title = $(".inter-title").val();
         var description = $(".inter-description").val();
         console.log("title"+title)
         console.log("description"+description)
@@ -29,18 +29,18 @@ $(document).ready(function() {
         var clientID = $(".client-id").attr("data-cid");
 
         $.ajax({
-        type: "POST",
-        url: "/title_description/" + clientID,
-        data: data,
-        beforeSend: function (xhr) {
-          xhr.withCredentials = true;
-          xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        },
-        success: function(data) {
-            console.log(clientID)
-            window.location.href = "/logging_info_2/" + clientID
-        },
-        async: true
-      });
+            type: "POST",
+            url: "/title_description/" + clientID,
+            data: data,
+            beforeSend: function (xhr) {
+                xhr.withCredentials = true;
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            },
+            success: function(data) {
+                console.log(clientID)
+                window.location.href = "/client/" + clientID
+            },
+            async: true
+        });
     })
 });

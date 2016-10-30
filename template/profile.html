@@ -6,40 +6,191 @@
     <meta charset="utf-8">
     <title>Profile Page</title>
 
-    <!-- Sets initial viewport load and disables zooming  -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-
-    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <!-- Include the compiled Ratchet CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}" >
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" >
     <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" >
 
-    <!-- Include the compiled Ratchet JS -->
-    <!--script src="../ratchet/dist/js/ratchet.js"></script-->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>   
+    <script src="{% static 'js/profile.js' %}"></script>
+
   </head>
   <body>
 
-    <!-- Make sure all your bars are the first things in your <body> -->
-    <header class="bar bar-nav top-bar">
-      <a class="icon icon-left-nav pull-left turqoise" href="/search"></a>
-      <h1 class="title-bar">profile</h1>
-    </header>
-
     {% if client %}
-    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div id="profile-header" class="fixed">
+        <div>
+          <a class="our-icon icon icon-left-nav pull-left salmon-orange-text" href="/search"></a>
+        </div>
 
+          <form action='' method='POST' id='updatenameform' name='updatenameform'>
+            {% csrf_token %}
+            <input type="text" size="15" name="updatefirstname" id="updatefirstname" value="{{client.first_name}}">
+          </form>
+          <form action='' method='POST' id='updatenameform' name='updatenameform'>
+            {% csrf_token %}
+            <input type="text" size="15" name="updatenickname" id="updatenickname" value="{{client.nick_name}}">
+          </form>
+          <form action='' method='POST' id='updatenameform' name='updatenameform'>
+            {% csrf_token %}
+            <input type="text" size="15" name="updatelastname" id="updatelastname" value="{{client.last_name}}">
+          </form>
+        <div id="tags"><p>
+          {% for tag in client.get_tags %}
+            <span class="tag">{{tag}}</span>
+          {% endfor %}</p>
+        </div>
+        <div id="profile-nav" class="lightest-blue">
+          <div class="profile-nav-button" id="profile-totimeline"></div>
+          <div class="selected-button profile-nav-button" id="profile-toquickinfo"></div>
+          <div class="profile-nav-button" id="profile-torequests"></div>
+        </div>
+    </div>
+    
     <div class="content">
-      <div class="salmon-orange" id = "profile-header"> 
-        <!--div class="table-view-cell"-->
-        <h3 class="title-bar salmon-orange"> Name: {{ client.first_name }} {{ client.last_name}} </h3>
-        <h5 class="title-bar salmon-orange"> Nickname: {{client.nick_name }}</h5>
-        <!--/div-->
-      </div>
 
+    <div class="hidden profile-subpage" id="profile-timeline">
+      <a class="our-icon icon icon-compose pull-right salmon-orange-text" href="/logging_info_1/{{client.id}}"></a>
+        {% if interactions %}
+          <ul class="timeline">
+            {% for interaction in interactions %}
+              <li>
+              <div class="timeline-badge.primary"><i class="glyphicon glyphicon-check"></i></div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="timeline-title"> {{interaction.timestamp}}</h4>
+                  <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{interaction.location}} </small></p>
+                </div>
+                <div class="timeline-body">
+                  <p>{{ interaction.description }}</p>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+            <p>No interactions yet</p>
+        {% endif %}
+    </div>
+
+    <div class="profile-subpage" id="profile-quickinfo">
+      <span class="turquoise-text subtitle-text">Quick Info:</br></span>
+          <form action='' method="POST" id="quickinfo_form" name="quickinfo_form">
+            {% csrf_token %}
+              <div class="row">
+                <span class="radio-toggles">
+                  <span clas="radio-toggle">
+                    <input type="radio" id="radio1" name="is_military" value="yes" {% if client.is_military %} checked {% endif %}>
+                  </span>
+                  <span class="radio-toggle">
+                    <input type="radio" id="radio2" name="is_military" value="no" {% if not client.is_military %} checked {% endif %}>
+                  </span>
+                </span>
+                <span class="light-blue-text q-text">military?</span>
+              </div>
+              <div class="row">
+                <span class="radio-toggles">
+                  <span clas="radio-toggle">
+                    <input type="radio" id="radio3" name="health_concerns" value="yes" {% if client.health_concerns %} checked {% endif %}>
+                  </span>
+                  <span class="radio-toggle">
+                    <input type="radio" id="radio4" name="health_concerns" value="no" {% if not client.health_concerns %} checked {% endif %}>
+                  </span>
+                </span>
+                <span class="light-blue-text q-text">health concerns?</span>
+              </div>
+
+              <div class="row">
+                <span class="radio-toggles">
+                  <span clas="radio-toggle">
+                    <input type="radio" id="radio5" name="dna_assistance" value="yes" {% if client.dna_assistance %} checked {% endif %}>
+                  </span>
+                  <span class="radio-toggle">
+                    <input type="radio" id="radio6" name="dna_assistance" value="no" {% if not client.dna_assistance %} checked {% endif %}>
+                  </span>
+                </span>
+                <span class="light-blue-text q-text">dna assistance?</span>
+              </div>
+              <div class="row">
+                <span class="radio-toggles">
+                  <span clas="radio-toggle">
+                    <input type="radio" id="radio7" name="has_doctor" value="yes" {% if client.has_doctor %} checked {% endif %}>
+                  </span>
+                  <span class="radio-toggle">
+                    <input type="radio" id="radio8" name="has_doctor" value="no" {% if not client.has_doctor %} checked {% endif %}>
+                      <label for="radio8"> </label>
+                  </span>
+                </span>
+                <span class="light-blue-text q-text">seeing doctor?</span>
+              </div>
+
+              <div class="row">
+                <span class="radio-toggles">
+                  <span clas="radio-toggle">
+                    <input type="radio" id="radio9" name="has_insurance" value="yes" {% if client.has_insurance %} checked {% endif %}>
+                  </span>
+                  <span class="radio-toggle">
+                    <input type="radio" id="radio10" name="has_insurance" value="no" {% if not client.has_insurance %} checked {% endif %}>
+                      <label for="radio10"> </label>
+                  </span>
+                </span>
+                <span class="light-blue-text q-text">has insurance?</span>
+              </div>
+
+              <div class="row">
+                <span class="light-blue-text q-text">duration?</span>
+                <span class="duration-select">
+                  <select name="duration" id="duration">
+                    <option {% if client.duration_of_homelessness == 1 %} selected="selected" {% endif %}>1</option>
+                    <option {% if client.duration_of_homelessness == 2 %} selected="selected" {% endif %}>2</option>
+                    <option {% if client.duration_of_homelessness == 3 %} selected="selected" {% endif %}>3</option>
+                    <option {% if client.duration_of_homelessness == 4 %} selected="selected" {% endif %}>4</option>
+                    <option {% if client.duration_of_homelessness == 5 %} selected="selected" {% endif %}>5</option>
+                    <option {% if client.duration_of_homelessness == 6 %} selected="selected" {% endif %}>6</option>
+                    <option {% if client.duration_of_homelessness == 7 %} selected="selected" {% endif %}>7</option>
+                    <option {% if client.duration_of_homelessness == 8 %} selected="selected" {% endif %}>8</option>
+                    <option {% if client.duration_of_homelessness == 9 %} selected="selected" {% endif %}>9</option>
+                    <option {% if client.duration_of_homelessness == 10 %} selected="selected" {% endif %}>10+</option>
+                  </select>
+                </span>
+              </div>
+              <button type="submit" > update </button>
+            </form>
+    </div>
+
+    <div class="hidden profile-subpage" id="profile-requests">
+      <a class="our-icon icon icon-compose pull-right salmon-orange-text" id="addrequestbutton"></a>
+      <span class="turquoise-text subtitle-text">Incomplete Requests:</br></span>
+      <div class="media-body">
+        <div class="card clear">
+          <form action='' method='POST' id='newrequestinput' name='newrequestinput'>
+            {% csrf_token %}
+            <input type="text" name="newrequestvalue" id="newrequestvalue" placeholder="type to add new request"><br>
+          </form>
+          <ul id="requestlist" class="table-view">
+          {% if requests %}
+            {% for request in requests %}
+              <li class="table-view-cell">
+                {{ request.description }}
+              </li>
+            {% endfor %}
+
+        {% else %}
+              <li class="table-view-cell">sample request item</li>
+              <li class="table-view-cell">another request</li>
+              <li class="table-view-cell">request 3</li>
+        {% endif %}
+            </ul>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+
+    <div style="display:none">
       <ul class="table-view">
         <li class="table-view-cell media">
             <div class="media-body turquise">
@@ -53,23 +204,7 @@
             </div>
         </li>
         <li class="table-view-cell media">
-            <div class="media-body turquise">
-              <div class="sub-header">
-              <span class="icon icon-compose"></span>
-                Incomplete Requests
-              </div>
-              {% if requests %}
-                <div class="card clear">
-                  <ul class="table-view">
-                  {% for request in requests %}
-                      <li class="table-view-cell">{{ request.item.name }}</li>
-                  {% endfor %}
-                  </ul>
-                </div>
-              {% else %}
-                  <p>No requests</p>
-              {% endif %}
-            </div>
+
         </li>
         <li class="table-view-cell media">
           <a>
@@ -128,5 +263,6 @@
     {% else %}
       <p> Client Does Not Exist </p>
     {% endif %}
+    </div>
   </body>
 </html>

@@ -6,10 +6,8 @@ from django.http import HttpResponse
 from django.views.generic.base import View
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse, HttpResponse
-from .models import Client
-from .models import Tag
-#from backend import Client
-
+from .models import *
+  
 class NewClientProfile(View):
     def get(self, request):
         template = "new_client.html"
@@ -40,6 +38,70 @@ class ClientProfile(View):
                 'requests': requests,
         }
         return render(request, template, context)
+    def post(self, request, client_id): 
+        print("in views post")
+        if (request.POST.get("duration", default="NO") != "NO"):
+            print("updateinfo update")
+            return updateQuickInfo(self, request, client_id)
+        if (request.POST.get("newrequestvalue", default="NO") != "NO"):
+            print("newrequestvalue update")
+            return updateRequests(self, request, client_id)
+        if (request.POST.get("updatefirstname", default="NO") != "NO"):
+            print("updateFirstName update")
+            return updateFirstName(self, request, client_id)
+        if (request.POST.get("updatenickname", default="NO") != "NO"):
+            print("updateNickName update")
+            return updateNickName(self, request, client_id)
+        if (request.POST.get("updatelastname", default="NO") != "NO"):
+            print("updateLastName update")
+            return updateLastName(self, request, client_id)
+
+        # print(":)" + request.POST.get("duration"))
+        # return updateInfoPost(self, request, client_id)
+
+def updateRequests(self, request, client_id):
+    print("updateInfo POST request")
+    client = Client.objects.get(pk = client_id)
+    # print("newrequestvalue: " + newrequestvalue)
+    new_request = Requests(description = request.POST.get("newrequestvalue"), 
+                          client_profile = client)
+    new_request.save()
+    return HttpResponseRedirect("/client/" + str(client_id))
+
+def updateFirstName(self, request, client_id):
+    print("UPDATING NAME POST request")
+    client = Client.objects.get(pk = client_id)
+    client.first_name = request.POST.get("updatefirstname")
+    client.save()
+    return HttpResponseRedirect("/client/" + str(client_id))
+
+def updateNickName(self, request, client_id):
+    print("UPDATING NAME POST request")
+    client = Client.objects.get(pk = client_id)
+    client.nick_name = request.POST.get("updatenickname")
+    client.save()
+    return HttpResponseRedirect("/client/" + str(client_id))
+
+def updateLastName(self, request, client_id):
+    print("UPDATING NAME POST request")
+    client = Client.objects.get(pk = client_id)
+    client.last_name = request.POST.get("updatelastname")
+    client.save()
+    return HttpResponseRedirect("/client/" + str(client_id))
+
+
+def updateQuickInfo(self, request, client_id): 
+    print("updateInfo POST request")
+    client = Client.objects.get(pk = client_id)
+    client.is_military     = (request.POST.get("is_military") == "yes")
+    client.health_concerns = (request.POST.get("health_concerns") == "yes")
+    client.dna_assistance  = (request.POST.get("dna_assistance") == "yes")
+    client.has_doctor      = (request.POST.get("has_doctor") == "yes")
+    client.has_insurance   = (request.POST.get("has_insurance") == "yes")
+    client.duration_of_homelessness = request.POST.get("duration")
+    client.save()
+    return HttpResponseRedirect("/client/" + str(client_id))
+
 
 class Timeline(View):
     def get(self, request, client_id):
@@ -53,3 +115,5 @@ class Timeline(View):
                 'interactions': interactions,
         }
         return render(request, template, context)
+
+

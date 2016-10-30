@@ -17,13 +17,12 @@
 
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/logging_info.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" >
     <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}">
     
 
     <link href="{% static 'css/log_info.css' %}" rel="stylesheet">
     <link href="{% static 'dist/css/ratchet.css' %}" rel="stylesheet">
-
-
 
     <!-- Include the compiled Ratchet JS -->
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -32,8 +31,8 @@
   </head>
   <body>  
     <div class="title-bar">
-        <a class="icon icon-left-nav light-blue bigger pull-left"></a>
-        <a class="icon icon-right-nav light-blue bigger pull-right" id="log-inter"></a>
+        <!-- <a class="icon icon-left-nav light-blue-text bigger pull-left"></a> -->
+        <a class="icon icon-right-nav light-blue-text bigger pull-right" id="log-inter" href="/client/{{cid}}"></a>
       <h1 class="title-text">Interaction</h1>
     </div>
 

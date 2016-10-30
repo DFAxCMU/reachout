@@ -1,33 +1,78 @@
 html {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", 
+                 "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: lighter;
 }
 
-/*
 body, html{
     height: 100%;
     width:100%;
-}*/
+}
+
+h1, h2, h3, h4, h5, h6, p, div, span {
+    margin: 0;
+    padding: 0;
+}
+
+.hide-scroll {
+    overflow: hidden;
+}
+
+.hidden {
+    color: blue;
+    display: none;
+}
 
 .header{
     font-size: 60px;
     text-align: center;
 }
 
-.light-blue{
-    color: #9FDAE0;
+.fixed {
+    position:fixed; 
+    width:100%; 
+    z-index: 1;
+    background-color: white;
 }
 
-.salmon-orange{
-    color:#EF6E47;
+.lightest-blue { background-color: #EAF4F5; }
+
+.light-blue { background-color: #9FDAE0; }
+
+.salmon-orange { background-color:#EF6E47;}
+
+.light-salmon-orange { background-color: #FBB699; }
+
+.turquoise { background-color: #7BB6BC; }
+
+.grey { background-color: #BBC3CA; }
+
+.lightest-blue-text { background-color: #EAF4F5; }
+
+.light-blue-text { color: #9FDAE0; }
+
+.salmon-orange-text { color:#EF6E47;}
+
+.light-salmon-orange-text { color: #FBB699; }
+
+.turquoise-text { color: #7BB6BC; }
+
+.grey-text { color: #BBC3CA; }
+
+.small-text {
+
 }
 
-.turquise{
-    color: #7BB6BC;
+.medium-text { font-size: 18px; }
+
+.title-text {
+    margin-top: 10px;
+    font-weight: 100;
+    font-size: 43px; 
+    text-align: center;
+    padding: 10px;
 }
 
-.grey{
-    color: #BBC3CA;
-}
+.subtitle-text { font-size: 25px; }
 
-
+.our-icon { padding: 10px; }

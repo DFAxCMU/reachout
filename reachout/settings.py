@@ -83,8 +83,8 @@ WSGI_APPLICATION = 'reachout.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django_postgrespool',
-        'NAME': 'd5a9o029jo82ov',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), 
         'USER': 'siqmbtijpaktxq',
         'PASSWORD': 'cRIRhvAd5-grbXPSL0zK7L6XQG',
         'HOST': 'ec2-54-243-200-37.compute-1.amazonaws.com',

@@ -88,7 +88,7 @@ class Requests(models.Model):
     #comp_interaction = models.ForeignKey(Interaction, related_name="request_comp")
     asked_timestamp = models.DateTimeField(default=timezone.now)
     # completed_timestamp = ?
-    item = models.ForeignKey(Item, related_name="request")
+    item = models.ForeignKey(Item, related_name="request", blank=True, null=True)
     #amount = models.IntegerField(default=0)
     client_profile = models.ForeignKey(Client, related_name="request")
     description = models.CharField(max_length=200, default="")
