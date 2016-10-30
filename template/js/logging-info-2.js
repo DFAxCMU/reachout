@@ -66,6 +66,7 @@ $(document).ready(function() {
 
         };
         var clientID = $(".client-id").attr("data-cid");
+        console.log("clientID", clientID)
         console.log(data)
         $.ajax({
         type: "POST",

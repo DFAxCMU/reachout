@@ -20,12 +20,16 @@ class Register(View):
         return render(request, 'register.html')
 
     def post(self, request):
-        #TODO: FIX if usernames are not unique, don't crash
-        #TODO: fix if user can't log in
         username = request.POST.get('username')
         operation_safety_net = "safety_net"
         if(request.POST.get('organization_code') != "safety_net"):
-            return HttpResponseRedirect("/register")
+            return render(request, 'register.html', {
+                'error_message': "Organization code is incorrect",
+            })
+        if(request.POST.get('password') != request.POST.get('repassword')):
+            return render(request, 'register.html', {
+                'error_message': "Passwords do not match",
+            })        
         try:
             User.objects.get(username__iexact=username)
         except User.DoesNotExist:
@@ -39,14 +43,18 @@ class Register(View):
             cu = CustomUser(name=full_name, user=new_user, email=request.POST.get('email'))
             cu.save()
             user = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
+            
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect("/search")
             else:
-                #raise forms.ValidationError("Password or username is incorrect")
-                return HttpResponseRedirect("/register")
-        return HttpResponseRedirect("/register")
-        #raise forms.ValidationError(u'This username already exists.')
+                return render(request, 'register.html', {
+                    'error_message': "Password or username is incorrect",
+                })
+        return render(request, 'register.html', {
+            'error_message': "This username already exists",
+        })
+
 
 class Login(View):
     def get(self, request):
@@ -57,14 +65,12 @@ class Login(View):
         user = authenticate(username=request.POST.get('username'),
                             password=request.POST.get('password'))
         if user is not None:
-            print("login")
             login(request, user)
             return HttpResponseRedirect("/search")
         else:
-            print("can't login")
-            #return HttpResponse("Your password is incorrect") 
-            #raise forms.ValidationError("Password or username is incorrect")
-            return HttpResponseRedirect("/login")
+            return render(request, 'login.html', {
+                'error_message': "Your password or username is incorrect",
+            })
 
 class Logout(View):
     def get(self, request):

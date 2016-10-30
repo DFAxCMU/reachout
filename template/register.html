@@ -25,9 +25,7 @@
   </head>
   <body class="background">
     <div class="header"> <h1> reach out </h1> </div>
-    <!--TODO: check password == repassword -->
-    <!-- required attribute is NOT supported on safari -->
-    <!-- TODO: bug CSRF verification failed -->
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
     <form action='' method="POST">
     {% csrf_token %}
@@ -45,10 +43,10 @@
             <label>password </label>
             <input type="password" name="password" class="field-long" required/>
         </li>
-        <!--li>
+        <li>
             <label>re-enter password </label>
             <input type="password" name="repassword" class="field-long" required/>
-        </li-->
+        </li>
         <li>
             <label>organization code </label>
             <input type="password" name="organization_code" class="field-divided" required/>
