@@ -1,13 +1,25 @@
+#profile-header {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
-.title-bar{
-    text-align: center;
-    font-weight: 100;
-    margin: 5px;
+.icon-left-nav {
+    margin: 0;
+    padding: 0;
+}
+
+.name-text{
+    margin: 0 30px;
+    font-size: 32px;
+    /*background-color: #EAF4F5;*/
+    color: black;
+    padding: 8px;
 }
 
 .sub-header{
-    background-color: #EAF4F5;
-    position: relative;
+    /*background-color: #EAF4F5;*/
+    /*position: relative;*/
     width: 200%;
     height: 50px;
     color: #7BB6BC;
@@ -15,21 +27,27 @@
 }
 
 #profile-header{
-    text-align: center;
-    height: 10%;
+    padding: 20px 10px 0px 10px;
+    margin: 0;
+}
+
+#profile-name {
+    vertical-align: text-top;
+    display: inline-block;
+    padding: 10px;
 }
 
 #profile-pic{
-    float: left;
+    vertical-align: text-top;
+    display: inline-block;
     height: 100%;
-    margin-left: 30px;
-}
-.hide-scroll {
-    overflow: hidden;
+    margin-left: 20px;
+    width:80px;
+    height:80px;
 }
 
-#profile-content{
-
+.profile-subpage {
+    padding:  10px 22px 22px 22px;
 }
 
 #timeline-button{
@@ -40,11 +58,117 @@
     border-style: dashed hidden hidden hidden;
     text-align: center;
     padding: 10px;
-    position: absolute;
+    /*position: absolute;*/
     bottom: 0;
     width: 100%;
 }
 
-.title{
+#profile-nav {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.profile-nav-button {
+    margin: 5px 12% 2px 12%;
+    display: inline-block;
+    height: 26px;
+    width: 26px;
+    border-radius: 13px;
+    background-color: #FBB699;
+}
+
+.selected-button {
+    background-color: #EF6E47;
+}
+
+#tags {
+    /*margin: 10px 30px;*/
+    /*background-color: gray;*/
+    margin: 6px;
+    padding-top: 10px;
+}
+
+.tag, #newtagvalue {
+    font-size: 13px;
+    background-color: #7BB6BC;
     color: white;
+    border-radius: 12px;
+    height: 24px;
+    padding: 6px;
+    margin: 8px;
+}
+
+#newtagvalue {
+    width: 80%;
+}
+
+.content {
+    margin-top: 150px;
+}
+
+#newrequestvalue {
+    color: black;
+    margin: 0;
+}
+
+.q-text {
+    font-size: 20px;
+}
+
+.checkbox {
+    width: 25px;
+    margin: 20px 100px;
+    position: relative;
+}
+
+input[type="radio"] {
+    margin: 8px 4px;
+}
+
+input[type="submit"] {
+    border: none;
+    width: 20px;
+    text-align: center;
+}
+
+
+#nameinputsdiv {
+    margin: 0 33px;
+}
+
+#updatefirstname, #updatenickname, #updatelastname {
+    border: 1px solid #7BB6BC;
+    
+    /*display: inline-block;*/
+    /*width: 90%;*/
+    /*margin: 10px 0px 10px 0px;*/
+    font-size: 18px;
+    background-color: #EAF4F5;
+    margin: 3px;
+    height: 28px;
+}
+
+#nameformdiv {
+    /*border: 1px solid black;*/
+}
+
+#changeNameMode {
+    right: 1px;
+    top: 12px;
+    position: absolute;
+}
+
+#backbutton {
+    left: 10px;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+}
+
+#changebutton {
+    right: 10px;
+    position: absolute;
+    padding: 0;
+    margin: 0;
 }

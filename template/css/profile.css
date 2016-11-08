@@ -10,8 +10,11 @@
 }
 
 .name-text{
-    margin: 30px 0px 0px 30px;
-    font-size: 25px;
+    margin: 0 30px;
+    font-size: 32px;
+    /*background-color: #EAF4F5;*/
+    color: black;
+    padding: 8px;
 }
 
 .sub-header{
@@ -24,7 +27,8 @@
 }
 
 #profile-header{
-    padding: 20px 10px 10px 10px;
+    padding: 20px 10px 0px 10px;
+    margin: 0;
 }
 
 #profile-name {
@@ -43,7 +47,7 @@
 }
 
 .profile-subpage {
-    padding: 22px;
+    padding:  10px 22px 22px 22px;
 }
 
 #timeline-button{
@@ -62,6 +66,7 @@
 #profile-nav {
     text-align: center;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .profile-nav-button {
@@ -78,15 +83,20 @@
 }
 
 #tags {
-    margin: 10px 30px;
+    /*margin: 10px 30px;*/
+    /*background-color: gray;*/
+    margin: 6px;
+    padding-top: 10px;
 }
 
 .tag, #newtagvalue {
-    font-size: 12px;
+    font-size: 13px;
     background-color: #7BB6BC;
     color: white;
     border-radius: 12px;
-    /*height: 24px;*/
+    height: 24px;
+    padding: 6px;
+    margin: 8px;
 }
 
 #newtagvalue {
@@ -115,17 +125,16 @@
 input[type="radio"] {
     margin: 8px 4px;
 }
-#updatefirstname {
-    float:left;
-    width: 70%;
+
+input[type="submit"] {
+    border: none;
+    width: 20px;
+    text-align: center;
 }
-#updatenickname {
-    float:right;
-    width: 90%;
-}
-#updatelastname {
-    float:right;
-    width: 90%;
+
+
+#nameinputsdiv {
+    margin: 0 33px;
 }
 
 #updatefirstname, #updatenickname, #updatelastname {
@@ -134,14 +143,32 @@ input[type="radio"] {
     /*display: inline-block;*/
     /*width: 90%;*/
     /*margin: 10px 0px 10px 0px;*/
-    font-size: 25px;
+    font-size: 18px;
     background-color: #EAF4F5;
-    margin: 5px;
+    margin: 3px;
+    height: 28px;
 }
 
 #nameformdiv {
     /*border: 1px solid black;*/
 }
-div {
-    /*border: 1px solid black;*/
+
+#changeNameMode {
+    right: 1px;
+    top: 12px;
+    position: absolute;
+}
+
+#backbutton {
+    left: 10px;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+}
+
+#changebutton {
+    right: 10px;
+    position: absolute;
+    padding: 0;
+    margin: 0;
 }
