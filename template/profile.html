@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}" >
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" >
-    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profilepage.css' %}" >
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>   
     <script src="{% static 'js/profile.js' %}"></script>
@@ -24,29 +24,31 @@
     <div id="profile-header" class="fixed">
         <div>
           <a class="our-icon icon icon-left-nav pull-left salmon-orange-text" href="/search"></a>
+          <div class="our-icon icon icon-compose pull-right salmon-orange-text" id="changeNameMode"></div>
         </div>
-
+        <div id="nameformdiv" class="hidden">
           <form action='' method='POST' id='updatenameform' name='updatenameform'>
             {% csrf_token %}
-            <input type="text" size="15" name="updatefirstname" id="updatefirstname" value="{{client.first_name}}">
+            <div id="nameinputsdiv">
+              <input type="text" name="updatefirstname" id="updatefirstname" value="{{client.first_name}}">
+              <input type="text" name="updatenickname" id="updatenickname" value="{{client.nick_name}}">
+              <input type="text" name="updatelastname" id="updatelastname" value="{{client.last_name}}">
+            </div>
+            <input type="submit" class="hidden">
           </form>
-          <form action='' method='POST' id='updatenameform' name='updatenameform'>
-            {% csrf_token %}
-            <input type="text" size="15" name="updatenickname" id="updatenickname" value="{{client.nick_name}}">
-          </form>
-          <form action='' method='POST' id='updatenameform' name='updatenameform'>
-            {% csrf_token %}
-            <input type="text" size="15" name="updatelastname" id="updatelastname" value="{{client.last_name}}">
-          </form>
+        </div>
+        <div id="namedisplaydiv">
+          <p class="name-text">{{client.first_name}} "{{client.nick_name}}" {{client.last_name}}</p>
+        </div>
         <div id="tags"><p>
           {% for tag in client.get_tags %}
             <span class="tag">{{tag}}</span>
-          {% endfor %}</p>
-        </div>
-        <div id="profile-nav" class="lightest-blue">
-          <div class="profile-nav-button" id="profile-totimeline"></div>
-          <div class="selected-button profile-nav-button" id="profile-toquickinfo"></div>
-          <div class="profile-nav-button" id="profile-torequests"></div>
+          {% endfor %}
+            <form action='' method='POST' id='newtaginput' name='newtaginput'>
+              {% csrf_token %}
+              <input type="text" name="newtagvalue" id="newtagvalue" value="Type to add a new tag">
+              <input type="submit" value="+" id="newtagsubmit" name="newtagsubmit" class="tag">
+            </form></p>
         </div>
     </div>
     
@@ -75,9 +77,14 @@
             <p>No interactions yet</p>
         {% endif %}
     </div>
+        <div id="profile-nav" class="lightest-blue">
+          <div class="profile-nav-button" id="profile-totimeline"></div>
+          <div class="selected-button profile-nav-button" id="profile-toquickinfo"></div>
+          <div class="profile-nav-button" id="profile-torequests"></div>
+        </div>
 
     <div class="profile-subpage" id="profile-quickinfo">
-      <span class="turquoise-text subtitle-text">Quick Info:</br></span>
+      <p class="turquoise-text subtitle-text">Quick Info:</br></p>
           <form action='' method="POST" id="quickinfo_form" name="quickinfo_form">
             {% csrf_token %}
               <div class="row">
@@ -162,7 +169,7 @@
     </div>
 
     <div class="hidden profile-subpage" id="profile-requests">
-      <a class="our-icon icon icon-compose pull-right salmon-orange-text" id="addrequestbutton"></a>
+      <a class="our-icon icon icon-check pull-right salmon-orange-text" id="addrequestbutton"></a>
       <span class="turquoise-text subtitle-text">Incomplete Requests:</br></span>
       <div class="media-body">
         <div class="card clear">

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var editNameMode = true;
     $("#profile-totimeline").click(function() {
         clearAll();
         $("#profile-timeline").removeClass("hidden");
@@ -16,6 +17,10 @@ $(document).ready(function() {
     })
 
     addRequest();
+    $("#changeNameMode").click(function() {
+        editName(editNameMode);
+        editNameMode = ! editNameMode;
+    })
 
 });
 
@@ -30,12 +35,25 @@ function clearAll() {
 
 function addRequest() {
     $(addrequestbutton).click(function() {
-
-        // var form = $(document.createElement("")
-
         var newRequest = $(document.createElement('li'));
         newRequest.addClass("table-view-cell");
         var inputRequest = $(document.createElement(''))
         $("#requestlist").prepend(newRequest);
     })
+};
+
+function editName(editNameMode) {
+    if (editNameMode) {
+        $("#nameformdiv").removeClass("hidden");
+        $("#namedisplaydiv").addClass("hidden");
+        $("#tags").addClass("hidden");
+        $("#changeNameMode").removeClass("icon-compose");
+        $("#changeNameMode").addClass("icon-check");
+    } else {
+        $("#nameformdiv").addClass("hidden");
+        $("#namedisplaydiv").removeClass("hidden");
+        $("#tags").removeClass("hidden");
+        $("#changeNameMode").addClass("icon-compose");
+        $("#changeNameMode").removeClass("icon-check");
+    }
 };

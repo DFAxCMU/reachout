@@ -47,17 +47,23 @@ class ClientProfile(View):
             print("newrequestvalue update")
             return updateRequests(self, request, client_id)
         if (request.POST.get("updatefirstname", default="NO") != "NO"):
-            print("updateFirstName update")
-            return updateFirstName(self, request, client_id)
-        if (request.POST.get("updatenickname", default="NO") != "NO"):
-            print("updateNickName update")
-            return updateNickName(self, request, client_id)
-        if (request.POST.get("updatelastname", default="NO") != "NO"):
-            print("updateLastName update")
-            return updateLastName(self, request, client_id)
+            print("\\nn\n\n\n\nn\n\n\n\n\n\n\n\n\n\n")
+            return updateName(self, request, client_id)
 
-        # print(":)" + request.POST.get("duration"))
-        # return updateInfoPost(self, request, client_id)
+
+        # if (request.POST.get("updatefirstname", default="NO") != "NO"):
+        #     print("updateFirstName update")
+        #     return updateFirstName(self, request, client_id)
+        # if (request.POST.get("updatenickname", default="NO") != "NO"):
+        #     print("updateNickName update")
+        #     return updateNickName(self, request, client_id)
+        # if (request.POST.get("updatelastname", default="NO") != "NO"):
+        #     print("updateLastName update")
+        #     return updateLastName(self, request, client_id)
+
+        if (request.POST.get("newtagvalue", default="NO") != "NO"):
+            print("\n\n\nupdateTags update\n\n\n")
+            return updateTags(self, request, client_id)
 
 def updateRequests(self, request, client_id):
     print("updateInfo POST request")
@@ -68,26 +74,15 @@ def updateRequests(self, request, client_id):
     new_request.save()
     return HttpResponseRedirect("/client/" + str(client_id))
 
-def updateFirstName(self, request, client_id):
+def updateName(self, request, client_id):
     print("UPDATING NAME POST request")
     client = Client.objects.get(pk = client_id)
     client.first_name = request.POST.get("updatefirstname")
-    client.save()
-    return HttpResponseRedirect("/client/" + str(client_id))
-
-def updateNickName(self, request, client_id):
-    print("UPDATING NAME POST request")
-    client = Client.objects.get(pk = client_id)
     client.nick_name = request.POST.get("updatenickname")
-    client.save()
-    return HttpResponseRedirect("/client/" + str(client_id))
-
-def updateLastName(self, request, client_id):
-    print("UPDATING NAME POST request")
-    client = Client.objects.get(pk = client_id)
     client.last_name = request.POST.get("updatelastname")
     client.save()
     return HttpResponseRedirect("/client/" + str(client_id))
+
 
 
 def updateQuickInfo(self, request, client_id): 
@@ -102,6 +97,15 @@ def updateQuickInfo(self, request, client_id):
     client.save()
     return HttpResponseRedirect("/client/" + str(client_id))
 
+def updateTags(self, request, client_id):
+    print("updateTags POST request")
+    client = Client.objects.get(pk = client_id)
+    # print("newrequestvalue: " + newrequestvalue)
+    new_tag = Tag(name = request.POST.get("newtagvalue"))
+    new_tag.save()
+    new_tag.client.add(client)
+    new_tag.save()
+    return HttpResponseRedirect("/client/" + str(client_id))
 
 class Timeline(View):
     def get(self, request, client_id):

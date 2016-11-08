@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-
 # Create your views here.
 from django.http import HttpResponse
 from django.views.generic.base import View
@@ -9,7 +8,6 @@ from django.http import HttpResponseRedirect
 from django.http import JsonResponse, HttpResponse
 from backend.models import *
 
-#from .models import Tag
 class UpdateQuickInfo(View):
     print("here")
     def get(self, request, client_id):
@@ -34,35 +32,7 @@ class UpdateQuickInfo(View):
         client.save()
         return HttpResponseRedirect("/client/" + str(client_id))
 
-# def LoggingInfoOne(request, client_id):
-#     context = {}
-#     context["cid"] = client_id
-#     return render(request, 'logging-info-1.html', context)
-
-# def LoggingInfoTwo(request, client_id):
-#     context = {}
-#     context["cid"] = client_id
-#     return render(request, 'logging-info-2.html', context)
-
-# def LoggingInfoThree(request, client_id):
-#     context = {}
-#     context["cid"] = client_id
-#     return render(request, 'logging-info-3.html', context)
-
-# def TitleAndDescription(request, client_id):
-#     title =  request.POST.get("title")
-#     description =  request.POST.get("description")
-
-#     print("title " + title)
-#     print("description " + description)
-#     client = Client.objects.get(pk = client_id)
-#     i = Interaction(description=description, title=title, client = client, user = request.user.customuser)
-#     i.save()
-#     context = {}
-#     context["cid"] = client_id
-#     return JsonResponse({"worked": True})
-
-<<<<<<< HEAD
+# <<<<<<< HEAD
 # def ShortQuestions(request, client_id):
 #     q1 =  request.POST.get("q1")
 #     q2 =  request.POST.get("q2")
@@ -81,16 +51,16 @@ class UpdateQuickInfo(View):
 #     context["cid"] = client_id
 #     context["requests"] = client.request.all()
 #     return render(request, 'logging-info-3.html', context)
-=======
-    print("title " + title)
-    print("description " + description)
-    client = Client.objects.get(pk = client_id)
-    i = Interaction(description=description, title=title, client = client, user = request.user.customuser)
-    print("Interaction", i)
-    i.save()
-    context = {}
-    context["cid"] = client_id
-    return JsonResponse({"worked": True})
+# =======
+    # print("title " + title)
+    # print("description " + description)
+    # client = Client.objects.get(pk = client_id)
+    # i = Interaction(description=description, title=title, client = client, user = request.user.customuser)
+    # print("Interaction", i)
+    # i.save()
+    # context = {}
+    # context["cid"] = client_id
+    # return JsonResponse({"worked": True})
 
 def ShortQuestions(request, client_id):
     q1 =  request.POST.get("q1")
@@ -105,7 +75,7 @@ def ShortQuestions(request, client_id):
     client.has_doctor = True if q4 == "yes" else False
     client.has_insurance = True if q5 == "yes" else False
     client.save()
->>>>>>> 881e2e177b08671a356471b8104293523d417ee5
+# >>>>>>> 881e2e177b08671a356471b8104293523d417ee5
 
 # def LogAllInfo(request, client_id):
 #     item_name =  request.POST.get("item_name")
