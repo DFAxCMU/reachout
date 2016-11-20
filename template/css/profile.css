@@ -11,15 +11,13 @@
 
 .name-text{
     margin: 0 30px;
-    font-size: 32px;
+    font-size: 28px;
     /*background-color: #EAF4F5;*/
     color: black;
     padding: 8px;
 }
 
 .sub-header{
-    /*background-color: #EAF4F5;*/
-    /*position: relative;*/
     width: 200%;
     height: 50px;
     color: #7BB6BC;
@@ -48,6 +46,11 @@
 
 .profile-subpage {
     padding:  10px 22px 22px 22px;
+}
+
+.profile-timeline, ul.timeline {
+    margin: 0;
+    padding: 0;
 }
 
 #timeline-button{
@@ -96,7 +99,7 @@
     border-radius: 12px;
     height: 24px;
     padding: 6px;
-    margin: 8px;
+    margin: 6px 2px;
 }
 
 #newtagvalue {
@@ -139,19 +142,12 @@ input[type="submit"] {
 
 #updatefirstname, #updatenickname, #updatelastname {
     border: 1px solid #7BB6BC;
-    
-    /*display: inline-block;*/
-    /*width: 90%;*/
-    /*margin: 10px 0px 10px 0px;*/
     font-size: 18px;
     background-color: #EAF4F5;
     margin: 3px;
     height: 28px;
 }
 
-#nameformdiv {
-    /*border: 1px solid black;*/
-}
 
 #changeNameMode {
     right: 1px;
@@ -171,4 +167,32 @@ input[type="submit"] {
     position: absolute;
     padding: 0;
     margin: 0;
+}
+
+ul, ol, li {
+    list-style-type: none;
+}
+
+.reqremove {
+    height: 20px;
+    margin-top: -30px;
+}
+
+#deletetagsubmit {
+    background-color: #7BB6BC;
+    color: black;
+    border-radius: 50%;
+}
+
+.timeline-title {
+    font-size: 5px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.timeline-info {
+    margin-bottom: 30px;
+    margin-left: 10px;
 }

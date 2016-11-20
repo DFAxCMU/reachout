@@ -22,7 +22,28 @@ $(document).ready(function() {
         editNameMode = ! editNameMode;
     })
 
+
 });
+
+function submitUpdateNameForm() {
+    console.log("submitting name form")
+    document.getElementById('updatenameform').submit();
+}
+
+function submitUpdateRequestsForm() {
+    console.log("submitting (add) request form")
+    document.getElementById('newrequestinput').submit();
+}
+
+function removeRequestForm() {
+    console.log("remove request")
+    document.getElementById('deleterequestform').submit();
+}
+
+function removeTagForm() {
+    console.log("remove tag")
+    document.getElementById('deletetagform').submit();
+}
 
 function clearAll() {
     $("#profile-timeline").addClass("hidden");
@@ -44,16 +65,20 @@ function addRequest() {
 
 function editName(editNameMode) {
     if (editNameMode) {
+        console.log("remove compose");
         $("#nameformdiv").removeClass("hidden");
         $("#namedisplaydiv").addClass("hidden");
         $("#tags").addClass("hidden");
-        $("#changeNameMode").removeClass("icon-compose");
-        $("#changeNameMode").addClass("icon-check");
+        $("#changeNameMode").addClass("hidden");
+        // $("#changeNameMode").removeClass("icon-compose");
+        // $("#changeNameMode").addClass("icon-check");
     } else {
+        console.log("add compose");
         $("#nameformdiv").addClass("hidden");
         $("#namedisplaydiv").removeClass("hidden");
         $("#tags").removeClass("hidden");
-        $("#changeNameMode").addClass("icon-compose");
-        $("#changeNameMode").removeClass("icon-check");
+        $("#changeNameMode").removeClass("hidden");
+        // $("#changeNameMode").addClass("icon-compose");
+        // $("#changeNameMode").removeClass("icon-check");
     }
 };

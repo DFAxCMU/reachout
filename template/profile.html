@@ -34,7 +34,10 @@
               <input type="text" name="updatenickname" id="updatenickname" value="{{client.nick_name}}">
               <input type="text" name="updatelastname" id="updatelastname" value="{{client.last_name}}">
             </div>
-            <input type="submit" class="hidden">
+            <div class="button" id="updateNameButton" onclick="submitUpdateNameForm()" title="updateNameButton!">
+              <div class="our-icon icon icon-check pull-right salmon-orange-text" id="changeNameMode"></div>
+            </div>
+
           </form>
         </div>
         <div id="namedisplaydiv">
@@ -42,7 +45,14 @@
         </div>
         <div id="tags"><p>
           {% for tag in client.get_tags %}
-            <span class="tag">{{tag}}</span>
+            <form action='' method='POST' id='deleterequestform' name='deleterequestform' style="display: inline; margin: 0; padding: 0;">
+              {% csrf_token %}
+            <input type="text" name="deletetagdesc" id="deletetagdesc" value="{{tag}}" class="hidden" >          
+            <span class="tag">
+              {{tag}} 
+              <input type="submit" value="x" id="deletetagsubmit" name="deletetagsubmit">
+            </span>
+            </form>
           {% endfor %}
             <form action='' method='POST' id='newtaginput' name='newtaginput'>
               {% csrf_token %}
@@ -53,21 +63,25 @@
     </div>
     
     <div class="content">
+        <div id="profile-nav" class="lightest-blue">
+          <div class="profile-nav-button" id="profile-totimeline"></div>
+          <div class="selected-button profile-nav-button" id="profile-toquickinfo"></div>
+          <div class="profile-nav-button" id="profile-torequests"></div>
+        </div>
+
 
     <div class="hidden profile-subpage" id="profile-timeline">
-      <a class="our-icon icon icon-compose pull-right salmon-orange-text" href="/logging_info_1/{{client.id}}"></a>
+      <a class="our-icon icon icon-plus pull-right salmon-orange-text" href="/logging_info_1/{{client.id}}"></a>
         {% if interactions %}
           <ul class="timeline">
             {% for interaction in interactions %}
               <li>
               <div class="timeline-badge.primary"><i class="glyphicon glyphicon-check"></i></div>
               <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4 class="timeline-title"> {{interaction.timestamp}}</h4>
-                  <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{interaction.location}} </small></p>
-                </div>
+                  <span class="bold turquoise-text"> {{interaction.title}}a</span>
                 <div class="timeline-body">
-                  <p>{{ interaction.description }}</p>
+                  <p class="timeline-desc turquoise-text">{{interaction.description}}</p>
+                  <p class="timeline-info salmon-orange-text">{{interaction.timestamp}} | {{interaction.user}}</p>
                 </div>
               </div>
             </li>
@@ -77,11 +91,6 @@
             <p>No interactions yet</p>
         {% endif %}
     </div>
-        <div id="profile-nav" class="lightest-blue">
-          <div class="profile-nav-button" id="profile-totimeline"></div>
-          <div class="selected-button profile-nav-button" id="profile-toquickinfo"></div>
-          <div class="profile-nav-button" id="profile-torequests"></div>
-        </div>
 
     <div class="profile-subpage" id="profile-quickinfo">
       <p class="turquoise-text subtitle-text">Quick Info:</br></p>
@@ -169,26 +178,35 @@
     </div>
 
     <div class="hidden profile-subpage" id="profile-requests">
-      <a class="our-icon icon icon-check pull-right salmon-orange-text" id="addrequestbutton"></a>
+        <div class="button" id="updateNameButton" onclick="submitUpdateRequestsForm()">
+          <div class="our-icon icon icon-check pull-right salmon-orange-text" id="addrequestbutton"></div>
+        </div>
       <span class="turquoise-text subtitle-text">Incomplete Requests:</br></span>
       <div class="media-body">
         <div class="card clear">
-          <form action='' method='POST' id='newrequestinput' name='newrequestinput'>
-            {% csrf_token %}
-            <input type="text" name="newrequestvalue" id="newrequestvalue" placeholder="type to add new request"><br>
-          </form>
-          <ul id="requestlist" class="table-view">
+            <form action='' method='POST' id='newrequestinput' name='newrequestinput'>
+              {% csrf_token %}
+              <input type="text" name="newrequestvalue" id="newrequestvalue" placeholder="type to add new request"><br>
+            </form>
+
+          <ul id="requestlist" class="table-view"> 
           {% if requests %}
             {% for request in requests %}
               <li class="table-view-cell">
-                {{ request.description }}
+                {request.description}
+                <form action='' method='POST' id='deleterequestform' name='deleterequestform'>
+                  {% csrf_token %}
+                  <input type="text" name="requestID" id="requestID" value="{{request.id}}" class="hidden" >
+                  <div class="button" id="updateNameButton" onclick="removeRequestForm()" title="updateNameButton!">
+                    <div class="removereqbutton">
+                      <div class="our-icon icon icon-close pull-right grey-text reqremove" id="{{request.id}}"></div>
+                    </div>
+                  </div>
+                </form>
               </li>
             {% endfor %}
-
         {% else %}
-              <li class="table-view-cell">sample request item</li>
-              <li class="table-view-cell">another request</li>
-              <li class="table-view-cell">request 3</li>
+              <li class="table-view-cell">No current requests</li>
         {% endif %}
             </ul>
           </div> 
@@ -266,7 +284,6 @@
         </li>
       </ul>
     </div>
-    <!-- TODO: Make Client Does Not Exist Page Pretty-->
     {% else %}
       <p> Client Does Not Exist </p>
     {% endif %}

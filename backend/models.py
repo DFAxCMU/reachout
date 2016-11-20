@@ -48,6 +48,14 @@ class Client(models.Model):
     def tags_list(self): 
         return ", ".join([t for t in self.get_tags()])
     # profile picture
+    def get_interactions(self): 
+        full_interactions_list   = Tag.objects.all()
+        tags_list   = []
+        for tag in full_tags_list: 
+            if (self in tag.client.all()):
+                if (tag.name.lower() not in tags_list): 
+                    tags_list.append(tag.name.lower())
+        return tags_list
 
     def __str__(self):
         return self.first_name + " " + self.last_name
