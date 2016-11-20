@@ -75,9 +75,9 @@
 .profile-nav-button {
     margin: 5px 12% 2px 12%;
     display: inline-block;
-    height: 26px;
-    width: 26px;
-    border-radius: 13px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
     background-color: #FBB699;
 }
 
@@ -176,6 +176,11 @@ ul, ol, li {
 .reqremove {
     height: 20px;
     margin-top: -30px;
+}
+
+.navbuttonicon {
+    margin-top: -6px;    
+    margin-left: -6px;    
 }
 
 #deletetagsubmit {
