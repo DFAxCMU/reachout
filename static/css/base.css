@@ -19,7 +19,6 @@ h1, h2, h3, h4, h5, h6, p, div, span {
 }
 
 .hidden {
-    color: blue;
     display: none;
 }
 
@@ -35,6 +34,8 @@ h1, h2, h3, h4, h5, h6, p, div, span {
     background-color: white;
 }
 
+.white { background-color: purple}
+
 .lightest-blue { background-color: #EAF4F5; }
 
 .light-blue { background-color: #9FDAE0; }
@@ -46,6 +47,8 @@ h1, h2, h3, h4, h5, h6, p, div, span {
 .turquoise { background-color: #7BB6BC; }
 
 .grey { background-color: #BBC3CA; }
+
+.white-text { color: white; }
 
 .lightest-blue-text { background-color: #EAF4F5; }
 

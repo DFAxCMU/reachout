@@ -14,11 +14,6 @@ h1{
     font-weight: 100; 
 }
 
-/*
-label{
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-}*/
-
 a{
     color: white;  
 }
@@ -39,8 +34,4 @@ a{
     right: 0;
     padding: 30px;
 }
-.header{
-    text-align: center;
-    color: white;
-}
-</style>
+

@@ -4,17 +4,17 @@
     padding: 0;
 }
 
-.icon-left-nav {
-    margin: 0;
-    padding: 0;
+.icon {
+    /*margin: 5px;*/
+    /*padding: 5px;*/
 }
 
 .name-text{
-    margin: 0 30px;
-    font-size: 28px;
-    /*background-color: #EAF4F5;*/
-    color: black;
-    padding: 8px;
+    margin-top: 10px;
+    font-weight: 100;
+    font-size: 40px; 
+    text-align: center;
+    padding: 10px;
 }
 
 .sub-header{
@@ -25,8 +25,9 @@
 }
 
 #profile-header{
-    padding: 20px 10px 0px 10px;
-    margin: 0;
+    /*padding: 20px 10px 0px 10px;*/
+    /*margin: 0;*/
+    /*background-color: red;*/
 }
 
 #profile-name {
@@ -61,7 +62,6 @@
     border-style: dashed hidden hidden hidden;
     text-align: center;
     padding: 10px;
-    /*position: absolute;*/
     bottom: 0;
     width: 100%;
 }
@@ -69,7 +69,7 @@
 #profile-nav {
     text-align: center;
     width: 100%;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
 }
 
 .profile-nav-button {
@@ -86,24 +86,26 @@
 }
 
 #tags {
-    /*margin: 10px 30px;*/
-    /*background-color: gray;*/
-    margin: 6px;
-    padding-top: 10px;
+    margin: 10px;
+    /*padding: 80px 0;*/
+    /*background-color: red;*/
 }
 
 .tag, #newtagvalue {
-    font-size: 13px;
+    font-size: 14px;
     background-color: #7BB6BC;
     color: white;
     border-radius: 12px;
-    height: 24px;
+    height: 30px;
+    line-height: 35px;
     padding: 6px;
-    margin: 6px 2px;
+    white-space: nowrap;
+    margin: 2px;
+
 }
 
 #newtagvalue {
-    width: 80%;
+    /*width: 80%;*/
 }
 
 .content {
@@ -113,6 +115,7 @@
 #newrequestvalue {
     color: black;
     margin: 0;
+    border-radius: 0;
 }
 
 .q-text {
@@ -174,8 +177,10 @@ ul, ol, li {
 }
 
 .reqremove {
-    height: 20px;
-    margin-top: -30px;
+    height: 50px;
+    margin-top: -33px;
+    margin-right: -10px;
+    border-left: 1px solid white;
 }
 
 .navbuttonicon {
@@ -201,3 +206,22 @@ ul, ol, li {
     margin-bottom: 30px;
     margin-left: 10px;
 }
+
+.request {
+    border-radius: 0px;
+    border: none;
+    margin: 10px;
+    background-color: #7BB6BC;
+    padding: 10px;
+    color: white;
+}
+
+#requestlist {
+    margin: 0;
+    padding: 0;
+}
+
+#newtagvalue::-webkit-input-placeholder { color: white; }
+#newtagvalue::-moz-placeholder { color: white; }
+#newtagvalue:-ms-input-placeholder { color: white; }
+#newtagvalue:-moz-placeholder { color: white; }

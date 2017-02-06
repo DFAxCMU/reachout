@@ -1,45 +1,61 @@
 #searchbar {
-    position: relative;
-    left: 10%;
-    padding: 2px;    
+    /*position: relative;*/
 }
 
 .search-result{
+    border-radius: 12px;
     position: relative;
     border: 1px solid #7BB6BC;
     padding: 12px;
     margin: 18px;
+    color: black;
 }
 
 #search-info{
     font-size: 12px;
-    background-color: white;
-    border: 1px solid #EF6E47;
-    height: 55px;
+    /*border: 1px solid #EF6E47;*/
+    /*height: 55px;*/
     color: black;
-    padding: 2px 5px;
+    padding: 8px 12px;
+    border-radius: 12px
 }
 
 #searchname{
-    position: relative;
+    /*position: relative;*/
     text-align: left;
     margin-bottom: 3px;
-    height: 25px;
+    /*height: 25px;*/
     color: white;
     padding: 2px 5px;
+    /*border-radius: 12px*/
+    border: none;
 }
 
 input[type=input] {
     color: black;
     position: relative;
-    width: 80%;
+    width: 100%;
     padding: 10px;
-    margin-bottom: 12px;
+    margin: 0;
+    /*margin-bottom: 12px;*/
 
     text-align: center;
-    border: 1px solid #8EC0C6;
     border-radius: 0px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;    
     box-shadow: none;
+    border: none;
 }
+
+#search-body {
+    /*margin-top: 100px;*/
+}
+
+#search-header {
+}
+
+
+::-webkit-input-placeholder { color: #FBB699; }
+::-moz-placeholder { color: #FBB699; }
+:-ms-input-placeholder { color: #FBB699; }
+:-moz-placeholder { color: #FBB699; }

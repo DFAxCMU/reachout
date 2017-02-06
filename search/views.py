@@ -24,7 +24,6 @@ class Search(View):
         return render(request, template, context)
 
     def post(self, request):
-        print("post SEARCH view")
         full_client_list = Client.objects.all()
         full_tags_list   = Tag.objects.all()
         client_list      = []
@@ -39,18 +38,19 @@ class Search(View):
 
         for client in full_client_list: 
             print("checking client " + client.first_name)
-            hasFirst = (client.first_name.lower() in search_input)
-            hasLast  = (client.last_name.lower()  in search_input)
-            hasNick  = (client.nick_name.lower()  in search_input)
+            hasFirst = (client.first_name.lower() == search_input)
+            hasLast  = (client.last_name.lower()  == search_input)
+            hasNick  = (client.nick_name.lower()  == search_input)
 
-
-            for tag in client.get_tags(): 
-                if (tag in search_input and client not in client_list):
-                    print("  adding client by tag: " + tag)
-                    client_list.append(client)
             if (hasFirst or hasLast or hasNick):
                 print("  adding client by info")
                 client_list.append(client)
+
+            for tag in client.get_tags(): 
+                if (tag == search_input and client not in client_list):
+                    print("  adding client by tag: " + tag)
+                    client_list.append(client)
+
 
         context = {"client_list": client_list, 
                    "search_input": search_input}

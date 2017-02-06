@@ -29,11 +29,10 @@ class NewClientProfile(View):
 
 class ClientProfile(View):
     def get(self, request, client_id):
-        print("client id", client_id)
         template = "profile.html"
         current_client = Client.objects.get(pk = client_id)
-        requests = current_client.request.all()
-        interactions = Interaction.objects.filter(client=current_client)
+        requests = current_client.request.all().order_by('asked_timestamp')
+        interactions = Interaction.objects.filter(client=current_client).order_by('-timestamp')
         context = {
                 'client': current_client,
                 'requests': requests,
@@ -41,45 +40,35 @@ class ClientProfile(View):
         }
         return render(request, template, context)
     def post(self, request, client_id): 
-        print("in views post")
         for key, value in request.POST.items():
             print(key, value)
         if (request.POST.get("duration", default="NO") != "NO"):
-            print("updateinfo update")
             return updateQuickInfo(self, request, client_id)
         if (request.POST.get("newrequestvalue", default="NO") != "NO"):
-            print("newrequestvalue update")
             return updateRequests(self, request, client_id)
         if (request.POST.get("updatefirstname", default="NO") != "NO"):
-            print("\\nn\n\n\n\nn\n\n\n\n\n\n\n\n\n\n")
             return updateName(self, request, client_id)
-
         if (request.POST.get("newtagvalue", default="NO") != "NO"):
-            print("\n\n\nupdateTags update\n\n\n")
             return updateTags(self, request, client_id)
 
-        if (request.POST.get("requestID", default="NO") != "NO"): 
-            print("\n\n\ndeleting request\n\n\n")
+        if (request.POST.get("deletetagdesc", default="NO") != "NO"): 
+            print('deleting tag')
+            return deleteTag(self, request, client_id)
+
+        if (request.POST.get("deletereqdesc", default="NO") != "NO"): 
+            print("deleting request")
             return deleteRequest(self, request, client_id);
 
-        if (request.POST.get("deletetagdesc", default="NO") != "NO"): 
-            print("\n\nupdateTags update\n\n")
-            return deleteTag(self, request, client_id)
-        print("none found")
 
 def updateRequests(self, request, client_id):
-    print("updateInfo POST request")
     if (request.POST.get("newrequestvalue") != ""):
         client = Client.objects.get(pk = client_id)
-        # print("newrequestvalue: " + newrequestvalue)
         new_request = Requests(description = request.POST.get("newrequestvalue"), 
                               client_profile = client)
         new_request.save()
-
     return HttpResponseRedirect("/client/" + str(client_id))
 
 def updateName(self, request, client_id):
-    print("UPDATING NAME POST request")
     client = Client.objects.get(pk = client_id)
     client.first_name = request.POST.get("updatefirstname")
     client.nick_name = request.POST.get("updatenickname")
@@ -88,31 +77,16 @@ def updateName(self, request, client_id):
     return HttpResponseRedirect("/client/" + str(client_id))
 
 def deleteRequest(self, request, client_id): 
-    print("deleteRequest POST request")
     client = Client.objects.get(pk = client_id)
-    print("--------------")
-    print(request.POST.get("requestID"));
-    print("-------")
-    Requests.objects.filter(id=request.POST.get("requestID")).delete()
-    print("--deleted-----")
-
+    Requests.objects.filter(id=request.POST.get("deletereqdesc")).delete()
     return HttpResponseRedirect("/client/" + str(client_id))
 
 def deleteTag(self, request, client_id): 
-    print("deleteRequest POST request")
     client = Client.objects.get(pk = client_id)
-    print("--------------")
-    print(request.POST.get("deletetagdesc"));
-    print (client.get_tags())
-    print("-------")
     for tag in Tag.objects.all(): 
         if (client in tag.client.all()):
             if (tag.name.lower() == request.POST.get("deletetagdesc")): 
-                print("going to delete", tag.name)
                 tag.delete()
-
-    # Tag.objects.filter(name=request.POST.get("deletetagdesc")).delete()
-    print("--deleted-----")
 
     return HttpResponseRedirect("/client/" + str(client_id))
 
@@ -129,18 +103,16 @@ def updateQuickInfo(self, request, client_id):
     return HttpResponseRedirect("/client/" + str(client_id))
 
 def updateTags(self, request, client_id):
-    print("updateTags POST request")
-    client = Client.objects.get(pk = client_id)
-    # print("newrequestvalue: " + newrequestvalue)
-    new_tag = Tag(name = request.POST.get("newtagvalue"))
-    new_tag.save()
-    new_tag.client.add(client)
-    new_tag.save()
+    if request.POST.get("newtagvalue") != "":
+        client = Client.objects.get(pk = client_id)
+        new_tag = Tag(name = request.POST.get("newtagvalue"))
+        new_tag.save()
+        new_tag.client.add(client)
+        new_tag.save()
     return HttpResponseRedirect("/client/" + str(client_id))
 
 class Timeline(View):
     def get(self, request, client_id):
-        print("client id", client_id)
         template = "timeline.html"
         client = Client.objects.get(pk = client_id)
         interactions = client.interaction_client.all().order_by('timestamp')
