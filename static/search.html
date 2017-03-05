@@ -14,12 +14,13 @@
     <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}" >
     <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}" >
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" >
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>   
+    <script src="{% static 'js/search.js' %}"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <div class="content ">
-
-    <div class="fixed">
+    <div id="search-header" class="fixed">
         <div>
           <a class="our-icon icon icon-close pull-left turqoise" href="/logout"></a>
           <a class="our-icon icon icon-compose pull-right turqoise" href="/new_client"></a>
@@ -29,34 +30,35 @@
         
         <!-- SEARCH BAR -->
         <div id="searchbar">
-            <span class="grey-text subtitle-text">search</span>
             <form action='' method="POST">
             {% csrf_token %}
                 <input type="input" id="search_input" name="search_input"
                        class="subtitle-text lightest-blue" 
-                       placeholder="enter tags">
+                       placeholder="search clients by tag">
             </form>
         </div>
     </div>
 
-    <div> 
+    <div class="content" id="search-body"> 
     <!-- SEARCH RESULTS LIST -->
-        <div style="margin-top: 170px;">
+        <div>
         {% if client_list %}
             {% for client in client_list %} 
-                <div class="lightest-blue search-result">
+                <div class="turquoise search-result">
                   <a href="client/{{client.id}}">
-                    <div class="table-view-cell medium-text salmon-orange", id="searchname">
+                    <div class="table-view-cell medium-text white-text", id="searchname">
                     {{client.first_name}} {{client.last_name}} / {{client.nick_name}}</div>
-                    <div class="table-view-cell", id="search-info">
-                        {{client.tags_list}}
-                    </div>
+                    {% if client.tags_list %}
+                        <div class="table-view-cell lightest-blue", id="search-info">
+                            {{client.tags_list}}
+                        </div>
+                    {% endif %}
                   </a>
                 </div>
             {% endfor %}        
         {% else %}
-            <div class="grey medium-text">
-                No clients found.
+            <div class="grey medium-text" style="padding: 10px">
+                No clients found. Please try a new tag, or enter a blank search to return to the full list of clients. 
             </div>
         {% endif %}
         

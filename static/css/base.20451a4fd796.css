@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6, p, div, span {
     background-color: white;
 }
 
-.white { background-color: purple}
+.white { background-color: white}
 
 .lightest-blue { background-color: #EAF4F5; }
 
@@ -71,11 +71,14 @@ h1, h2, h3, h4, h5, h6, p, div, span {
 .title-text {
     margin-top: 10px;
     font-weight: 100;
-    font-size: 43px; 
+    font-size: 48px; 
     text-align: center;
     padding: 10px;
 }
 
-.subtitle-text { font-size: 25px; }
+.subtitle-text { 
+    font-size: 25px; 
+    margin: 10px 0;
+}
 
 .our-icon { padding: 10px; }
