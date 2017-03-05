@@ -22,47 +22,51 @@
 
     {% if client %}
     <div id="profile-header" class="fixed">
-        <div>
-          <a class="our-icon icon icon-left-nav pull-left salmon-orange-text" href="/search"></a>
-          <div class="our-icon icon icon-compose pull-right salmon-orange-text" id="changeNameMode"></div>
-        </div>
-        <div id="nameformdiv" class="hidden">
-          <form action='' method='POST' id='updatenameform' name='updatenameform'>
-            {% csrf_token %}
-            <div id="nameinputsdiv">
-              <input type="text" name="updatefirstname" id="updatefirstname" value="{{client.first_name}}">
-              <input type="text" name="updatenickname" id="updatenickname" value="{{client.nick_name}}">
-              <input type="text" name="updatelastname" id="updatelastname" value="{{client.last_name}}">
-            </div>
-            <div class="button" id="updateNameButton" onclick="submitUpdateNameForm()" title="updateNameButton!">
-              <div class="our-icon icon icon-check pull-right salmon-orange-text" id="changeNameMode"></div>
-            </div>
+      <div>
+        <a class="our-icon icon icon-left-nav pull-left turquoise-text" href="/search"></a>
+        <div class="our-icon icon icon-compose pull-right turquoise-text" id="changeNameMode"></div>
 
-          </form>
-        </div>
         <div id="namedisplaydiv">
-          <p class="name-text">{{client.first_name}} "{{client.nick_name}}" {{client.last_name}}</p>
+          {% if client.nick_name != "" %}
+            <h1 class="salmon-orange-text name-text">{{client.first_name}} "{{client.nick_name}}" {{client.last_name}}</h1>
+          {% else %}
+            <h1 class="salmon-orange-text name-text">{{client.first_name}} {{client.last_name}}</h1>            
+          {% endif %}
         </div>
-        <div id="tags"><p>
-          {% for tag in client.get_tags %}
-            <form action='' method='POST' id='deleterequestform' name='deleterequestform' style="display: inline; margin: 0; padding: 0;">
-              {% csrf_token %}
-            <input type="text" name="deletetagdesc" id="deletetagdesc" value="{{tag}}" class="hidden" >          
-            <span class="tag">
-              {{tag}} 
-              <input type="submit" value="x" id="deletetagsubmit" name="deletetagsubmit">
-            </span>
-            </form>
-          {% endfor %}
-            <form action='' method='POST' id='newtaginput' name='newtaginput'>
-              {% csrf_token %}
-              <input type="text" name="newtagvalue" id="newtagvalue" value="Type to add a new tag">
-              <input type="submit" value="+" id="newtagsubmit" name="newtagsubmit" class="tag">
-            </form></p>
-        </div>
-    </div>
-    
-    <div class="content">
+      </div>
+
+      <div id="nameformdiv" class="hidden">
+        <form action='' method='POST' id='updatenameform' name='updatenameform'>
+          {% csrf_token %}
+          <div id="nameinputsdiv">
+            <input type="text" name="updatefirstname" id="updatefirstname" value="{{client.first_name}}">
+            <input type="text" name="updatenickname" id="updatenickname" value="{{client.nick_name}}">
+            <input type="text" name="updatelastname" id="updatelastname" value="{{client.last_name}}">
+          </div>
+          <div class="button" id="updateNameButton" onclick="submitUpdateNameForm()" title="updateNameButton!">
+            <div class="our-icon icon icon-check pull-right turquoise-text" id="changeNameMode"></div>
+          </div>
+
+        </form>
+      </div>
+
+      <div id="tags"><p>
+        {% for tag in client.get_tags %}
+          <form action='' method='POST' id='deletetagform' name='deletetagform' style="display: inline; margin: 0; padding: 0;">
+            {% csrf_token %}
+          <input type="text" name="deletetagdesc" id="deletetagdesc" value="{{tag}}" class="hidden" >          
+          <span class="tag">
+            {{tag}} 
+            <input type="submit" value="x" id="deletetagsubmit" name="deletetagsubmit">
+          </span>
+          </form>
+        {% endfor %}
+          <form action='' method='POST' id='newtaginput' name='newtaginput'>
+            {% csrf_token %}
+            <input type="text" name="newtagvalue" id="newtagvalue" placeholder="Type to add a new tag">
+          </form></p>
+      </div>
+
         <div id="profile-nav" class="lightest-blue">
           <div class="profile-nav-button" id="profile-totimeline">
             <div class="our-icon icon icon-list navbuttonicon" style="color:white"></div>
@@ -74,17 +78,21 @@
             <div class="our-icon icon icon-person navbuttonicon" style="color:white"></div>
           </div>
         </div>
+      </div>
 
+    
+    <div class="content">
 
     <div class="hidden profile-subpage" id="profile-timeline">
-      <a class="our-icon icon icon-plus pull-right salmon-orange-text" href="/logging_info_1/{{client.id}}"></a>
+      </br></br>
+      <p class="turquoise-text subtitle-text">Previous Interactions</br></p>
+      <a class="our-icon icon icon-plus pull-right salmon-orange-text" href="/log_interaction/{{client.id}}"></a>
         {% if interactions %}
           <ul class="timeline">
             {% for interaction in interactions %}
               <li>
               <div class="timeline-badge.primary"><i class="glyphicon glyphicon-check"></i></div>
               <div class="timeline-panel">
-                  <span class="bold turquoise-text"> {{interaction.title}}a</span>
                 <div class="timeline-body">
                   <p class="timeline-desc turquoise-text">{{interaction.description}}</p>
                   <p class="timeline-info salmon-orange-text">{{interaction.timestamp}} | {{interaction.user}}</p>
@@ -99,7 +107,8 @@
     </div>
 
     <div class="profile-subpage" id="profile-quickinfo">
-      <p class="turquoise-text subtitle-text">Quick Info:</br></p>
+      </br></br>
+      <p class="turquoise-text subtitle-text">Quick Info (y/n)</br></p>
           <form action='' method="POST" id="quickinfo_form" name="quickinfo_form">
             {% csrf_token %}
               <div class="row">
@@ -162,8 +171,8 @@
                 <span class="light-blue-text q-text">has insurance?</span>
               </div>
 
-              <div class="row">
-                <span class="light-blue-text q-text">duration of homelessness</span>
+              <div class="row"></br>
+                <p class="turquoise-text subtitle-text">Duration of homelessness</p>
                 <span class="duration-select">
                   <select name="duration" id="duration">
                     <option {% if client.duration_of_homelessness == 1 %} selected="selected" {% endif %}>1</option>
@@ -180,116 +189,47 @@
                 </span>
               </div>
               <button type="submit" > update </button>
+
+              <div class="row"></br>
+                <p class="turquoise-text subtitle-text">Story</p>
+                <p>{{client.story}}</p>
+              </div>
             </form>
     </div>
 
     <div class="hidden profile-subpage" id="profile-requests">
-        <div class="button" id="updateNameButton" onclick="submitUpdateRequestsForm()">
-          <div class="our-icon icon icon-check pull-right salmon-orange-text" id="addrequestbutton"></div>
-        </div>
-      <span class="turquoise-text subtitle-text">Incomplete Requests:</br></span>
+      </br></br>
+      <p class="turquoise-text subtitle-text">Incomplete Requests</br></p>
       <div class="media-body">
-        <div class="card clear">
-            <form action='' method='POST' id='newrequestinput' name='newrequestinput'>
-              {% csrf_token %}
-              <input type="text" name="newrequestvalue" id="newrequestvalue" placeholder="type to add new request"><br>
-            </form>
+          <form action='' method='POST' id='newrequestinput' name='newrequestinput'>
+            {% csrf_token %}
+            <input type="text" name="newrequestvalue" id="newrequestvalue" placeholder="type to add new request"><br>
+          </form>
 
-          <ul id="requestlist" class="table-view"> 
+          <ul id="requestlist"> 
           {% if requests %}
             {% for request in requests %}
-              <li class="table-view-cell">
-                {request.description}
+              <li class="request">
+                {{request.description}}
                 <form action='' method='POST' id='deleterequestform' name='deleterequestform'>
                   {% csrf_token %}
-                  <input type="text" name="requestID" id="requestID" value="{{request.id}}" class="hidden" >
-                  <div class="button" id="updateNameButton" onclick="removeRequestForm()" title="updateNameButton!">
+                  <input type="text" name="deletereqdesc" id="deletereqdesc" value="{{request.id}}" class="hidden" >
+                  <div class="button" onclick="removeRequestForm()">
                     <div class="removereqbutton">
-                      <div class="our-icon icon icon-close pull-right grey-text reqremove" id="{{request.id}}"></div>
+                      <div class="our-icon icon icon-close pull-right white-text reqremove" id="{{request.id}}"></div>
                     </div>
                   </div>
                 </form>
               </li>
             {% endfor %}
         {% else %}
-              <li class="table-view-cell">No current requests</li>
+              <li class="request">No current requests</li>
         {% endif %}
             </ul>
           </div> 
-        </div>
       </div>
     </div>
-
-
-    <div style="display:none">
-      <ul class="table-view">
-        <li class="table-view-cell media">
-            <div class="media-body turquise">
-              <div class="sub-header">
-              <span class="icon icon-compose"></span>
-                <!-- TODO: change to url to log interaction url -->
-                <a href= "/logging_info_1/{{client.id}}">
-                Log Interaction
-                </a>
-              </div>
-            </div>
-        </li>
-        <li class="table-view-cell media">
-
-        </li>
-        <li class="table-view-cell media">
-          <a>
-            <div class="media-body turquise">
-              <div class="sub-header">
-              <span class="icon icon-info"></span>
-              Quick Info
-              </div>
-              <div class="card clear">
-                <ul class="table-view">
-                {% if client.is_military%}
-                  <li class="table-view-cell">Served In The Military</li>
-                {% endif %}
-                {% if client.health_concerns%}
-                  <li class="table-view-cell">Has Health Concerns</li>
-                {% endif %}
-                {% if client.dna_assistance%}
-                  <li class="table-view-cell">Needs DNA Assistance</li>
-                {% endif %}
-                {% if client.has_doctor%}
-                  <li class="table-view-cell">Has A Doctor</li>
-                {% endif %} 
-                {% if client.has_insurance%}
-                  <li class="table-view-cell">Has Insurance</li>
-                {% endif %} 
-                  <li class="table-view-cell">Duration of Homelessness: {{ client.duration_of_homelessness }} Yr</li>      
-                </ul>
-              </div>
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-          <a>
-            <div class="media-body turquise">
-            <div class = "sub-header">
-              <span class="icon icon-edit"></span>
-              Story
-              </div>
-              <p>{{ client.story }}</p>
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-            <div class="media-body turquise">
-              <div class="sub-header">
-              <span class="icon icon-compose"></span>
-                <a href= "/timeline/{{client.id }}">
-                Timeline
-                </a>
-              </div>
-            </div>
-        </li>
-      </ul>
-    </div>
+  <!-- </div> -->
     {% else %}
       <p> Client Does Not Exist </p>
     {% endif %}
