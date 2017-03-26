@@ -1,8 +1,8 @@
 # reachout
 
-##Setup
+## Setup
 
-####Windows
+#### Windows
 ```
 virtualenv venv
 venv\scripts\activate
@@ -10,7 +10,7 @@ pip install -r requirements.txt
 python manage.py migrate --run-syncdb
 ```
 
-####Mac
+#### Mac
 ```
 virtualenv venv
 source venv/bin/activate
@@ -18,17 +18,17 @@ pip install -r requirements.txt
 python manage.py migrate --run-syncdb
 ```
 
-##Running
+## Running
 
-####Windows
+#### Windows
 
-####Mac
+#### Mac
 ```
 source venv/bin/activate
 python manage.py runserver
 ```
 
-####Windows
+#### Windows
 ```
 venv\scripts\activate
 python manage.py runserver
