@@ -8,11 +8,15 @@ from django.http import HttpResponseRedirect
 from backend.models import Client
 from backend.models import Tag
 
+from difflib import get_close_matches
+
 class Search(View):
     def get(self, request):
         print("Search Page: GET request")
         template = "search.html"
         client_list = Client.objects.all()
+        tags_list = Tag.objects.all()
+        print(tags_list)
 
         search_input = request.POST.get("search_input")
         if (search_input != None): 
@@ -24,8 +28,11 @@ class Search(View):
     def post(self, request):
         print("Search Page: POST request")
         full_client_list = Client.objects.all()
+        tag_objects_list = Tag.objects.all()
+
         client_list      = []
         template         = "search.html"
+
 
         search_input = (request.POST.get('search_input'))
         if (search_input != None): search_input = search_input.lower()
@@ -35,20 +42,24 @@ class Search(View):
             client_list  = full_client_list
 
         for client in full_client_list: 
-            hasFirst = (client.first_name.lower() == search_input)
-            hasLast  = (client.last_name.lower()  == search_input)
-            hasNick  = (client.nick_name.lower()  == search_input)
-
-            if (hasFirst or hasLast or hasNick):
-                client_list.append(client)
+            client_tags = [client.first_name.lower(), 
+                           client.last_name.lower(), 
+                           client.nick_name.lower()]
 
             for tag in client.get_tags(): 
+                client_tags.append(tag)
+
+            for tag in client_tags:
                 if (client not in client_list and 
                     tag == search_input or 
                     tag in search_input.split() or 
                     search_input in tag.split()):
                     client_list.append(client)
 
+            matches = get_close_matches(search_input, client_tags)
+
+            if (client not in client_list and matches != []):
+                client_list.append(client)
 
         context = {"client_list": client_list}
         return render(request, template, context)
