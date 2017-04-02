@@ -108,12 +108,23 @@
 
     <div class="profile-subpage" id="profile-quickinfo">
       </br></br>
-      <p class="turquoise-text subtitle-text">Quick Info (y/n)</br></p>
+      <p class="turquoise-text subtitle-text">Quick Info</br></p>
           <form action='' method="POST" id="quickinfo_form" name="quickinfo_form">
             {% csrf_token %}
               <div class="row">
                 <span class="radio-toggles">
-                  <span clas="radio-toggle">
+                  <span class="radio-toggle">
+                    <label style="margin:4px">Y</label>
+                  </span>
+                  <span class="radio-toggle">
+                    <label style="margin:4px">N</label>
+                  </span>
+                </span>
+              </div>
+
+              <div class="row">
+                <span class="radio-toggles">
+                  <span class="radio-toggle">
                     <input type="radio" id="radio1" name="is_military" value="yes" {% if client.is_military %} checked {% endif %}>
                   </span>
                   <span class="radio-toggle">
@@ -124,7 +135,7 @@
               </div>
               <div class="row">
                 <span class="radio-toggles">
-                  <span clas="radio-toggle">
+                  <span class="radio-toggle">
                     <input type="radio" id="radio3" name="health_concerns" value="yes" {% if client.health_concerns %} checked {% endif %}>
                   </span>
                   <span class="radio-toggle">
@@ -136,7 +147,7 @@
 
               <div class="row">
                 <span class="radio-toggles">
-                  <span clas="radio-toggle">
+                  <span class="radio-toggle">
                     <input type="radio" id="radio5" name="dna_assistance" value="yes" {% if client.dna_assistance %} checked {% endif %}>
                   </span>
                   <span class="radio-toggle">
@@ -147,7 +158,7 @@
               </div>
               <div class="row">
                 <span class="radio-toggles">
-                  <span clas="radio-toggle">
+                  <span class="radio-toggle">
                     <input type="radio" id="radio7" name="has_doctor" value="yes" {% if client.has_doctor %} checked {% endif %}>
                   </span>
                   <span class="radio-toggle">
@@ -160,7 +171,7 @@
 
               <div class="row">
                 <span class="radio-toggles">
-                  <span clas="radio-toggle">
+                  <span class="radio-toggle">
                     <input type="radio" id="radio9" name="has_insurance" value="yes" {% if client.has_insurance %} checked {% endif %}>
                   </span>
                   <span class="radio-toggle">
