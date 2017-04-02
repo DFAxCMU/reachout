@@ -42,25 +42,32 @@
     <div class="content" id="search-body"> 
     <!-- SEARCH RESULTS LIST -->
         <div>
-        {% if client_list %}
-            {% for client in client_list %} 
-                <div class="turquoise search-result">
-                  <a href="client/{{client.id}}">
-                    <div class="table-view-cell medium-text white-text", id="searchname">
-                    {{client.first_name}} {{client.last_name}} / {{client.nick_name}}</div>
-                    {% if client.tags_list %}
-                        <div class="table-view-cell lightest-blue", id="search-info">
-                            {{client.tags_list}}
-                        </div>
-                    {% endif %}
-                  </a>
+            {% if client_list %}
+                {% for client in client_list %} 
+                    <div class="turquoise search-result">
+                      <a href="client/{{client.id}}">
+                        <div class="table-view-cell medium-text white-text", id="searchname">
+                        {{client.first_name}} {{client.last_name}} / {{client.nick_name}}</div>
+                        {% if client.tags_list %}
+                            <div class="table-view-cell lightest-blue", id="search-info">
+                                {{client.tags_list}}
+                            </div>
+                        {% endif %}
+                      </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="grey medium-text" style="padding: 10px">
+                    No clients found. Please try a new tag, or enter a blank search to return to the full list of clients. 
                 </div>
-            {% endfor %}        
-        {% else %}
-            <div class="grey medium-text" style="padding: 10px">
-                No clients found. Please try a new tag, or enter a blank search to return to the full list of clients. 
+            {% endif %}
+            <div class="lightest-blue search-result">
+              <a href="/search">
+                <div class="table-view-cell turquoise-text" id="clear">
+                    Clear Search
+                </div>
+              </a>
             </div>
-        {% endif %}
         
         </div>
     </div>

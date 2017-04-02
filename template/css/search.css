@@ -37,7 +37,6 @@ input[type=input] {
     width: 100%;
     padding: 10px;
     margin: 0;
-    /*margin-bottom: 12px;*/
 
     text-align: center;
     border-radius: 0px;
@@ -47,11 +46,10 @@ input[type=input] {
     border: none;
 }
 
-#search-body {
-    /*margin-top: 100px;*/
-}
-
-#search-header {
+#clear {
+    text-align: center;
+    padding: 0px 50px;
+    font-size: 20px;
 }
 
 
