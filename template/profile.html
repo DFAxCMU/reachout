@@ -94,7 +94,7 @@
               <div class="timeline-badge.primary"><i class="glyphicon glyphicon-check"></i></div>
               <div class="timeline-panel">
                 <div class="timeline-body">
-                  <p class="timeline-desc turquoise-text">{{interaction.description}}<a href="/edit_interaction/{{client.id}}/{{interaction.id}}"><span class="icon icon-edit"></span></a></p>
+                  <p class="timeline-desc turquoise-text">{{interaction.description}}<a href="/edit_interaction/{{client.id}}/{{interaction.id}}"><span class="icon icon-edit"></span></a> <a href="/delete_interaction/{{client.id}}/{{interaction.id}}"><span class="icon icon-trash"></span></a></p>
                   <p class="timeline-info salmon-orange-text">{{interaction.timestamp}} | {{interaction.user}}</p>
                 </div>
               </div>
@@ -221,15 +221,15 @@
           {% if requests %}
             {% for request in requests %}
               <li class="request">
-                {{request.description}}
-                <form action='' method='POST' id='deleterequestform' name='deleterequestform'>
-                  {% csrf_token %}
-                  <input type="text" name="deletereqdesc" id="deletereqdesc" value="{{request.id}}" class="hidden" >
                   <div class="button" onclick="removeRequestForm()">
                     <div class="removereqbutton">
                       <div class="our-icon icon icon-close pull-right white-text reqremove" id="{{request.id}}"></div>
                     </div>
                   </div>
+                {{request.description}} <br> <span class="lightest-blue-text requesttimestamp">{{request.asked_timestamp}} </span>
+                <form action='' method='POST' id='deleterequestform' name='deleterequestform'>
+                  {% csrf_token %}
+                  <input type="text" name="deletereqdesc" id="deletereqdesc" value="{{request.id}}" class="hidden" >
                 </form>
               </li>
             {% endfor %}
