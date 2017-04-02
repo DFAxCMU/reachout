@@ -44,3 +44,21 @@ class EditInteraction(View):
         interaction.description = new_description
         interaction.save()
         return HttpResponseRedirect("/client/" + str(client_id))
+
+class DeleteInteraction(View):
+    def get(self, request, client_id,interaction_id):
+        template = "delete_interaction.html"
+        interaction = Interaction.objects.get(pk=interaction_id)
+        context = {
+            "cid": client_id,
+            "interaction_description" : interaction.description,
+            "interaction_timestamp": interaction.timestamp,
+            "interaction_user": interaction.user, 
+        }
+        return render(request, template, context)
+    def post(self, request, client_id,interaction_id):
+        client = Client.objects.get(pk=client_id)
+        user = CustomUser.objects.all()[0]
+        interaction = Interaction.objects.get(pk=interaction_id)
+        interaction.delete()
+        return HttpResponseRedirect("/client/" + str(client_id))
