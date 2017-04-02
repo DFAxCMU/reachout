@@ -29,3 +29,18 @@ class LogInteraction(View):
                                       user=user)
         new_interaction.save()
         return HttpResponseRedirect("/client/" + str(client_id))
+
+class EditInteraction(View):
+    def get(self, request, client_id,interaction_id):
+        template = "edit_interaction.html"
+        interaction = Interaction.objects.get(pk=interaction_id)
+        context = {"cid": client_id,"interaction_description" : interaction.description}
+        return render(request, template, context)
+    def post(self, request, client_id,interaction_id):
+        client = Client.objects.get(pk=client_id)
+        user = CustomUser.objects.all()[0]
+        new_description = request.POST.get("description")
+        interaction = Interaction.objects.get(pk=interaction_id)
+        interaction.description = new_description
+        interaction.save()
+        return HttpResponseRedirect("/client/" + str(client_id))
