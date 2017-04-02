@@ -30,7 +30,7 @@
     <div class="title-bar">
         <a class="icon icon-left-nav turqoise bigger pull-left" href="javascript:history.back()"></a>
         
-      <h1 class="title-text">Edit Interaction</h1>
+      <h1 class="title-text">Delete Interaction</h1>
     </div>
 
 
@@ -38,11 +38,12 @@
   {% csrf_token %} 
 
     <div class="row">
-        <textarea class="inter-description" rows="7" name="description" id="description" >{{interaction_description}} </textarea>
-          <div id="centerSubmit"><button type="submit" class="submitButtonInteraction btn btn-primary">  Edit </button> </div> 
+        <h4> Are you sure you want to delete this interaction? </h4> <br>
+        <p> Description: {{ interaction_description }} </p>
+        <p> Date: {{ interaction_timestamp }} </p>
+        <p> Created By: {{ interaction_user }} </p>
+        <div id="centerSubmit"><button type="submit" class="btn btn-negative">  Delete </button> </div> 
     </div>
-
-  
 
   <div class="client-id" style="display:none;" data-cid="{{ cid }}"></div>
   
