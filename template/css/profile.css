@@ -1,12 +1,12 @@
 #profile-header {
     width: 100%;
-    margin: 0;
-    padding: 0;
+    /*margin: 0;*/
+    /*padding: 0;*/
 }
 
-.icon {
-    /*margin: 5px;*/
-    /*padding: 5px;*/
+.edit-icon {
+    margin: 5px;
+    padding: 5px;
 }
 
 .name-text{
@@ -108,9 +108,6 @@
     /*width: 80%;*/
 }
 
-.content {
-    margin-top: 150px;
-}
 
 #newrequestvalue {
     color: black;

@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html>
+<html> 
   <head>
     <meta charset="utf-8">
     <title>Profile Page</title>
@@ -19,9 +19,11 @@
 
   </head>
   <body>
+  <div class="content">
+
 
     {% if client %}
-    <div id="profile-header" class="fixed">
+    <div id="profile-header">
       <div>
         <a class="our-icon icon icon-left-nav pull-left turquoise-text" href="/search"></a>
         <div class="our-icon icon icon-compose pull-right turquoise-text" id="changeNameMode"></div>
@@ -80,10 +82,9 @@
       </div>
 
     
-    <div class="content">
+    <div>
 
     <div class="hidden profile-subpage" id="profile-timeline">
-      </br></br>
       <p class="turquoise-text subtitle-text">Previous Interactions</br></p>
       <a class="our-icon icon icon-plus pull-right salmon-orange-text" href="/log_interaction/{{client.id}}"></a>
         {% if interactions %}
@@ -106,7 +107,6 @@
     </div>
 
     <div class="profile-subpage" id="profile-quickinfo">
-      </br></br>
       <p class="turquoise-text subtitle-text">Quick Info</br></p>
           <form action='' method="POST" id="quickinfo_form" name="quickinfo_form">
             {% csrf_token %}
@@ -208,7 +208,6 @@
     </div>
 
     <div class="hidden profile-subpage" id="profile-requests">
-      </br></br>
       <p class="turquoise-text subtitle-text">Incomplete Requests</br></p>
       <div class="media-body">
           <form action='' method='POST' id='newrequestinput' name='newrequestinput'>
@@ -243,6 +242,7 @@
     {% else %}
       <p> Client Does Not Exist </p>
     {% endif %}
+    </div>
     </div>
   </body>
 </html>
