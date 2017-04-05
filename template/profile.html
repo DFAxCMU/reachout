@@ -226,7 +226,7 @@
                       <div class="our-icon icon icon-close pull-right white-text reqremove" id="{{request.id}}"></div>
                     </div>
                   </div>
-                {{request.description}} <br> <span class="lightest-blue-text requesttimestamp">{{request.asked_timestamp}} </span>
+                {{request.description}} <br> <span class="requesttimestamp">{{request.asked_timestamp}} </span>
                 <form action='' method='POST' id='deleterequestform' name='deleterequestform'>
                   {% csrf_token %}
                   <input type="text" name="deletereqdesc" id="deletereqdesc" value="{{request.id}}" class="hidden" >
