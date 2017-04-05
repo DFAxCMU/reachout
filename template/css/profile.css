@@ -24,10 +24,9 @@
     padding: 10px;
 }
 
-#profile-header{
-    /*padding: 20px 10px 0px 10px;*/
-    /*margin: 0;*/
-    /*background-color: red;*/
+.requesttimestamp {
+    font-size: 12px;
+    color: black;
 }
 
 #profile-name {
@@ -174,10 +173,8 @@ ul, ol, li {
 }
 
 .reqremove {
-    height: 50px;
-    margin-top: -33px;
-    margin-right: -10px;
-    border-left: 1px solid white;
+    height: 100%;
+    position: relative;
 }
 
 .navbuttonicon {
@@ -187,7 +184,7 @@ ul, ol, li {
 
 #deletetagsubmit {
     background-color: #7BB6BC;
-    color: black;
+    /*color: black;*/
     border-radius: 50%;
 }
 
