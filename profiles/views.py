@@ -123,4 +123,19 @@ class Timeline(View):
         }
         return render(request, template, context)
 
-
+class EditRequest(View):
+    def get(self, request, client_id, request_id):
+        template = "edit_request.html"
+        req = Requests.objects.get(pk=request_id)
+        context = {"cid": client_id,"request_description" : req.description}
+        return render(request, template, context)
+    def post(self, request, client_id, request_id):
+        client = Client.objects.get(pk=client_id)
+        user = CustomUser.objects.all()[0]
+        new_description = request.POST.get("description")
+        if (new_description == ""):
+            return HttpResponseRedirect("/client/" + str(client_id))
+        req = Requests.objects.get(pk=request_id)
+        req.description = new_description
+        req.save()
+        return HttpResponseRedirect("/client/" + str(client_id))

@@ -223,6 +223,11 @@
                     <div class="removereqbutton">
                       <div class="our-icon icon icon-close pull-right white-text reqremove" id="{{request.id}}"></div>
                     </div>
+                    <div class="updatereqbutton">
+                      <a href="/edit_request/{{client.id}}/{{request.id}}">
+                      <div class="our-icon icon icon-compose pull-right white-text requpdate" id="{{request.id}}"></div>
+                      </a>
+                    </div>
                   </div>
                 {{request.description}} <br> <span class="requesttimestamp">{{request.asked_timestamp}} </span>
                 <form action='' method='POST' id='deleterequestform' name='deleterequestform'>

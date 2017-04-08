@@ -177,6 +177,12 @@ ul, ol, li {
     position: relative;
 }
 
+.requpdate {
+    height: 100%;
+    position: relative;
+    margin-right: 0px;
+}
+
 .navbuttonicon {
     margin-top: -6px;    
     margin-left: -6px;    
