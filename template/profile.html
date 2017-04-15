@@ -26,37 +26,20 @@
     <div id="profile-header">
       <div>
         <a class="our-icon icon icon-left-nav pull-left turquoise-text" href="/search"></a>
-        <div class="our-icon icon icon-compose pull-right turquoise-text" id="changeNameMode"></div>
+        <a class="our-icon icon icon-compose pull-right turquoise-text" href="/edit_name/{{client.id}}"></a>
 
-        <div id="namedisplaydiv">
-          {% if client.nick_name != "" %}
-            <h1 class="salmon-orange-text name-text">{{client.first_name}} "{{client.nick_name}}" {{client.last_name}}</h1>
-          {% else %}
-            <h1 class="salmon-orange-text name-text">{{client.first_name}} {{client.last_name}}</h1>            
-          {% endif %}
-        </div>
-      </div>
-
-      <div id="nameformdiv" class="hidden">
-        <form action='' method='POST' id='updatenameform' name='updatenameform'>
-          {% csrf_token %}
-          <div id="nameinputsdiv">
-            <input type="text" name="updatefirstname" id="updatefirstname" value="{{client.first_name}}">
-            <input type="text" name="updatenickname" id="updatenickname" value="{{client.nick_name}}">
-            <input type="text" name="updatelastname" id="updatelastname" value="{{client.last_name}}">
-          </div>
-          <div class="button" id="updateNameButton" onclick="submitUpdateNameForm()" title="updateNameButton!">
-            <div class="our-icon icon icon-check pull-right turquoise-text" id="changeNameMode"></div>
-          </div>
-
-        </form>
+        {% if client.nick_name != "" %}
+          <h1 class="salmon-orange-text name-text">{{client.first_name}} "{{client.nick_name}}" {{client.last_name}}</h1>
+        {% else %}
+          <h1 class="salmon-orange-text name-text">{{client.first_name}} {{client.last_name}}</h1>            
+        {% endif %}
       </div>
 
       <div id="tags"><p>
         {% for tag in client.get_tags %}
           <form action='' method='POST' id='deletetagform' name='deletetagform' style="display: inline; margin: 0; padding: 0;">
             {% csrf_token %}
-          <input type="text" name="deletetagdesc" id="deletetagdesc" value="{{tag}}" class="hidden" >          
+          <input type="text" name="deletetagdesc" id="deletetagdesc" value="{{tag}}" class="hidden" >
           <span class="tag">
             {{tag}} 
             <input type="submit" value="x" id="deletetagsubmit" name="deletetagsubmit">
