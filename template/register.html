@@ -30,14 +30,14 @@
     <form action='' method="POST">
     {% csrf_token %}
     <ul class="form-style-1 font">
-        <li><label>full name </label><input type="text" name="first_name" class="field-divided" placeholder="first" required/>&nbsp;<input type="text" name="last_name" class="field-divided" placeholder="last" required/></li>
+        <li><label>full name </label><input type="text" value="{{first_name}}" name="first_name" class="field-divided" placeholder="first" required/>&nbsp;<input type="text" value="{{last_name}}" name="last_name" class="field-divided" placeholder="last" required/></li>
         <li>
             <label>e-mail</label>
-            <input type="email" name="email" class="field-long" required/>
+            <input type="email" name="email" class="field-long" value="{{email}}" required />
         </li>
         <li>
             <label>username</label>
-            <input type="text" name="username" class="field-long" required/>
+            <input type="text" name="username" value="{{username}}" class="field-long" required/>
         </li>
         <li>
             <label>password </label>
@@ -49,7 +49,7 @@
         </li>
         <li>
             <label>organization code </label>
-            <input type="password" name="organization_code" class="field-divided" required/>
+            <input type="password" value="{{org_code}}" name="organization_code" class="field-divided" required/>
         </li>
     </ul>
     <button type="submit" id="signup_but"> sign up </button>

@@ -17,19 +17,31 @@ class HomePage(View):
 
 class Register(View):
     def get(self, request):
-        return render(request, 'register.html')
+        reg_attempt = {
+            "first_name": "",
+            "last_name":  "",  
+            "email":  "",
+            "user":  "", 
+            "org_code": "" 
+        }
+        return render(request, 'register.html',reg_attempt)
 
     def post(self, request):
+        saved_fields = {
+            "first_name": request.POST.get("first_name"),
+            "last_name":  request.POST.get("last_name"),
+            "email":  request.POST.get("email"),
+            "username":  request.POST.get("username"), 
+            "org_code": request.POST.get("organization_code")
+        }
         username = request.POST.get('username')
         operation_safety_net = "safety_net"
         if(request.POST.get('organization_code') != "safety_net"):
-            return render(request, 'register.html', {
-                'error_message': "Organization code is incorrect",
-            })
+            saved_fields["error_message"] = "Organization code is incorrect"
+            return render(request, 'register.html',saved_fields)
         if(request.POST.get('password') != request.POST.get('repassword')):
-            return render(request, 'register.html', {
-                'error_message': "Passwords do not match",
-            })        
+            saved_fields["error_message"] = "Passwords do not match"
+            return render(request, 'register.html', saved_fields)        
         try:
             User.objects.get(username__iexact=username)
         except User.DoesNotExist:
@@ -48,13 +60,10 @@ class Register(View):
                 login(request, user)
                 return HttpResponseRedirect("/search")
             else:
-                return render(request, 'register.html', {
-                    'error_message': "Password or username is incorrect",
-                })
-        return render(request, 'register.html', {
-            'error_message': "This username already exists",
-        })
-
+                saved_fields["error_message"] = "Password or username is incorrect"
+                return render(request, 'register.html',saved_fields)
+        saved_fields["error_message"] = "This username already exists"
+        return render(request, 'register.html',saved_fields)
 
 class Login(View):
     def get(self, request):
