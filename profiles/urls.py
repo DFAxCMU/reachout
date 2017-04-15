@@ -7,4 +7,6 @@ urlpatterns = [
     url(r'^client/(?P<client_id>[a-zA-Z0-9_.-]+)$', login_required(ClientProfile.as_view())),
     url(r'^timeline/(?P<client_id>[a-zA-Z0-9_.-]+)$', login_required(Timeline.as_view())),
     url(r'^new_client$', login_required(NewClientProfile.as_view())),
+    url(r'^edit_request/(?P<client_id>[a-zA-Z0-9_.-]+)/(?P<request_id>[a-zA-Z0-9_.-]+)', login_required(EditRequest.as_view())),
+    url(r'^edit_name/(?P<client_id>[a-zA-Z0-9_.-]+)', login_required(EditName.as_view())),
 ]

@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>reachout</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/log_info.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" >
+    
+
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/ratchet.css' %}" rel="stylesheet">
+
+
+  </head>
+  <a class="submit"  href="/"></a>
+  <body>  
+    <div id="profile-header">
+      <div>
+        <a class="icon icon-left-nav turqoise pull-left" href="javascript:history.back()"></a>
+        <h1 class="name-text black-text">Edit Name</h1>
+      </div>
+
+
+  <form action='' method="POST">
+  {% csrf_token %} 
+
+    <div class="row">
+      <span class="salmon-orange-text subtitle-text"> First name: </span>
+        <input type="text" 
+               name="first_name" 
+               value="{{client.first_name}}"><br>
+      <span class="salmon-orange-text subtitle-text"> Last name: </span>
+        <input type="text" 
+               name="last_name" 
+               value="{{client.last_name}}"><br>
+      <di class="salmon-orange-text subtitle-text"> Nickname: </span>
+        <input type="text" 
+               name="nick_name" 
+               value="{{client.nick_name}}"><br>
+
+      <div id="centerSubmit"><button type="submit" class="submitButtonInteraction btn btn-primary">  Edit </button> </div> 
+    </div>
+
+  
+
+  <div class="client-id" style="display:none;" data-cid="{{ cid }}"></div>
+  
+
+  </body>
+</html>

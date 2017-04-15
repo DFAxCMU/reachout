@@ -1,42 +1,12 @@
+var sub_page;// = "quick_info"
+
 $(document).ready(function() {
-    var editNameMode = true;
-    $("#profile-totimeline").click(function() {
-        clearAll();
-        $("#profile-timeline").removeClass("hidden");
-        $("#profile-totimeline").addClass("selected-button");
+    $("#change_subpage_form").click(function() {
+        changeSubPage();
     })
-    $("#profile-toquickinfo").click(function() {
-        clearAll();
-        $("#profile-quickinfo").removeClass("hidden");
-        $("#profile-toquickinfo").addClass("selected-button");
-    })
-    $("#profile-torequests").click(function() {
-        clearAll();
-        $("#profile-requests").removeClass("hidden");
-        $("#profile-torequests").addClass("selected-button");
-    })
-
-    addRequest();
-    $("#changeNameMode").click(function() {
-        editName(editNameMode);
-        editNameMode = ! editNameMode;
-    })
-
-    var header_height = $("#profile-header").height();
-    if(header_height > 0)
-    {
-      $(".content").css("margin-top",header_height);
-    }
-
+    sub_page = localStorage.getItem("sub_page");
+    setPages();
 });
-
-function submitUpdateNameForm() {
-    document.getElementById('updatenameform').submit();
-}
-
-function submitUpdateRequestsForm() {
-    document.getElementById('newrequestinput').submit();
-}
 
 function removeRequestForm() {
     document.getElementById('deleterequestform').submit();
@@ -44,6 +14,30 @@ function removeRequestForm() {
 
 function removeTagForm() {
     document.getElementById('deletetagform').submit();
+}
+
+function changeSubPage() {
+    sub_page = $('input[name="sub_page"]:checked').val();
+    setPages();
+    localStorage.setItem("sub_page", sub_page);    
+}
+
+function setPages() {
+    clearAll();
+    switch(sub_page) {
+        case "timeline": 
+            $("#profile-timeline").removeClass("hidden");
+            $("#profile-totimeline").addClass("selected-button");
+            break;
+        case "quick_info": 
+            $("#profile-quickinfo").removeClass("hidden");
+            $("#profile-toquickinfo").addClass("selected-button");
+            break;
+        case "requests": 
+            $("#profile-requests").removeClass("hidden");
+            $("#profile-torequests").addClass("selected-button");
+            break;    
+    }
 }
 
 function clearAll() {
@@ -55,25 +49,4 @@ function clearAll() {
     $("#profile-torequests").removeClass("selected-button");
 };
 
-function addRequest() {
-    $(addrequestbutton).click(function() {
-        var newRequest = $(document.createElement('li'));
-        newRequest.addClass("table-view-cell");
-        var inputRequest = $(document.createElement(''))
-        $("#requestlist").prepend(newRequest);
-    })
-};
 
-function editName(editNameMode) {
-    if (editNameMode) {
-        $("#nameformdiv").removeClass("hidden");
-        $("#namedisplaydiv").addClass("hidden");
-        $("#tags").addClass("hidden");
-        $("#changeNameMode").addClass("hidden");
-    } else {
-        $("#nameformdiv").addClass("hidden");
-        $("#namedisplaydiv").removeClass("hidden");
-        $("#tags").removeClass("hidden");
-        $("#changeNameMode").removeClass("hidden");
-    }
-};

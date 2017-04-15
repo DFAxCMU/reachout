@@ -1,12 +1,12 @@
 #profile-header {
     width: 100%;
-    margin: 0;
-    padding: 0;
+    /*margin: 0;*/
+    /*padding: 0;*/
 }
 
-.icon {
-    /*margin: 5px;*/
-    /*padding: 5px;*/
+.edit-icon {
+    margin: 5px;
+    padding: 5px;
 }
 
 .name-text{
@@ -24,10 +24,9 @@
     padding: 10px;
 }
 
-#profile-header{
-    /*padding: 20px 10px 0px 10px;*/
-    /*margin: 0;*/
-    /*background-color: red;*/
+.requesttimestamp {
+    font-size: 12px;
+    color: black;
 }
 
 #profile-name {
@@ -108,9 +107,6 @@
     /*width: 80%;*/
 }
 
-.content {
-    margin-top: 150px;
-}
 
 #newrequestvalue {
     color: black;
@@ -177,10 +173,14 @@ ul, ol, li {
 }
 
 .reqremove {
-    height: 50px;
-    margin-top: -33px;
-    margin-right: -10px;
-    border-left: 1px solid white;
+    height: 100%;
+    position: relative;
+}
+
+.requpdate {
+    height: 100%;
+    position: relative;
+    margin-right: 0px;
 }
 
 .navbuttonicon {
@@ -190,7 +190,7 @@ ul, ol, li {
 
 #deletetagsubmit {
     background-color: #7BB6BC;
-    color: black;
+    /*color: black;*/
     border-radius: 50%;
 }
 
@@ -225,3 +225,21 @@ ul, ol, li {
 #newtagvalue::-moz-placeholder { color: white; }
 #newtagvalue:-ms-input-placeholder { color: white; }
 #newtagvalue:-moz-placeholder { color: white; }
+
+.segmented {
+  padding: 12px;   
+  text-align: center;
+}
+
+.segmented input[type=radio] {
+   display: none;
+}
+.segmented label {
+  padding: 15px 10%;
+  width: 100px;
+  cursor: pointer;
+}
+
+.segmented input:checked + label {
+  color: #FBB699;
+}

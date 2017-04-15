@@ -33,6 +33,9 @@ class ClientProfile(View):
         current_client = Client.objects.get(pk = client_id)
         requests = current_client.request.all().order_by('asked_timestamp')
         interactions = Interaction.objects.filter(client=current_client).order_by('-timestamp')
+        page = request.POST.get("change_subpage_form");
+        print("PAGE:");
+        print(page);
         context = {
                 'client': current_client,
                 'requests': requests,
@@ -122,5 +125,53 @@ class Timeline(View):
                 'interactions': interactions,
         }
         return render(request, template, context)
+
+class EditRequest(View):
+    def get(self, request, client_id, request_id):
+        template = "edit_request.html"
+        req = Requests.objects.get(pk=request_id)
+        context = {"cid": client_id,"request_description" : req.description}
+        return render(request, template, context)
+    def post(self, request, client_id, request_id):
+        client = Client.objects.get(pk=client_id)
+        user = CustomUser.objects.all()[0]
+        new_description = request.POST.get("description")
+        if (new_description == ""):
+            return HttpResponseRedirect("/client/" + str(client_id))
+        req = Requests.objects.get(pk=request_id)
+        req.description = new_description
+        req.save()
+        return HttpResponseRedirect("/client/" + str(client_id))
+
+class EditName(View):
+    def get(self, request, client_id):
+        template = "edit_name.html"
+        client = Client.objects.get(pk = client_id)
+        context = {"cid": client_id, "client": client}
+        return render(request, template, context)
+    def post(self, request, client_id):
+        client = Client.objects.get(pk=client_id)
+        new_first_name = request.POST.get("first_name")
+        new_nick_name = request.POST.get("nick_name")
+        new_last_name = request.POST.get("last_name")
+        print("firstname: " + new_first_name)
+        print("nickname: " + new_nick_name)
+        print("lastname: " + new_last_name)
+        if (new_first_name == "" or new_last_name == ""):
+            #this should not be possible b/c of the front end
+            return HttpResponseRedirect("/client/" + str(client_id))
+        client = Client.objects.get(pk=client_id)
+        client.first_name = new_first_name
+        client.nick_name = new_nick_name
+        client.last_name = new_last_name
+        client.save()
+        return HttpResponseRedirect("/client/" + str(client_id))
+
+
+
+
+
+
+
 
 

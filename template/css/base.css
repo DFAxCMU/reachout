@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6, p, div, span {
 
 .white-text { color: white; }
 
-.lightest-blue-text { background-color: #EAF4F5; }
+.lightest-blue-text { color: #EAF4F5; }
 
 .light-blue-text { color: #9FDAE0; }
 
@@ -61,6 +61,8 @@ h1, h2, h3, h4, h5, h6, p, div, span {
 .turquoise-text { color: #7BB6BC; }
 
 .grey-text { color: #BBC3CA; }
+
+.black-text { color: black; }
 
 .small-text {
 

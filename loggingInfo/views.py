@@ -14,15 +14,14 @@ class LogInteraction(View):
         context = {"cid": client_id}
         return render(request, template, context)
     def post(self, request, client_id):
-        print("post logINteraction")
         client = Client.objects.get(pk=client_id)
-        print(request.user)
-        print(type(request.user))
         # user = CustomUser.objects.filter(name=request.user)
-        print(CustomUser.objects.all()[0])
         user = CustomUser.objects.all()[0]
         description = request.POST.get("description")
         title = "" #take this out of the model?
+        if (description == ""):
+            #this should not be possible b/c of the front end
+            return HttpResponseRedirect("/client/" + str(client_id))
         new_interaction = Interaction(description=description, 
                                       title=title, 
                                       client=client, 
@@ -40,6 +39,9 @@ class EditInteraction(View):
         client = Client.objects.get(pk=client_id)
         user = CustomUser.objects.all()[0]
         new_description = request.POST.get("description")
+        if (new_description == ""):
+            #this should not be possible b/c of the front end
+            return HttpResponseRedirect("/client/" + str(client_id))
         interaction = Interaction.objects.get(pk=interaction_id)
         interaction.description = new_description
         interaction.save()
