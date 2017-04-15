@@ -17,10 +17,6 @@ $(document).ready(function() {
     })
 
     addRequest();
-    $("#changeNameMode").click(function() {
-        editName(editNameMode);
-        editNameMode = ! editNameMode;
-    })
 
     var header_height = $("#profile-header").height();
     if(header_height > 0)
@@ -29,14 +25,6 @@ $(document).ready(function() {
     }
 
 });
-
-function submitUpdateNameForm() {
-    document.getElementById('updatenameform').submit();
-}
-
-function submitUpdateRequestsForm() {
-    document.getElementById('newrequestinput').submit();
-}
 
 function removeRequestForm() {
     document.getElementById('deleterequestform').submit();
@@ -62,18 +50,4 @@ function addRequest() {
         var inputRequest = $(document.createElement(''))
         $("#requestlist").prepend(newRequest);
     })
-};
-
-function editName(editNameMode) {
-    if (editNameMode) {
-        $("#nameformdiv").removeClass("hidden");
-        $("#namedisplaydiv").addClass("hidden");
-        $("#tags").addClass("hidden");
-        $("#changeNameMode").addClass("hidden");
-    } else {
-        $("#nameformdiv").addClass("hidden");
-        $("#namedisplaydiv").removeClass("hidden");
-        $("#tags").removeClass("hidden");
-        $("#changeNameMode").removeClass("hidden");
-    }
 };

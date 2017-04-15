@@ -139,3 +139,36 @@ class EditRequest(View):
         req.description = new_description
         req.save()
         return HttpResponseRedirect("/client/" + str(client_id))
+
+class EditName(View):
+    def get(self, request, client_id):
+        template = "edit_name.html"
+        client = Client.objects.get(pk = client_id)
+        context = {"cid": client_id, "client": client}
+        return render(request, template, context)
+    def post(self, request, client_id):
+        client = Client.objects.get(pk=client_id)
+        new_first_name = request.POST.get("first_name")
+        new_nick_name = request.POST.get("nick_name")
+        new_last_name = request.POST.get("last_name")
+        print("firstname: " + new_first_name)
+        print("nickname: " + new_nick_name)
+        print("lastname: " + new_last_name)
+        if (new_first_name == "" or new_last_name == ""):
+            #this should not be possible b/c of the front end
+            return HttpResponseRedirect("/client/" + str(client_id))
+        client = Client.objects.get(pk=client_id)
+        client.first_name = new_first_name
+        client.nick_name = new_nick_name
+        client.last_name = new_last_name
+        client.save()
+        return HttpResponseRedirect("/client/" + str(client_id))
+
+
+
+
+
+
+
+
+
