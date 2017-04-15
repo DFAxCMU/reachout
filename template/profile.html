@@ -51,25 +51,29 @@
             <input type="text" name="newtagvalue" id="newtagvalue" placeholder="Type to add a new tag">
           </form></p>
       </div>
-        <div id="profile-nav" class="lightest-blue">
-          <div class="profile-nav-button" id="profile-totimeline">
-            <div class="our-icon icon icon-list navbuttonicon" style="color:white"></div>
-          </div>
-          <div class="selected-button profile-nav-button" id="profile-toquickinfo">
-            <div class="our-icon icon icon-info navbuttonicon" style="color:white"></div>            
-          </div>
-          <div class="profile-nav-button" id="profile-torequests">
-            <div class="our-icon icon icon-person navbuttonicon" style="color:white"></div>
-          </div>
-        </div>
-      </div>
 
-    
+        <nav class="lightest-blue segmented">
+          <form id="change_subpage_form">
+            <input type="radio" name="sub_page" value="timeline" id="seg-timeline">
+            <label for="seg-timeline">
+              <span class="icon icon-edit"></span>
+            </label>
+            <input type="radio" name="sub_page" value="quick_info" id="seg-quick_info">
+            <label for="seg-quick_info">
+              <span class="icon icon-person"></span>
+            </label>
+            <input type="radio" name="sub_page" value="requests" id="seg-requests">
+            <label for="seg-requests">
+              <span class="icon icon-list"></span>
+            </label>
+          </form>
+        </nav>
+      </div>
     <div>
 
     <div class="hidden profile-subpage" id="profile-timeline">
-      <p class="turquoise-text subtitle-text">Previous Interactions</br></p>
-      <a class="our-icon icon icon-plus pull-right salmon-orange-text" href="/log_interaction/{{client.id}}"></a>
+      <p class="turquoise-text subtitle-text">Previous Interactions
+      <a class="our-icon icon icon-plus pull-right salmon-orange-text" href="/log_interaction/{{client.id}}"></a></br></br></p>
         {% if interactions %}
           <ul class="timeline">
             {% for interaction in interactions %}
@@ -77,7 +81,7 @@
               <div class="timeline-badge.primary"><i class="glyphicon glyphicon-check"></i></div>
               <div class="timeline-panel">
                 <div class="timeline-body">
-                  <p class="timeline-desc turquoise-text">{{interaction.description}}<a href="/edit_interaction/{{client.id}}/{{interaction.id}}"><span class="icon icon-edit"></span></a> <a href="/delete_interaction/{{client.id}}/{{interaction.id}}"><span class="icon icon-trash"></span></a></p>
+                  <p class="timeline-desc turquoise-text">{{interaction.description}}<a href="/edit_interaction/{{client.id}}/{{interaction.id}}"><span class="icon pull-right icon-compose"></span></a> <a href="/delete_interaction/{{client.id}}/{{interaction.id}}"><span class="icon pull-right icon-trash"></span></a></p>
                   <p class="timeline-info salmon-orange-text">{{interaction.timestamp}} | {{interaction.user}}</p>
                 </div>
               </div>

@@ -225,3 +225,21 @@ ul, ol, li {
 #newtagvalue::-moz-placeholder { color: white; }
 #newtagvalue:-ms-input-placeholder { color: white; }
 #newtagvalue:-moz-placeholder { color: white; }
+
+.segmented {
+  padding: 12px;   
+  text-align: center;
+}
+
+.segmented input[type=radio] {
+   display: none;
+}
+.segmented label {
+  padding: 15px 10%;
+  width: 100px;
+  cursor: pointer;
+}
+
+.segmented input:checked + label {
+  color: #FBB699;
+}

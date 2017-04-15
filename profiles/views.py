@@ -33,6 +33,9 @@ class ClientProfile(View):
         current_client = Client.objects.get(pk = client_id)
         requests = current_client.request.all().order_by('asked_timestamp')
         interactions = Interaction.objects.filter(client=current_client).order_by('-timestamp')
+        page = request.POST.get("change_subpage_form");
+        print("PAGE:");
+        print(page);
         context = {
                 'client': current_client,
                 'requests': requests,
