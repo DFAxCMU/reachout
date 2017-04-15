@@ -16,18 +16,14 @@
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>   
     <script src="{% static 'js/profile.js' %}"></script>
-
   </head>
   <body>
   <div class="content">
-
-
     {% if client %}
     <div id="profile-header">
       <div>
         <a class="our-icon icon icon-left-nav pull-left turquoise-text" href="/search"></a>
         <a class="our-icon icon icon-compose pull-right turquoise-text" href="/edit_name/{{client.id}}"></a>
-
         {% if client.nick_name != "" %}
           <h1 class="salmon-orange-text name-text">{{client.first_name}} "{{client.nick_name}}" {{client.last_name}}</h1>
         {% else %}
@@ -186,15 +182,17 @@
                 </span>
               </div>
               <button type="submit" class="btn btn-default"> Update </button>
-
               <div class="row"></br>
                 <p class="turquoise-text subtitle-text">Story</p>
                 <p>{{client.story}}</p>
-                <a href="/edit_story/{{client.id}}"><span class="icon icon-edit"></span></a>
+                    <div class="updatereqbutton">
+                      <a href="/edit_story/{{client.id}}">
+                      <div class="our-icon icon icon-compose requpdate" id="{{client.id}}"></div>
+                      </a>
+                    </div>
               </div>
             </form>
     </div>
-
     <div class="hidden profile-subpage" id="profile-requests">
       <p class="turquoise-text subtitle-text">Incomplete Requests</br></p>
       <div class="media-body">

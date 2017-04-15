@@ -71,6 +71,7 @@ def updateRequests(self, request, client_id):
         new_request.save()
     return HttpResponseRedirect("/client/" + str(client_id))
 
+
 def updateName(self, request, client_id):
     client = Client.objects.get(pk = client_id)
     client.first_name = request.POST.get("updatefirstname")
@@ -142,6 +143,27 @@ class EditRequest(View):
         req.description = new_description
         req.save()
         return HttpResponseRedirect("/client/" + str(client_id))
+
+
+class EditStory(View):
+    def get(self, request, client_id):
+        template = "edit_story.html"
+        client = Client.objects.get(pk=client_id)
+        context = {"cid": client_id,"story" : client.story}
+        return render(request, template, context)
+
+    def post(self, request, client_id):
+        client = Client.objects.get(pk=client_id)
+        #user = CustomUser.objects.all()[0]
+        new_story = request.POST.get("story")
+        if (new_story == ""):
+            return HttpResponseRedirect("/client/" + str(client_id))
+        client = Client.objects.get(pk=client_id)
+        client.story = new_story
+        client.save()
+        return HttpResponseRedirect("/client/" + str(client_id))
+
+
 
 class EditName(View):
     def get(self, request, client_id):
