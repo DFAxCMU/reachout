@@ -1,6 +1,10 @@
 var sub_page;// = "quick_info"
 
 $(document).ready(function() {
+    if (!sub_page) {
+        sub_page = "quick_info"
+        setPages();
+    }
     $("#change_subpage_form").click(function() {
         changeSubPage();
     })
