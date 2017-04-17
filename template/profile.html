@@ -45,6 +45,7 @@
           <form action='' method='POST' id='newtaginput' name='newtaginput'>
             {% csrf_token %}
             <input type="text" name="newtagvalue" id="newtagvalue" placeholder="Type to add a new tag">
+            <input type="submit" value="Enter" id="entertagsubmit" name="entertagsubmit">
           </form></p>
       </div>
 
@@ -165,7 +166,7 @@
               </div>
 
               <div class="row"></br>
-                <p class="turquoise-text subtitle-text">Duration of homelessness</p>
+                <p class="turquoise-text subtitle-text">Duration of homelessness (years)</p>
                 <span class="duration-select">
                   <select name="duration" id="duration">
                     <option {% if client.duration_of_homelessness == 1 %} selected="selected" {% endif %}>1</option>

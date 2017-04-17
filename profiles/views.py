@@ -91,7 +91,14 @@ def deleteTag(self, request, client_id):
         if (client in tag.client.all()):
             if (tag.name.lower() == request.POST.get("deletetagdesc")): 
                 tag.delete()
+    return HttpResponseRedirect("/client/" + str(client_id))
 
+def enterTag(self, request, client_id): 
+    client = Client.objects.get(pk = client_id)
+    for tag in Tag.objects.all(): 
+        if (client in tag.client.all()):
+            if (tag.name.lower() == request.POST.get("entertagsubmit")): 
+                tag.add()
     return HttpResponseRedirect("/client/" + str(client_id))
 
 def updateQuickInfo(self, request, client_id): 
