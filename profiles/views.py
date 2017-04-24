@@ -13,6 +13,14 @@ class NewClientProfile(View):
         template = "new_client.html"
         return render(request, template)
     def post(self,request):
+        first_name = request.POST.get("first_name")
+        nick_name = request.POST.get("nick_name")
+        if (first_name == "" and nick_name == ""):
+            #blocked by frontend 
+            return HttpResponseRedirect("/new_client")
+        client = Client.objects.filter(first_name=first_name,nick_name=nick_name)
+        if (len(client) > 0):
+            return HttpResponse("User already exists!")
         new_client = Client(first_name = request.POST.get("first_name"),
             last_name = request.POST.get("last_name"),
             nick_name = request.POST.get("nick_name"), 
