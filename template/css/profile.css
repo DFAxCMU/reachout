@@ -80,14 +80,8 @@
     background-color: #FBB699;
 }
 
-.selected-button {
-    background-color: #EF6E47;
-}
-
 #tags {
     margin: 10px;
-    /*padding: 80px 0;*/
-    /*background-color: red;*/
 }
 
 .tag, #newtagvalue {
@@ -102,11 +96,6 @@
     margin: 2px;
 
 }
-
-#newtagvalue {
-    /*width: 80%;*/
-}
-
 
 #newrequestvalue {
     color: black;
@@ -190,7 +179,6 @@ ul, ol, li {
 
 #deletetagsubmit {
     background-color: #7BB6BC;
-    /*color: black;*/
     border-radius: 50%;
 }
 
