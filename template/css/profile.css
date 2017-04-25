@@ -97,6 +97,24 @@
 
 }
 
+.tag, #entertagsubmit {
+    font-size: 14px;
+    background-color: #7BB6BC;
+    color: white;
+    border-radius: 12px;
+    height: 30px;
+    width: 50px;
+    line-height: 20px;
+    padding: 6px;
+    white-space: nowrap;
+    margin: 2px;
+
+}
+
+#newtagvalue {
+    /*width: 80%;*/
+}
+
 #newrequestvalue {
     color: black;
     margin: 0;
