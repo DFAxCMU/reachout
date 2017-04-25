@@ -1,4 +1,4 @@
-var sub_page;// = "quick_info"
+var sub_page;
 
 $(document).ready(function() {
     if (!sub_page) {
@@ -31,15 +31,12 @@ function setPages() {
     switch(sub_page) {
         case "timeline": 
             $("#profile-timeline").removeClass("hidden");
-            $("#profile-totimeline").addClass("selected-button");
             break;
         case "quick_info": 
             $("#profile-quickinfo").removeClass("hidden");
-            $("#profile-toquickinfo").addClass("selected-button");
             break;
         case "requests": 
             $("#profile-requests").removeClass("hidden");
-            $("#profile-torequests").addClass("selected-button");
             break;    
     }
 }
@@ -48,9 +45,6 @@ function clearAll() {
     $("#profile-timeline").addClass("hidden");
     $("#profile-quickinfo").addClass("hidden");
     $("#profile-requests").addClass("hidden");
-    $("#profile-totimeline").removeClass("selected-button");
-    $("#profile-toquickinfo").removeClass("selected-button");
-    $("#profile-torequests").removeClass("selected-button");
 };
 
 

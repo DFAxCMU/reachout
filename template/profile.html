@@ -55,7 +55,7 @@
             <label for="seg-timeline">
               <span class="icon icon-edit"></span>
             </label>
-            <input type="radio" name="sub_page" value="quick_info" id="seg-quick_info">
+            <input type="radio" name="sub_page" checked="checked" value="quick_info" id="seg-quick_info">
             <label for="seg-quick_info">
               <span class="icon icon-person"></span>
             </label>
@@ -184,13 +184,16 @@
               </div>
               <button type="submit" class="btn btn-default"> Update </button>
               <div class="row"></br>
-                <p class="turquoise-text subtitle-text">Story</p>
+                <p class="turquoise-text subtitle-text">
+                  Story
+                  <div class="updatereqbutton">
+                    <a href="/edit_story/{{client.id}}">
+                    <div class="our-icon icon icon-compose requpdate" id="{{client.id}}"></div>
+                    </a>
+                  </div>
+                </p>
                 <p>{{client.story}}</p>
-                    <div class="updatereqbutton">
-                      <a href="/edit_story/{{client.id}}">
-                      <div class="our-icon icon icon-compose requpdate" id="{{client.id}}"></div>
-                      </a>
-                    </div>
+                    
               </div>
             </form>
     </div>
