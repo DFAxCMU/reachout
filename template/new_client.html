@@ -24,6 +24,7 @@
         <a class="icon icon-close pull-left" style="margin-top:10px; margin-left:10px" href="/"></a>
   <body class="background">
     <h1 style=""> new profile </h1>
+    {% if error_message %}<p><strong>{{  error_message }}</strong></p>{% endif %}
 
     <form action='' method="POST">
         {% csrf_token %}
