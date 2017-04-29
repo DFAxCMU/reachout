@@ -19,6 +19,13 @@
   </head>
   <body>
   <div class="content">
+
+    {% if status != "none" %}
+      <div id="successMessage">
+        <p class="successMessage">{{status}}</br>
+        <span class="our-icon icon icon-check"></pspan></p>
+      </div>
+    {% endif %}
     {% if client %}
     <div id="profile-header">
       <div>

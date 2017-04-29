@@ -22,6 +22,11 @@ class Search(View):
         if (search_input != None): 
             search_input = search_input.lower()
 
+        try:
+            del request.session['editing_status']
+        except KeyError:
+            pass
+
         context = {"client_list": client_list}
         return render(request, template, context)
 

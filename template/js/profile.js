@@ -10,6 +10,8 @@ $(document).ready(function() {
     })
     sub_page = localStorage.getItem("sub_page");
     setPages();
+
+    $('#successMessage').delay(500).fadeOut('slow');
 });
 
 function removeRequestForm() {
@@ -40,6 +42,8 @@ function setPages() {
             break;    
     }
 }
+
+
 
 function clearAll() {
     $("#profile-timeline").addClass("hidden");

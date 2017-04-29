@@ -15,7 +15,6 @@ class LogInteraction(View):
         return render(request, template, context)
     def post(self, request, client_id):
         client = Client.objects.get(pk=client_id)
-        # user = CustomUser.objects.filter(name=request.user)
         user = CustomUser.objects.all()[0]
         description = request.POST.get("description")
         title = "" #take this out of the model?
@@ -27,6 +26,7 @@ class LogInteraction(View):
                                       client=client, 
                                       user=user)
         new_interaction.save()
+        request.session['editing_status'] = "created new interaction"
         return HttpResponseRedirect("/client/" + str(client_id))
 
 class EditInteraction(View):
@@ -45,6 +45,7 @@ class EditInteraction(View):
         interaction = Interaction.objects.get(pk=interaction_id)
         interaction.description = new_description
         interaction.save()
+        request.session['editing_status'] = "edited interaction"
         return HttpResponseRedirect("/client/" + str(client_id))
 
 class DeleteInteraction(View):
@@ -63,4 +64,5 @@ class DeleteInteraction(View):
         user = CustomUser.objects.all()[0]
         interaction = Interaction.objects.get(pk=interaction_id)
         interaction.delete()
+        request.session['editing_status'] = "deleted interaction"
         return HttpResponseRedirect("/client/" + str(client_id))

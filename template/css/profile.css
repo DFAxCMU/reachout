@@ -249,3 +249,21 @@ ul, ol, li {
 .segmented input:checked + label {
   color: #FBB699;
 }
+
+#successMessage {
+  z-index:1;
+  position: fixed;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, 0);
+  background-color: white;
+  box-shadow: 10px 10px 5px #888888;
+  padding: 35px;
+  border: 2px solid black;
+  text-align: center;
+  width: 80%;
+}
+
+.successMessage {
+  font-size: 30px;
+}
