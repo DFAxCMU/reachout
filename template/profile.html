@@ -51,8 +51,10 @@
         {% endfor %}
           <form action='' method='POST' id='newtaginput' name='newtaginput'>
             {% csrf_token %}
-            <input type="text" name="newtagvalue" id="newtagvalue" placeholder="Type to add a new tag">
-            <input type="submit" value="Enter" id="entertagsubmit" name="entertagsubmit">
+            <input type="submit" value="Enter" id="entertagsubmit" name="entertagsubmit" style="float: right">
+            <div style="overflow: hidden; padding-right: 1em;">
+              <input type="text" name="newtagvalue" id="newtagvalue" placeholder="Type to add a new tag">
+            </div>
           </form></p>
       </div>
 
