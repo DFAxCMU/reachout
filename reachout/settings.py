@@ -26,7 +26,7 @@ SECRET_KEY = 'yeab2p%^oz&-)_v$(t30#m+7b@=_s8)2mz731xc*ybrp9nqd2x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["dfa-reachout.herokuapp.com"]
 
 
 # Application definition
