@@ -24,7 +24,7 @@ AUTH_DIR = os.path.join(BASE_DIR, 'user_accounts')
 SECRET_KEY = 'yeab2p%^oz&-)_v$(t30#m+7b@=_s8)2mz731xc*ybrp9nqd2x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -82,24 +82,24 @@ WSGI_APPLICATION = 'reachout.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), 
-
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django_postgrespool',
-#         'NAME': 'd5a9o029jo82ov',
-#         'USER': 'siqmbtijpaktxq',
-#         'PASSWORD': 'cRIRhvAd5-grbXPSL0zK7L6XQG',
-#         'HOST': 'ec2-54-243-200-37.compute-1.amazonaws.com',
-#         'PORT': '5432'
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), 
+
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django_postgrespool',
+        'NAME': 'davcdo7p2psi79',
+        'USER': 'cvctiljdskelxa',
+        'PASSWORD': 'b197389d90a72ab128d099b0f4cf33ea39e3a6c82ab91b47449504cfeea5087b',
+        'HOST': 'ec2-54-83-205-71.compute-1.amazonaws.com',
+        'PORT': '5432'
+    }
+}
 
 
 # Password validation
