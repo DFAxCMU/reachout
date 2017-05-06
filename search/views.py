@@ -14,9 +14,11 @@ class Search(View):
     def get(self, request):
         print("Search Page: GET request")
         template = "search.html"
-        client_list = Client.objects.all()
+        client_list = []
+        for client in Client.objects.all(): 
+            if client.to_show: 
+                client_list.append(client)
         tags_list = Tag.objects.all()
-        print(tags_list)
 
         search_input = request.POST.get("search_input")
         if (search_input != None): 
