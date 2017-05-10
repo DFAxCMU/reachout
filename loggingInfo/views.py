@@ -15,7 +15,7 @@ class LogInteraction(View):
         return render(request, template, context)
     def post(self, request, client_id):
         client = Client.objects.get(pk=client_id)
-        user = CustomUser.objects.all()[0]
+        user = CustomUser.objects.get(user=request.user)
         description = request.POST.get("description")
         title = "" #take this out of the model?
         if (description == ""):
@@ -37,7 +37,6 @@ class EditInteraction(View):
         return render(request, template, context)
     def post(self, request, client_id,interaction_id):
         client = Client.objects.get(pk=client_id)
-        user = CustomUser.objects.all()[0]
         new_description = request.POST.get("description")
         if (new_description == ""):
             #this should not be possible b/c of the front end
