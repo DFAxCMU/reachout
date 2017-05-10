@@ -25,6 +25,7 @@ class Client(models.Model):
     location = models.CharField(max_length=50, default="")
     story = models.CharField(max_length=300, default="")
     visual_description = models.CharField(max_length=200, default="")
+    to_show = models.BooleanField(default=True)
     #org = models.ForeignKey(Organization, related_name="client_org")
     #case_manager = models.ForeignKey(User, related_name="client_cm")
     #followers = models.ManyToManyField(User, related_name="client_followers")

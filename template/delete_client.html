@@ -1,0 +1,52 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>reachout</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/log_info.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/ratchet.css' %}">
+    
+
+    <link href="{% static 'css/log_info.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/css/ratchet.css' %}" rel="stylesheet">
+
+
+  </head>
+  <a class="submit"  href="/"></a>
+  <body>  
+    <div class="title-bar">
+        <a class="icon icon-left-nav turqoise bigger pull-left" href="javascript:history.back()"></a>
+        
+      <h1 class="title-text">Delete Client</h1>
+    </div>
+
+
+  <form action='' method="POST">
+  {% csrf_token %} 
+
+    <div class="row">
+        <h4> Are you sure you want to delete this client? </h4> <br>
+<!--         <p> Description: {{ interaction_description }} </p>
+        <p> Date: {{ interaction_timestamp }} </p>
+        <p> Created By: {{ interaction_user }} </p> -->
+        <div id="centerSubmit"><button type="submit" class="btn btn-negative">  Delete Client </button> </div> 
+    </div>
+
+  <div class="client-id" style="display:none;" data-cid="{{ cid }}"></div>
+  
+
+  </body>
+</html>            

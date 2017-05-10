@@ -81,6 +81,19 @@ class ClientProfile(View):
             print("deleting request")
             return deleteRequest(self, request, client_id);
 
+class DeleteClient(View):
+    def get(self, request, client_id):
+        template = "delete_client.html"
+        context = {
+            "cid": client_id
+        }
+        return render(request, template, context)
+    def post(self, request, client_id):
+        client = Client.objects.get(pk=client_id)
+        client.to_show = False
+        client.save()
+        return HttpResponseRedirect("/search")
+ 
 
 def updateRequests(self, request, client_id):
     if (request.POST.get("newrequestvalue") != ""):
